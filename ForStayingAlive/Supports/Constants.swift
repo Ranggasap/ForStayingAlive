@@ -7,4 +7,4 @@
 
 import Foundation
 
-let UndeadCategory : UInt32 = 0x1 << 1
+let HeroCategory : UInt32 = 0x1 << 1

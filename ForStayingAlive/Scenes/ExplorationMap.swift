@@ -8,62 +8,32 @@
 import SpriteKit
 import GameplayKit
 
-class ExplorationMap: SKScene, SKPhysicsContactDelegate {
+class ExplorationMap : SKScene {
 	
-	private let undead = UndeadSprite.newInstance()
+	private let hero = PlayerSprite.newInstance()
 	
 	override func didMove(to view: SKView) {
-		self.physicsWorld.contactDelegate = self
 		
 		createBackground()
-		createPlayBoundary()
-		spawnUndead()
+		spawnPlayerHero()
 	}
 	
-	func spawnUndead() {
-		undead.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2 - 50)
-		
-		addChild(undead)
+	func spawnPlayerHero() {
+		hero.position = CGPoint(x: frame.midX, y: frame.midY)
+		addChild(hero)
 	}
 	
 	func createBackground() {
-		// Get the screen size
 		let screenSize = self.size
+		let backgroundImage = SKSpriteNode(imageNamed: "sky")
 		
-		// Calculate the height for the bottom half
-		let halfHeight = screenSize.height / 2
+		backgroundImage.size = CGSize(width: screenSize.width, height: screenSize.height / 2)
+		backgroundImage.position = CGPoint(x: screenSize.width / 2, y: screenSize.height - backgroundImage.size.height / 2)
 		
-		// Create a sprite node with the custom color
-		let terrainNode = SKSpriteNode(color: UIColor(named: "terrain-color") ?? .black, size: CGSize(width: screenSize.width, height: halfHeight))
+		let colorNode = SKSpriteNode(color: UIColor(named: "terrain-color") ?? .white, size: CGSize(width: screenSize.width, height: screenSize.height / 2))
+		colorNode.position = CGPoint(x: screenSize.width / 2, y: colorNode.size.height / 2)
 		
-		// Position the node at the bottom half of the screen
-		terrainNode.position = CGPoint(x: screenSize.width / 2, y: halfHeight / 2)
-		terrainNode.zPosition = 0
-		
-		// Add the node to the scene
-		addChild(terrainNode)
-		
-		// Set the background color of the remaining part (optional)
-		self.backgroundColor = .white  // Set this to the desired color for the top half
-	}
-	
-	func createPlayBoundary() {
-		let horizonLine = SKNode()
-		horizonLine.position = CGPoint(x: size.width / 2, y: size.height / 2)
-		
-		// Create a physics body for horizon
-		let horizonPhysicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: -size.width / 2, y: 0), to: CGPoint(x: size.width / 2, y: 0))
-		horizonPhysicsBody.isDynamic = false
-		horizonLine.physicsBody = horizonPhysicsBody
-		
-		addChild(horizonLine)
-		
-		// Create a physics body for floor
-		let floorNode = SKNode()
-		floorNode.position = CGPoint(x: size.width / 2, y: 20)
-		
-		floorNode.physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: -size.width / 2, y: 0), to: CGPoint(x: size.width, y: 0))
-		
-		addChild(floorNode)
+		addChild(backgroundImage)
+		addChild(colorNode)
 	}
 }
