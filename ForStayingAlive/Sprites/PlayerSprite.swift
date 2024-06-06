@@ -18,4 +18,9 @@ public class PlayerSprite : SKSpriteNode {
 		
 		return playerHero
 	}
+	
+	// Frames for running animation
+	private let runningFrames: [SKTexture] = (0...7).map { i in
+		SKTexture(imageNamed: "player-test-run\(i)")
+	}
 }

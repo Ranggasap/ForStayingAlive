@@ -29,6 +29,7 @@ class ExplorationMap : SKScene {
 		
 		backgroundImage.size = CGSize(width: screenSize.width, height: screenSize.height / 2)
 		backgroundImage.position = CGPoint(x: screenSize.width / 2, y: screenSize.height - backgroundImage.size.height / 2)
+		backgroundImage.zPosition = 0
 		
 		let colorNode = SKSpriteNode(color: UIColor(named: "terrain-color") ?? .white, size: CGSize(width: screenSize.width, height: screenSize.height / 2))
 		colorNode.position = CGPoint(x: screenSize.width / 2, y: colorNode.size.height / 2)
