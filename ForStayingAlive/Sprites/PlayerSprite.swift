@@ -13,9 +13,6 @@ public class PlayerSprite : SKSpriteNode {
 		playerHero.size = CGSize(width: playerHero.size.width, height: playerHero.size.height)
 		playerHero.zPosition = 1
 		
-		// Add physics body for hero here
-		// Code...
-		
 		return playerHero
 	}
 	
