@@ -9,13 +9,40 @@ import SpriteKit
 import GameplayKit
 
 class ExplorationMap : SKScene {
-	
+    var joystick: AnalogJoystick!
+    var player: SKSpriteNode!
+    
 	private let hero = PlayerSprite.newInstance()
 	
 	override func didMove(to view: SKView) {
-		
+        // Set up the joystick with custom colors and size
+        let joystickDiameter: CGFloat = min(size.width, size.height) * 0.2
+        
+        // Create the substrate with a gray border and white fill
+        let substrate = AnalogJoystickSubstrate(diameter: joystickDiameter, borderColor: .gray, fillColor: .white)
+        substrate.borderWidth = 10.0
+        
+        // Create the stick with gray color
+        let stick = AnalogJoystickStick(diameter: joystickDiameter * 0.6, borderColor: .gray, fillColor: .gray)
+        
+        // Initialize the joystick
+        joystick = AnalogJoystick(substrate: substrate, stick: stick)
+        joystick.position = CGPoint(x: size.width * 0.1, y: size.height * 0.15) // Adjust the position here
+        addChild(joystick)
+        
+        spawnPlayerHero()
+        
+        // Joystick tracking handler
+        joystick.trackingHandler = { [unowned self] data in
+            let velocity = data.velocity
+            let moveSpeed: CGFloat = 0.12
+            self.hero.position = CGPoint(
+                x: self.hero.position.x + velocity.x * moveSpeed,
+                y: self.hero.position.y + velocity.y * moveSpeed
+            )
+        }
+        
 		createBackground()
-		spawnPlayerHero()
 	}
 	
 	func spawnPlayerHero() {

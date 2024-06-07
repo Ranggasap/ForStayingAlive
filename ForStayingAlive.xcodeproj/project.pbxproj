@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3BB4142C129DC7002F7A2C /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3BB4132C129DC7002F7A2C /* AnalogJoystick.swift */; };
 		8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */; };
 		8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2042C0DB77D0055AB7A /* GameViewController.swift */; };
 		8B4DB2082C0DB77D0055AB7A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2072C0DB77D0055AB7A /* Base */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E3BB4132C129DC7002F7A2C /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		8B4DB1F92C0DB77D0055AB7A /* ForStayingAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForStayingAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B4DB2042C0DB77D0055AB7A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		8B4DB1FB2C0DB77D0055AB7A /* ForStayingAlive */ = {
 			isa = PBXGroup;
 			children = (
+				0E3BB4132C129DC7002F7A2C /* AnalogJoystick.swift */,
 				E42E8E6B2C1170EE00FF73F4 /* Delegates */,
 				E42E8E6E2C11711E00FF73F4 /* Mains */,
 				E42E8E6D2C11710B00FF73F4 /* View Controllers */,
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
+				0E3BB4142C129DC7002F7A2C /* AnalogJoystick.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
