@@ -22,14 +22,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	private var lastUpdateTime : TimeInterval = 0
 	
+	var minX: CGFloat = 0
+	var maxX: CGFloat = 0
+	var minY: CGFloat = 0
+	var maxY: CGFloat = 0
+	
 	override func didMove(to view: SKView) {
 		createBackground()
-		createBoundary()
 		addPlayerHero()
 		addUndead()
 		setupCamera()
-		addJoystick()
-		addRunningButton()
+		
+		// Set the boundary
+		minX = frame.minX + 50
+		maxX = backgroundImageTwo.position.x - 50
+		minY = frame.minY + 50
+		maxY = frame.midY + 70
 	}
 	
 	func addPlayerHero() {
@@ -96,6 +104,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			y: size.height / 2
 		)
 		addChild(heroCamera)
+		addJoystick()
+		addRunningButton()
 	}
 	
 	func createBackground() {
@@ -103,14 +113,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		// Create the first background image
 		backgroundImageOne = SKSpriteNode(imageNamed: "background")
-		backgroundImageOne.size = CGSize(
-			width: screenSize.width,
-			height: screenSize.height)
+		backgroundImageOne.size = screenSize
 		backgroundImageOne.position = CGPoint(
 			x: screenSize.width / 2,
 			y: screenSize.height / 2
 		)
-		backgroundImageOne.zPosition = 0
+		backgroundImageOne.zPosition = -1
 		addChild(backgroundImageOne)
 		
 		// Create the second background image
@@ -127,40 +135,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		backgroundImageTwo.zPosition = 0
 		addChild(backgroundImageTwo)
 	}
-
-
-
-	func createBoundary() {
-		let screenSize = self.size
-		
-		// Horizon Boundary
-		let horizonStartPoint = CGPoint(
-			x: -screenSize.width,
-			y: frame.midY + 100)
-		let horizonEndPoint = CGPoint(
-			x: backgroundImageTwo.position.x + screenSize.width,
-			y: frame.midY + 100
-		)
-		let horizonBoundaryBody = SKPhysicsBody(edgeFrom: horizonStartPoint, to: horizonEndPoint)
-		let horizonBoundary = SKNode()
-		horizonBoundary.physicsBody = horizonBoundaryBody
-		addChild(horizonBoundary)
-		
-		// Ground Boundary
-		let groundStartPoint = CGPoint(
-			x: -screenSize.width,
-			y: frame.minY + 50
-		)
-		let groundEndPoint = CGPoint(
-			x: backgroundImageTwo.position.x + screenSize.width,
-			y: frame.minY + 50
-		)
-		let groundBoundaryBody = SKPhysicsBody(edgeFrom: groundStartPoint, to: groundEndPoint)
-		let groundBoundary = SKNode()
-		groundBoundary.physicsBody = groundBoundaryBody
-		addChild(groundBoundary)
+	
+	// Clamp hero and undead to boundary
+	func clampPosition(of node: SKNode) {
+		node.position.x = min(maxX, max(minX, node.position.x))
+		node.position.y = min(maxY, max(minY, node.position.y))
 	}
-
 	
 	override func update(_ currentTime: TimeInterval) {
 		// Initialize _lastUpdateTime if it has not already been
@@ -172,11 +152,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-		let minX = frame.minX + hero.size.width / 2
-		let maxX = backgroundImageTwo.position.x - hero.size.width / 2
-		
-		// Clamp hero's x-position within the bounds
-		hero.position.x = min(maxX, max(minX, hero.position.x))
+		// Clamp position within the bounds
+		clampPosition(of: hero)
+		clampPosition(of: undead)
 		
 		// Update the camera position to follow the hero horizontally within bounds
 		let cameraX = max(hero.position.x, size.width / 2)
@@ -191,59 +169,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		// Check if the running button is pressed
 		let isRunning = runningButton.isPressed
 		
-		// Calculate velocity based on the position of the joystick's stick
-		let velocity = CGVector(
-			dx: joystick.stick.position.x,
-			dy: joystick.stick.position.y
-		)
+		// Get the position of the joystick's stick
+		let joystickPosition = joystick.stick.position
 		
-		// Check if the velocity magnitude is greater than zero
-		if hypot(velocity.dx, velocity.dy) > 0 {
-			// Determine the direction of movement
-			let isMovingLeft = velocity.dx < 0
-			
-			// Update hero's facing direction
-			hero.xScale = isMovingLeft ? -1 : 1
-			
-			if isRunning {
-				// If the hero is moving and the running button is pressed, trigger the running animation
-				hero.removeAction(forKey: hero.heroWalkingKey)
-				hero.heroRunningAnimation()
-			} else {
-				// If the hero is moving but the running button is not pressed, trigger the walking animation
-				hero.removeAction(forKey: hero.heroRunningKey)
-				hero.heroWalkingAnimation()
-			}
-		} else {
-			// If the hero is not moving, remove all animations
-			hero.removeAllActions()
-		}
+		// Hande hero behavior to move
+		hero.heroMoving(isRunning: isRunning, joystickPosition: joystickPosition)
 		
-		// Handle undead following hero
-		let undeadToHeroDistance = hypot(hero.position.x - undead.position.x, hero.position.y - undead.position.y)
-		
-		if undeadToHeroDistance <= undead.senseRadius {
-			let angle = atan2(hero.position.y - undead.position.y, hero.position.x - undead.position.x)
-			let moveSpeed = undead.undeadSpeed * CGFloat(dt)
-			let moveX = cos(angle) * moveSpeed
-			let moveY = sin(angle) * moveSpeed
-			
-			// Update undead position
-			undead.position = CGPoint(
-				x: undead.position.x + moveX,
-				y: undead.position.y + moveY
-			)
-			
-			// Determine the direction of movement
-			let isMovingLeft = moveX < 0
-			
-			// Update undead's facing direction
-			undead.xScale = isMovingLeft ? -1 : 1
-			
-			undead.undeadWalkingAnimation()
-		} else {
-			// If the undead is not within sense radius, stop the animation
-			undead.removeAllActions()
-		}
+		// Handle undead behavior to chase hero
+		undead.chasePlayer(deltaTime: dt, hero: hero)
 	}
 }

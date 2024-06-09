@@ -8,8 +8,8 @@
 import SpriteKit
 
 public class PlayerSprite : SKSpriteNode {
-	let heroWalkingKey = "hero_walking"
-	let heroRunningKey = "hero_running"
+	private let heroWalkingKey = "hero_walking"
+	private let heroRunningKey = "hero_running"
 	
 	public static func newInstance() -> PlayerSprite {
 		let playerHero = PlayerSprite(imageNamed: "player-test-normal")
@@ -19,8 +19,6 @@ public class PlayerSprite : SKSpriteNode {
 		playerHero.physicsBody =  SKPhysicsBody(rectangleOf: CGSize(width: playerHero.size.width / 2, height: playerHero.size.height / 2))
 		playerHero.physicsBody?.affectedByGravity = false
 		playerHero.physicsBody?.allowsRotation = false
-		playerHero.physicsBody?.friction = 0
-		playerHero.physicsBody?.restitution = 0
 		
 		playerHero.physicsBody?.categoryBitMask = HeroCategory
 		playerHero.physicsBody?.contactTestBitMask = UndeadCategory
@@ -51,6 +49,33 @@ public class PlayerSprite : SKSpriteNode {
 			let runningAnimation = SKAction.repeatForever(
 				SKAction.animate(with: runningFrames, timePerFrame: 0.1))
 			run(runningAnimation, withKey: heroRunningKey)
+		}
+	}
+	
+	public func heroMoving(isRunning : Bool, joystickPosition : CGPoint) {
+		// Calculate velocity based on the position of joystick's stick
+		let velocity = CGVector(dx: joystickPosition.x, dy: joystickPosition.y)
+		
+		// Check if the velocity magnitude is greater than zero
+		if hypot(velocity.dx, velocity.dy) > 0 {
+			// Determine the direction of movement
+			let isMovingLeft = velocity.dx < 0
+			
+			// Update hero's facing direction
+			self.xScale = isMovingLeft ? -1 : 1
+			
+			if isRunning {
+				// If the hero is moving and the running button is pressed, trigger the running animation
+				self.removeAction(forKey: heroWalkingKey)
+				self.heroRunningAnimation()
+			} else {
+				// If the hero is moving but the running button is not pressed, trigger the walking animation
+				self.removeAction(forKey: heroRunningKey)
+				self.heroWalkingAnimation()
+			}
+		} else {
+			// If the hero is not moving, remove all animations
+			self.removeAllActions()
 		}
 	}
 }
