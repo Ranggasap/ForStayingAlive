@@ -20,6 +20,7 @@
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
 		E42E8E872C13F5BF00FF73F4 /* AnaologJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E862C13F5BF00FF73F4 /* AnaologJoystick.swift */; };
 		E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E882C1417E400FF73F4 /* RunningButton.swift */; };
+		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
 		E42E8E862C13F5BF00FF73F4 /* AnaologJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaologJoystick.swift; sourceTree = "<group>"; };
 		E42E8E882C1417E400FF73F4 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
+		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,6 @@
 				E42E8E732C11728000FF73F4 /* Supports */,
 				E42E8E6C2C1170F800FF73F4 /* Scenes */,
 				8B690C2B2C115F760062B64A /* Sprites */,
-				E42E8E7B2C131AFF00FF73F4 /* Nodes */,
 				8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */,
 			);
 			path = ForStayingAlive;
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				E42E8E762C118B1900FF73F4 /* PlayerSprite.swift */,
+				E48D483B2C15259200B97DEB /* UndeadSprite.swift */,
 				E42E8E882C1417E400FF73F4 /* RunningButton.swift */,
 			);
 			path = Sprites;
@@ -180,17 +182,10 @@
 		E42E8E732C11728000FF73F4 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				E42E8E862C13F5BF00FF73F4 /* AnaologJoystick.swift */,
 				E42E8E742C11729300FF73F4 /* Constants.swift */,
 			);
 			path = Supports;
-			sourceTree = "<group>";
-		};
-		E42E8E7B2C131AFF00FF73F4 /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				E42E8E862C13F5BF00FF73F4 /* AnaologJoystick.swift */,
-			);
-			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +324,7 @@
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
 				E42E8E772C118B1900FF73F4 /* PlayerSprite.swift in Sources */,
+				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnaologJoystick.swift in Sources */,
 				E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */,
 			);
