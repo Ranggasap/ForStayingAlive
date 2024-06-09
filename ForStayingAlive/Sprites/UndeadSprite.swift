@@ -8,8 +8,8 @@
 import SpriteKit
 
 public class UndeadSprite : SKSpriteNode {
-	private let undeadSpeed : CGFloat = 120
-	private let senseRadius : CGFloat = 170
+	private let undeadSpeed : CGFloat = 115
+	private let senseRadius : CGFloat = 165
 	
 	private let undeadWalkingKey = "undead_walking"
 	
@@ -41,8 +41,8 @@ public class UndeadSprite : SKSpriteNode {
 		}
 	}
 	
-	public func chasePlayer(deltaTime : TimeInterval, hero : SKSpriteNode) {
-		// Handle undead following hero
+	public func undeadIsAttacking(deltaTime : TimeInterval, hero : SKSpriteNode) {
+		// Handle undead chasing hero
 		let undeadToHeroDistance = hypot(hero.position.x - position.x, hero.position.y - position.y)
 		
 		if undeadToHeroDistance <= senseRadius {

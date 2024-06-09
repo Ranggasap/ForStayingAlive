@@ -7,12 +7,12 @@
 
 import SpriteKit
 
-public class PlayerSprite : SKSpriteNode {
+public class HeroSprite : SKSpriteNode {
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
 	
-	public static func newInstance() -> PlayerSprite {
-		let playerHero = PlayerSprite(imageNamed: "player-test-normal")
+	public static func newInstance() -> HeroSprite {
+		let playerHero = HeroSprite(imageNamed: "player-test-normal")
 		playerHero.size = CGSize(width: playerHero.size.width * 1.5, height: playerHero.size.height * 1.5)
 		playerHero.zPosition = 1
 		
@@ -52,7 +52,7 @@ public class PlayerSprite : SKSpriteNode {
 		}
 	}
 	
-	public func heroMoving(isRunning : Bool, joystickPosition : CGPoint) {
+	public func heroIsMoving(isRunning : Bool, joystickPosition : CGPoint) {
 		// Calculate velocity based on the position of joystick's stick
 		let velocity = CGVector(dx: joystickPosition.x, dy: joystickPosition.y)
 		
