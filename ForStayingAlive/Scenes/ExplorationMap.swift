@@ -39,7 +39,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         hideButton.setup()
         hideButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 200)
         hideButton.hideButtonAction = {
-            print("Hero Sembunyi")
+            if(self.hero.isHidden == true){
+                self.hero.isHidden = false
+            } else {
+                self.hero.isHidden = true
+            }
         }
         hideButton.isHidden = true
         heroCamera.addChild(hideButton)
@@ -61,6 +65,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		minY = frame.minY + 50
 		maxY = frame.midY + 70
 	}
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touchPoint = touches.first?.location(in: self)
+        
+        if let point = touchPoint{
+            hideButton.touchEndedAtPoint(point: point)
+        }
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         if(contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory){

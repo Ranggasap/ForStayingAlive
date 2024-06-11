@@ -22,18 +22,14 @@ class HideButtonSprite: SKSpriteNode{
     }
     
     func touchBeganAtPoint(point: CGPoint){
-        let containsPoint = hideButton.contains(point)
         
-        if hideButtonPressed && !containsPoint{
-            hideButtonPressed = false
-        } else if containsPoint {
-            hideButtonPressed = true
-        }
+    }
+    
+    func touchMovedAtPoint(point: CGPoint){
+        
     }
     
     func touchEndedAtPoint(point: CGPoint){
-        if hideButton.contains(point){
-            hideButtonAction!()
-        }
+        hideButtonAction!()
     }
 }
