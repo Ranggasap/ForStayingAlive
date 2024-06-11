@@ -12,6 +12,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
 	private let undead = UndeadSprite.newInstance()
 	private let runningButton = RunningButton.newInstance()
+    private let healthBar = ProgressBarNode(color: .red, size: CGSize(width: 100, height: 10))
+    private let staminaBar = ProgressBarNode(color: .yellow, size: CGSize(width: 100, height: 10))
 	private let heroCamera = SKCameraNode()
 	
 	private var joystick: AnalogJoystick!
@@ -27,12 +29,20 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var maxY: CGFloat = 0
 	
 	override func didMove(to view: SKView) {
+        
+        
 		setupHeroCamera()
 		addBackground()
 		addJoystick()
 		addRunningButton()
 		spawnHero()
 		spawnUndead()
+        
+        healthBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 350)
+        heroCamera.addChild(healthBar)
+        
+        staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 320)
+        heroCamera.addChild(staminaBar)
 		
 		minX = frame.minX + 70
 		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
@@ -110,6 +120,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
+        healthBar.update(datetime: dt, progress: hero.getStatus().0 / 100)
+        staminaBar.update(datetime: dt, progress: hero.getStatus().1 / 100)
+        
 		clampPosition(of: hero)
 		clampPosition(of: undead)
 		
@@ -121,6 +134,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let joystickPosition = joystick.stick.position
 		
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
+        hero.update(deltaTime: dt)
 		undead.undeadIsAttacking(deltaTime: dt, hero: hero)
 	}
 }

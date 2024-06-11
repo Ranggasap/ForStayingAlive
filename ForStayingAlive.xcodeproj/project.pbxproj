@@ -16,6 +16,7 @@
 		8B4DB2212C0DB77F0055AB7A /* ForStayingAliveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2202C0DB77F0055AB7A /* ForStayingAliveUITests.swift */; };
 		8B4DB2232C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */; };
 		8B66D0A62C17FF6200BB6573 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */; };
+		8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */; };
 		E42E8E752C11729300FF73F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E742C11729300FF73F4 /* Constants.swift */; };
 		E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E762C118B1900FF73F4 /* HeroSprite.swift */; };
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
@@ -54,6 +55,7 @@
 		8B4DB2202C0DB77F0055AB7A /* ForStayingAliveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForStayingAliveUITests.swift; sourceTree = "<group>"; };
 		8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForStayingAliveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
+		8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarNode.swift; sourceTree = "<group>"; };
 		E42E8E742C11729300FF73F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E42E8E762C118B1900FF73F4 /* HeroSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSprite.swift; sourceTree = "<group>"; };
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				E42E8E732C11728000FF73F4 /* Supports */,
 				E42E8E6D2C11710B00FF73F4 /* View Controllers */,
 				E42E8E6C2C1170F800FF73F4 /* Scenes */,
+				8B66D0A72C1803DB00BB6573 /* Nodes */,
 				8B690C2B2C115F760062B64A /* Sprites */,
 				8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */,
 			);
@@ -136,6 +139,14 @@
 				8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */,
 			);
 			path = ForStayingAliveUITests;
+			sourceTree = "<group>";
+		};
+		8B66D0A72C1803DB00BB6573 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 		8B690C2B2C115F760062B64A /* Sprites */ = {
@@ -326,6 +337,7 @@
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
+				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,

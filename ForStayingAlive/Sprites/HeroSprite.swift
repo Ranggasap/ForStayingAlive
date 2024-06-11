@@ -10,6 +10,11 @@ import SpriteKit
 public class HeroSprite : SKSpriteNode {
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
+    
+    private var health: CGFloat = 100
+    private var stamina: CGFloat = 100
+    
+    private var hungerTime: TimeInterval = 0
 	
 	public static func newInstance() -> HeroSprite {
 		let playerHero = HeroSprite(imageNamed: "player-test-normal")
@@ -25,6 +30,21 @@ public class HeroSprite : SKSpriteNode {
 		
 		return playerHero
 	}
+    
+    public func update(deltaTime: TimeInterval){
+        hungerTime += deltaTime
+        
+        if hungerTime > 3{
+            hungerTime = 0
+            health -= 10
+            stamina -= 10
+            print("health: \(health)")
+        }
+    }
+    
+    public func getStatus()->(CGFloat, CGFloat){
+        return (health, stamina)
+    }
 	
 	// Frames for walking animation
 	private let walkingFrames: [SKTexture] = (0...3).map { i in
