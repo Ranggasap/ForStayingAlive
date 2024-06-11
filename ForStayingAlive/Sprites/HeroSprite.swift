@@ -13,7 +13,7 @@ public class HeroSprite : SKSpriteNode {
 	
 	public static func newInstance() -> HeroSprite {
 		let playerHero = HeroSprite(imageNamed: "player-test-normal")
-		playerHero.size = CGSize(width: playerHero.size.width * 1.5, height: playerHero.size.height * 1.5)
+		playerHero.size = CGSize(width: playerHero.size.width, height: playerHero.size.height)
 		playerHero.zPosition = 1
 		
 		playerHero.physicsBody =  SKPhysicsBody(rectangleOf: CGSize(width: playerHero.size.width / 2, height: playerHero.size.height / 2))

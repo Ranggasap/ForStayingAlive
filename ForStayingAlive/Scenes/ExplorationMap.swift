@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class ExplorationMap: SKScene {
+class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
 	private let undead = UndeadSprite.newInstance()
 	private let runningButton = RunningButton.newInstance()
