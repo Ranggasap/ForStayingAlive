@@ -14,15 +14,19 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let runningButton = RunningButton.newInstance()
     private let healthBar = ProgressBarNode(color: .red, size: CGSize(width: 100, height: 10))
     private let staminaBar = ProgressBarNode(color: .yellow, size: CGSize(width: 100, height: 10))
+    
 	private let heroCamera = SKCameraNode()
 	
 	private var joystick: AnalogJoystick!
+    private let hideButton = HideButtonSprite()
 	
 	private var backgroundOne: SKSpriteNode!
 	private var backgroundTwo: SKSpriteNode!
 	
 	private var lastUpdateTime: TimeInterval = 0
 	
+    private var locker = LockerSprite.newInstance()
+    
 	private var minX: CGFloat = 0
 	private var maxX: CGFloat = 0
 	private var minY: CGFloat = 0
@@ -30,6 +34,15 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	override func didMove(to view: SKView) {
         
+        self.physicsWorld.contactDelegate = self
+        
+        hideButton.setup()
+        hideButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 200)
+        hideButton.hideButtonAction = {
+            print("Hero Sembunyi")
+        }
+        hideButton.isHidden = true
+        heroCamera.addChild(hideButton)
         
 		setupHeroCamera()
 		addBackground()
@@ -37,18 +50,75 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addRunningButton()
 		spawnHero()
 		spawnUndead()
+        addStatusBar()
         
-        healthBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 350)
-        heroCamera.addChild(healthBar)
-        
-        staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 320)
-        heroCamera.addChild(staminaBar)
+        locker.zPosition = 3
+        locker.position = CGPoint(x: frame.midX + 100, y: frame.midY)
+        addChild(locker)
 		
 		minX = frame.minX + 70
 		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
 		minY = frame.minY + 50
 		maxY = frame.midY + 70
 	}
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if(contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory){
+            heroCollisionHandler(contact: contact)
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        if(contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory){
+            heroEndCollisionHandler(contact: contact)
+        }
+    }
+    
+    func heroEndCollisionHandler(contact: SKPhysicsContact){
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == HeroCategory{
+            otherBody = contact.bodyB
+        } else {
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask{
+        case LockerCategory:
+            hideButton.isHidden = true
+            print("Hero run away locker")
+        default:
+            print("Hero doesn't get hit with anything")
+        }
+    }
+    
+    func heroCollisionHandler(contact: SKPhysicsContact){
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == HeroCategory{
+            otherBody = contact.bodyB
+        } else {
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask{
+        case UndeadCategory:
+            hero.healthReduce(health: 25)
+        case LockerCategory:
+            hideButton.isHidden = false
+            print("Hero hit Locker")
+        default:
+            print("Something Hit Hero")
+        }
+    }
+    
+    func addStatusBar(){
+        healthBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 350)
+        heroCamera.addChild(healthBar)
+        
+        staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 320)
+        heroCamera.addChild(staminaBar)
+    }
 	
 	func addBackground() {
 		backgroundOne = SKSpriteNode(imageNamed: "background")

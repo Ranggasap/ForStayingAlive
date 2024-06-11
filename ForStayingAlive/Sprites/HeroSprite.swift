@@ -38,12 +38,15 @@ public class HeroSprite : SKSpriteNode {
             hungerTime = 0
             health -= 10
             stamina -= 10
-            print("health: \(health)")
         }
     }
     
     public func getStatus()->(CGFloat, CGFloat){
         return (health, stamina)
+    }
+    
+    public func healthReduce(health: CGFloat){
+        self.health = self.health - health
     }
 	
 	// Frames for walking animation
