@@ -21,7 +21,7 @@ public class HeroSprite : SKSpriteNode {
 		playerHero.physicsBody?.allowsRotation = false
 		
 		playerHero.physicsBody?.categoryBitMask = HeroCategory
-		playerHero.physicsBody?.contactTestBitMask = UndeadCategory
+		playerHero.physicsBody?.contactTestBitMask = UndeadCategory | ChestCategory
 		
 		return playerHero
 	}

@@ -15,7 +15,7 @@ public class UndeadSprite : SKSpriteNode {
 	
 	public static func newInstance() -> UndeadSprite {
 		let undeadSprite = UndeadSprite(imageNamed: "undead-test-normal")
-		undeadSprite.size = CGSize(width: undeadSprite.size.width * 2.5, height: undeadSprite.size.height * 2.5)
+		undeadSprite.size = CGSize(width: undeadSprite.size.width * 2, height: undeadSprite.size.height * 2)
 		undeadSprite.zPosition = 1
 		
 		undeadSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: undeadSprite.size.width / 2, height: undeadSprite.size.height / 2))

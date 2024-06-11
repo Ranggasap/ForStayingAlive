@@ -8,7 +8,6 @@
 import SpriteKit
 
 public class RunningButton : SKSpriteNode {
-	
 	var isPressed = false
 	
 	public static func newInstance() -> RunningButton {
