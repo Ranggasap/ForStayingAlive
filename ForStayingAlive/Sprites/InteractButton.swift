@@ -10,7 +10,7 @@ import SpriteKit
 public class InteractButton : SKSpriteNode {
 	public static func newInstance() -> InteractButton {
 		let interactButton = InteractButton(imageNamed: "chest")
-		interactButton.size = CGSize(width: interactButton.size.width / 2 + 20, height: interactButton.size.height / 2 + 20)
+		interactButton.size = CGSize(width: interactButton.size.width + 20, height: interactButton.size.height + 20)
 		interactButton.isUserInteractionEnabled = true
 		interactButton.isHidden = true
 		

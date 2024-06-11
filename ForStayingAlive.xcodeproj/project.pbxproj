@@ -23,6 +23,7 @@
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
+		E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E14A312C1834ED00A8E101 /* HidingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
+		E4E14A312C1834ED00A8E101 /* HidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				E49C38D72C17F95500868DDA /* ChestSprite.swift */,
 				E42E8E882C1417E400FF73F4 /* RunningButton.swift */,
 				E49C38D92C18024A00868DDA /* InteractButton.swift */,
+				E4E14A312C1834ED00A8E101 /* HidingButton.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
+				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,
 				E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */,

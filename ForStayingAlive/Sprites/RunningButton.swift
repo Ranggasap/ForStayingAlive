@@ -8,7 +8,7 @@
 import SpriteKit
 
 public class RunningButton : SKSpriteNode {
-	var isPressed = false
+	private(set) var isPressed = false
 	
 	public static func newInstance() -> RunningButton {
 		let runningButton = RunningButton(imageNamed: "player-test-run0")

@@ -40,10 +40,10 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		spawnUndead()
 		spawnChest()
 		
-		minX = frame.minX + 70
-		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
-		minY = frame.minY + 50
-		maxY = frame.midY + 70
+//		minX = frame.minX + 70
+//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
+//		minY = frame.minY + 50
+//		maxY = frame.midY + 70
 	}
 	
 	func addBackground() {
@@ -88,7 +88,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func addInteractButton() {
-		interactButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 160)
+		interactButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 170)
 		interactButton.zPosition = 10
 		heroCamera.addChild(interactButton)
 	}
@@ -106,6 +106,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	func spawnUndead() {
 		undead.position = CGPoint(x: frame.midX + 200, y: frame.midY)
+		undead.setUndeadSpawnPosition()
 		addChild(undead)
 	}
 	
@@ -130,8 +131,24 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		switch otherBody.categoryBitMask {
 			case HeroCategory:
-				print("Hero collides with chest")
 				interactButton.isHidden = false
+			default:
+				break
+		}
+	}
+	
+	func handleHeroCollision(contact: SKPhysicsContact) {
+		var otherBody: SKPhysicsBody
+		
+		if(contact.bodyA.categoryBitMask == HeroCategory) {
+			otherBody = contact.bodyB
+		} else {
+			otherBody = contact.bodyA
+		}
+		
+		switch otherBody.categoryBitMask {
+			case UndeadCategory:
+				undead.physicsBody?.pinned = true
 			default:
 				break
 		}
@@ -143,13 +160,24 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			
 			return
 		}
+		
+		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
+			handleHeroCollision(contact: contact)
+			
+			return
+		}
 	}
 	
 	func didEnd(_ contact: SKPhysicsContact) {
 		if contact.bodyA.categoryBitMask == ChestCategory || contact.bodyB.categoryBitMask == ChestCategory {
 			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
-				print("Hero separates from chest")
 				interactButton.isHidden = true
+			}
+		}
+		
+		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
+			if (contact.bodyA.categoryBitMask == UndeadCategory || contact.bodyB.categoryBitMask == UndeadCategory) {
+				undead.physicsBody?.pinned = false
 			}
 		}
 	}
@@ -162,12 +190,14 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-		clampPosition(of: hero)
-		clampPosition(of: undead)
+//		clampPosition(of: hero)
+//		clampPosition(of: undead)
 		
-		let cameraX = max(hero.position.x, size.width / 2)
-		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
-		heroCamera.position.x = min(maxCameraX, cameraX)
+//		let cameraX = max(hero.position.x, size.width / 2)
+//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
+//		heroCamera.position.x = min(maxCameraX, cameraX)
+		
+		heroCamera.position = hero.position
 		
 		let isRunning = runningButton.isPressed
 		let joystickPosition = joystick.stick.position
