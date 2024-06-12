@@ -9,7 +9,9 @@ import SpriteKit
 
 public class UndeadSprite : SKSpriteNode {
 	private let undeadSpeed : CGFloat = 115
-	private let senseRadius : CGFloat = 165
+	private let undeadSenseRadius : CGFloat = 165
+	private let undeadAttackRange : CGFloat = 50
+	private let undeadSpawnPositionToleranceArea : CGFloat = 5
 	
 	private let undeadIdleKey = "undead_idle"
 	private let undeadWalkingKey = "undead_walking"
@@ -35,6 +37,10 @@ public class UndeadSprite : SKSpriteNode {
 	
 	public func setUndeadSpawnPosition() {
 		self.undeadSpawnPosition = self.position
+	}
+	
+	public func getUndeadAttackRange() -> CGFloat {
+		return undeadAttackRange
 	}
 	
 	private let idleFrames: [SKTexture] = (0...3).flatMap { i in
@@ -82,7 +88,7 @@ public class UndeadSprite : SKSpriteNode {
 	public func undeadIsAttacking(deltaTime: TimeInterval, hero: SKSpriteNode, heroIsHidden: Bool) {
 		let distanceToHero = hypot(hero.position.x - self.position.x, hero.position.y - self.position.y)
 		
-		if !heroIsHidden && distanceToHero <= senseRadius {
+		if !heroIsHidden && distanceToHero <= undeadSenseRadius {
 			if self.physicsBody?.pinned == false {
 				let angle = atan2(hero.position.y - self.position.y, hero.position.x - self.position.x)
 				let moveSpeed = undeadSpeed * CGFloat(deltaTime)
@@ -99,24 +105,29 @@ public class UndeadSprite : SKSpriteNode {
 			}
 			self.undeadAttackingAnimation()
 		} else {
-			undeadIsReturning()
+			undeadIsReturning(deltaTime: deltaTime)
 		}
 	}
 	
-	private func undeadIsReturning() {
-		let distanceToSpawn = hypot(self.undeadSpawnPosition.x - self.position.x, self.undeadSpawnPosition.y - self.position.y)
-		if distanceToSpawn > 1 {
-			let undeadReturning = SKAction.move(to: undeadSpawnPosition, duration: TimeInterval(distanceToSpawn / undeadSpeed))
-			let undeadWalking = SKAction.run { [weak self] in
-				self?.undeadWalkingAnimation()
-				if let self = self {
-					let isMovingLeft = self.undeadSpawnPosition.x < self.position.x
-					self.xScale = isMovingLeft ? -1 : 1
-				}
-			}
-			let undeadMovingToSpawnPosition = SKAction.group([undeadReturning, undeadWalking])
-			run(undeadMovingToSpawnPosition)
+	private func undeadIsReturning(deltaTime: TimeInterval) {
+		let distanceToSpawnPosition = hypot(self.undeadSpawnPosition.x - self.position.x, self.undeadSpawnPosition.y - self.position.y)
+		if distanceToSpawnPosition > undeadSpawnPositionToleranceArea {
+			let angle = atan2(undeadSpawnPosition.y - self.position.y, undeadSpawnPosition.x - self.position.x)
+			let moveSpeed = undeadSpeed * CGFloat(deltaTime)
+			let moveX = cos(angle) * moveSpeed
+			let moveY = sin(angle) * moveSpeed
+			
+			position = CGPoint(
+				x: position.x + moveX,
+				y: position.y + moveY
+			)
+			
+			let isMovingLeft = moveX < 0
+			self.xScale = isMovingLeft ? -1 : 1
+			
+			self.undeadWalkingAnimation()
 		} else {
+			self.position = undeadSpawnPosition
 			self.undeadIdleAnimation()
 		}
 	}

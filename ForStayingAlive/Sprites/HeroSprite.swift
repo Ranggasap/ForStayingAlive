@@ -11,11 +11,9 @@ public class HeroSprite : SKSpriteNode {
 	private let heroIdleKey = "hero_idle"
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
-    
-    private var health: CGFloat = 100
-    private var stamina: CGFloat = 100
-    
-    private var hungerTime: TimeInterval = 0
+	
+	private var heroHealth : CGFloat = 100
+	private var heroStamina : CGFloat = 100
 	
 	public static func newInstance() -> HeroSprite {
 		let playerHero = HeroSprite(imageNamed: "player-test-normal")
@@ -32,24 +30,29 @@ public class HeroSprite : SKSpriteNode {
 		
 		return playerHero
 	}
-    
-    public func update(deltaTime: TimeInterval){
-        hungerTime += deltaTime
-        
-        if hungerTime > 3{
-            hungerTime = 0
-            health -= 10
-            stamina -= 10
-        }
-    }
-    
-    public func getStatus()->(CGFloat, CGFloat){
-        return (health, stamina)
-    }
-    
-    public func healthReduce(health: CGFloat){
-        self.health = self.health - health
-    }
+	
+	override public var isHidden: Bool {
+		didSet {
+			if isHidden {
+				self.removePhysicsBody()
+			} else {
+				self.addPhysicsBody()
+			}
+		}
+	}
+	
+	private func removePhysicsBody() {
+		self.physicsBody = nil
+	}
+	
+	private func addPhysicsBody() {
+		let physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width / 2, height: self.size.height / 2))
+		physicsBody.affectedByGravity = false
+		physicsBody.allowsRotation = false
+		physicsBody.categoryBitMask = HeroCategory
+		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory
+		self.physicsBody = physicsBody
+	}
 	
 	private let idleFrames: [SKTexture] = (0...1).flatMap { i in
 		Array(repeating: SKTexture(imageNamed: "player-test-idle\(i)"), count: 3)
@@ -108,6 +111,18 @@ public class HeroSprite : SKSpriteNode {
 			}
 		} else {
 			self.heroIdleAnimation()
+		}
+	}
+	
+	public func getHeroStatus() -> (CGFloat) {
+		return(heroHealth)
+	}
+	
+	public func heroHealthReduced(health: CGFloat) {
+		self.heroHealth -= health
+		
+		if self.heroHealth < 0 {
+			self.heroHealth = 0
 		}
 	}
 }

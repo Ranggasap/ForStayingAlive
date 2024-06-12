@@ -23,6 +23,7 @@
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
 		E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */; };
 		E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E882C1417E400FF73F4 /* RunningButton.swift */; };
+		E437B20A2C19FF0500D6E6A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E437B2092C19FF0500D6E6A8 /* Extensions.swift */; };
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
@@ -67,6 +68,7 @@
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
 		E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		E42E8E882C1417E400FF73F4 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
+		E437B2092C19FF0500D6E6A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */,
 				E42E8E742C11729300FF73F4 /* Constants.swift */,
+				E437B2092C19FF0500D6E6A8 /* Extensions.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
 				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
+				E437B20A2C19FF0500D6E6A8 /* Extensions.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,
 				8B66D0A62C17FF6200BB6573 /* LockerSprite.swift in Sources */,

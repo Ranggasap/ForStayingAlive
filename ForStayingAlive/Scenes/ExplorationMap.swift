@@ -18,6 +18,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let interactButton = InteractButton.newInstance()
 	private let hidingButton = HidingButton.newInstance()
 	
+	private let healthBar = ProgressBarNode(color: .red, size: CGSize(width: 100, height: 10))
+	private let staminaBar = ProgressBarNode(color: .yellow, size: CGSize(width: 100, height: 10))
+	
+	private var heroIsAttacked = false
+	private var heroHealthReductionTimer: Timer?
+	
 	private let heroCamera = SKCameraNode()
 	
 	private var joystick: AnalogJoystick!
@@ -27,20 +33,23 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	private var lastUpdateTime: TimeInterval = 0
 	
-	private var minX: CGFloat = 0
-	private var maxX: CGFloat = 0
-	private var minY: CGFloat = 0
-	private var maxY: CGFloat = 0
+	//	private var minX: CGFloat = 0
+	//	private var maxX: CGFloat = 0
+	//	private var minY: CGFloat = 0
+	//	private var maxY: CGFloat = 0
 	
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
 		
 		setupHeroCamera()
+		
 		addBackground()
 		addJoystick()
 		addRunningButton()
 		addInteractButton()
 		addHidingButton()
+		addStatusBar()
+		
 		spawnHero()
 		spawnUndead()
 		spawnChest()
@@ -105,6 +114,16 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		heroCamera.addChild(hidingButton)
 	}
 	
+	func addStatusBar() {
+		healthBar.position = CGPoint(x: -size.width / 2 + 150, y: size.height / 2 - 30)
+		healthBar.zPosition = 10
+		heroCamera.addChild(healthBar)
+		
+		//		staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: size.height / 2 - 50)
+		//		staminaBar.zPosition = 10
+		//		heroCamera.addChild(staminaBar)
+	}
+	
 	func setupHeroCamera() {
 		camera = heroCamera
 		heroCamera.position = CGPoint(x: size.width / 2, y: size.height / 2)
@@ -133,10 +152,10 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addChild(locker)
 	}
 	
-	func clampPosition(of node: SKNode) {
-		node.position.x = min(maxX, max(minX, node.position.x))
-		node.position.y = min(maxY, max(minY, node.position.y))
-	}
+	//	func clampPosition(of node: SKNode) {
+	//		node.position.x = min(maxX, max(minX, node.position.x))
+	//		node.position.y = min(maxY, max(minY, node.position.y))
+	//	}
 	
 	func handleChestCollision(contact: SKPhysicsContact) {
 		var otherBody: SKPhysicsBody
@@ -186,6 +205,35 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 				undead.physicsBody?.pinned = true
 			default:
 				break
+		}
+	}
+	
+	func startHealthReductionTimer() {
+		heroHealthReductionTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reduceHeroHealth), userInfo: nil, repeats: true)
+	}
+	
+	func stopHealthReductionTimer() {
+		heroHealthReductionTimer?.invalidate()
+		heroHealthReductionTimer = nil
+	}
+	
+	@objc func reduceHeroHealth() {
+		hero.heroHealthReduced(health: 10)
+		healthBar.update(progress: hero.getHeroStatus() / 100.0)
+	}
+	
+	func startReducingHeroHealth() {
+		if !heroIsAttacked {
+			heroIsAttacked = true
+			reduceHeroHealth()
+			startHealthReductionTimer()
+		}
+	}
+	
+	func stopReducingHeroHealth() {
+		if heroIsAttacked {
+			heroIsAttacked = false
+			stopHealthReductionTimer()
 		}
 	}
 	
@@ -253,5 +301,17 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
 		undead.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
+		
+		if hero.isHidden {
+			undead.physicsBody?.pinned = false
+		}
+		
+		if hero.position.distance(to: undead.position) <= undead.getUndeadAttackRange() {
+			startReducingHeroHealth()
+		} else {
+			stopReducingHeroHealth()
+		}
+		
+		healthBar.update(progress: hero.getHeroStatus() / 100.0)
 	}
 }
