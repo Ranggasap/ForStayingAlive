@@ -8,6 +8,7 @@
 import SpriteKit
 
 public class HeroSprite : SKSpriteNode {
+	private let heroIdleKey = "hero_idle"
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
 	
@@ -15,6 +16,7 @@ public class HeroSprite : SKSpriteNode {
 		let playerHero = HeroSprite(imageNamed: "player-test-normal")
 		playerHero.size = CGSize(width: playerHero.size.width, height: playerHero.size.height)
 		playerHero.zPosition = 2
+		playerHero.isHidden = false
 		
 		playerHero.physicsBody =  SKPhysicsBody(rectangleOf: CGSize(width: playerHero.size.width / 2, height: playerHero.size.height / 2))
 		playerHero.physicsBody?.affectedByGravity = false
@@ -26,6 +28,10 @@ public class HeroSprite : SKSpriteNode {
 		return playerHero
 	}
 	
+	private let idleFrames: [SKTexture] = (0...1).flatMap { i in
+		Array(repeating: SKTexture(imageNamed: "player-test-idle\(i)"), count: 3)
+	}
+	
 	private let walkingFrames: [SKTexture] = (0...3).map { i in
 		SKTexture(imageNamed: "player-test-walk\(i)")
 	}
@@ -34,7 +40,19 @@ public class HeroSprite : SKSpriteNode {
 		SKTexture(imageNamed: "player-test-run\(i)")
 	}
 	
+	public func heroIdleAnimation() {
+		removeAction(forKey: heroRunningKey)
+		removeAction(forKey: heroWalkingKey)
+		if action(forKey: heroIdleKey) == nil {
+			let idleAnimation = SKAction.repeatForever(
+				SKAction.animate(with: idleFrames, timePerFrame: 0.1))
+			run(idleAnimation, withKey: heroIdleKey)
+		}
+	}
+	
 	public func heroWalkingAnimation() {
+		removeAction(forKey: heroIdleKey)
+		removeAction(forKey: heroRunningKey)
 		if action(forKey: heroWalkingKey) == nil {
 			let walkingAnimation = SKAction.repeatForever(
 				SKAction.animate(with: walkingFrames, timePerFrame: 0.1))
@@ -43,6 +61,8 @@ public class HeroSprite : SKSpriteNode {
 	}
 	
 	public func heroRunningAnimation() {
+		removeAction(forKey: heroIdleKey)
+		removeAction(forKey: heroWalkingKey)
 		if action(forKey: heroRunningKey) == nil {
 			let runningAnimation = SKAction.repeatForever(
 				SKAction.animate(with: runningFrames, timePerFrame: 0.1))
@@ -59,14 +79,12 @@ public class HeroSprite : SKSpriteNode {
 			self.xScale = isMovingLeft ? -1 : 1
 			
 			if isRunning {
-				self.removeAction(forKey: heroWalkingKey)
 				self.heroRunningAnimation()
 			} else {
-				self.removeAction(forKey: heroRunningKey)
 				self.heroWalkingAnimation()
 			}
 		} else {
-			self.removeAllActions()
+			self.heroIdleAnimation()
 		}
 	}
 }

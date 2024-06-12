@@ -12,8 +12,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
 	private let undead = UndeadSprite.newInstance()
 	private let chest = ChestSprite.newInstance()
+	private let locker = LockerSprite.newInstance()
+	
 	private let runningButton = RunningButton.newInstance()
 	private let interactButton = InteractButton.newInstance()
+	private let hidingButton = HidingButton.newInstance()
+	
 	private let heroCamera = SKCameraNode()
 	
 	private var joystick: AnalogJoystick!
@@ -36,9 +40,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addJoystick()
 		addRunningButton()
 		addInteractButton()
+		addHidingButton()
 		spawnHero()
 		spawnUndead()
 		spawnChest()
+		spawnLocker()
 		
 //		minX = frame.minX + 70
 //		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
@@ -93,6 +99,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		heroCamera.addChild(interactButton)
 	}
 	
+	func addHidingButton() {
+		hidingButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 170)
+		hidingButton.zPosition = 10
+		heroCamera.addChild(hidingButton)
+	}
+	
 	func setupHeroCamera() {
 		camera = heroCamera
 		heroCamera.position = CGPoint(x: size.width / 2, y: size.height / 2)
@@ -115,6 +127,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addChild(chest)
 	}
 	
+	func spawnLocker() {
+		locker.position = CGPoint(x: frame.minX + 100, y: frame.midY + 50)
+		addChild(locker)
+	}
+	
 	func clampPosition(of node: SKNode) {
 		node.position.x = min(maxX, max(minX, node.position.x))
 		node.position.y = min(maxY, max(minY, node.position.y))
@@ -132,6 +149,23 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		switch otherBody.categoryBitMask {
 			case HeroCategory:
 				interactButton.isHidden = false
+			default:
+				break
+		}
+	}
+	
+	func handleLockerCollision(contact: SKPhysicsContact) {
+		var otherBody: SKPhysicsBody
+		
+		if(contact.bodyA.categoryBitMask == LockerCategory) {
+			otherBody = contact.bodyB
+		} else {
+			otherBody = contact.bodyA
+		}
+		
+		switch otherBody.categoryBitMask {
+			case HeroCategory:
+				hidingButton.isHidden = false
 			default:
 				break
 		}
@@ -161,6 +195,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			return
 		}
 		
+		if contact.bodyA.categoryBitMask == LockerCategory || contact.bodyB.categoryBitMask == LockerCategory {
+			handleLockerCollision(contact: contact)
+			
+			return
+		}
+		
 		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
 			handleHeroCollision(contact: contact)
 			
@@ -172,6 +212,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		if contact.bodyA.categoryBitMask == ChestCategory || contact.bodyB.categoryBitMask == ChestCategory {
 			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
 				interactButton.isHidden = true
+			}
+		}
+		
+		if contact.bodyA.categoryBitMask == LockerCategory || contact.bodyB.categoryBitMask == LockerCategory {
+			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
+				hidingButton.isHidden = true
 			}
 		}
 		

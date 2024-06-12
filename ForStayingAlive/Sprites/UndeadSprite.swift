@@ -22,7 +22,7 @@ public class UndeadSprite : SKSpriteNode {
 		undeadSprite.size = CGSize(width: undeadSprite.size.width * 2, height: undeadSprite.size.height * 2)
 		undeadSprite.zPosition = 3
 		
-		undeadSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: undeadSprite.size.width / 2, height: undeadSprite.size.height / 2))
+		undeadSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: undeadSprite.size.width / 2, height: undeadSprite.size.height))
 		undeadSprite.physicsBody?.affectedByGravity = false
 		undeadSprite.physicsBody?.allowsRotation = false
 		undeadSprite.physicsBody?.pinned = false
@@ -38,7 +38,7 @@ public class UndeadSprite : SKSpriteNode {
 	}
 	
 	private let idleFrames: [SKTexture] = (0...3).flatMap { i in
-		Array(repeating: SKTexture(imageNamed: "undead-test-idle\(i)"), count: 2)
+		Array(repeating: SKTexture(imageNamed: "undead-test-idle\(i)"), count: i == 0 ? 3 : 2)
 	}
 	
 	private let walkingFrames: [SKTexture] = (0...5).map { i in
