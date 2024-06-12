@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
 			
 			view.showsFPS = false
 			view.showsNodeCount = false
+            view.showsPhysics = true
 			
 			view.preferredFramesPerSecond = 30
 		}

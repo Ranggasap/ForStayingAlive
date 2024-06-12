@@ -11,6 +11,11 @@ public class HeroSprite : SKSpriteNode {
 	private let heroIdleKey = "hero_idle"
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
+    
+    private var health: CGFloat = 100
+    private var stamina: CGFloat = 100
+    
+    private var hungerTime: TimeInterval = 0
 	
 	public static func newInstance() -> HeroSprite {
 		let playerHero = HeroSprite(imageNamed: "player-test-normal")
@@ -27,6 +32,24 @@ public class HeroSprite : SKSpriteNode {
 		
 		return playerHero
 	}
+    
+    public func update(deltaTime: TimeInterval){
+        hungerTime += deltaTime
+        
+        if hungerTime > 3{
+            hungerTime = 0
+            health -= 10
+            stamina -= 10
+        }
+    }
+    
+    public func getStatus()->(CGFloat, CGFloat){
+        return (health, stamina)
+    }
+    
+    public func healthReduce(health: CGFloat){
+        self.health = self.health - health
+    }
 	
 	private let idleFrames: [SKTexture] = (0...1).flatMap { i in
 		Array(repeating: SKTexture(imageNamed: "player-test-idle\(i)"), count: 3)
