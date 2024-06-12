@@ -8,7 +8,7 @@
 import SpriteKit
 
 public class RunningButton : SKSpriteNode {
-	private(set) var isPressed = false
+	private(set) var isRunningButtonPressed = false
 	
 	public static func newInstance() -> RunningButton {
 		let runningButton = RunningButton(imageNamed: "player-test-run0")
@@ -19,10 +19,10 @@ public class RunningButton : SKSpriteNode {
 	}
 	
 	public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		isPressed = true
+		isRunningButtonPressed = true
 	}
 	
 	public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-		isPressed = false
+		isRunningButtonPressed = false
 	}
 }

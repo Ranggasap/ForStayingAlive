@@ -16,13 +16,13 @@ public class UndeadSprite : SKSpriteNode {
 	private let undeadAttackingKey = "undead_attacking"
 	
 	private var undeadSpawnPosition: CGPoint!
-		
+	
 	public static func newInstance() -> UndeadSprite {
 		let undeadSprite = UndeadSprite(imageNamed: "undead-test-normal")
 		undeadSprite.size = CGSize(width: undeadSprite.size.width * 2, height: undeadSprite.size.height * 2)
 		undeadSprite.zPosition = 3
 		
-		undeadSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: undeadSprite.size.width / 2, height: undeadSprite.size.height))
+		undeadSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: undeadSprite.size.width / 2, height: undeadSprite.size.height / 2))
 		undeadSprite.physicsBody?.affectedByGravity = false
 		undeadSprite.physicsBody?.allowsRotation = false
 		undeadSprite.physicsBody?.pinned = false
@@ -78,11 +78,11 @@ public class UndeadSprite : SKSpriteNode {
 			run(attackingAnimation, withKey: undeadAttackingKey)
 		}
 	}
-		
-	public func undeadIsAttacking(deltaTime: TimeInterval, hero: SKSpriteNode) {
+	
+	public func undeadIsAttacking(deltaTime: TimeInterval, hero: SKSpriteNode, heroIsHidden: Bool) {
 		let distanceToHero = hypot(hero.position.x - self.position.x, hero.position.y - self.position.y)
 		
-		if distanceToHero <= senseRadius {
+		if !heroIsHidden && distanceToHero <= senseRadius {
 			if self.physicsBody?.pinned == false {
 				let angle = atan2(hero.position.y - self.position.y, hero.position.x - self.position.x)
 				let moveSpeed = undeadSpeed * CGFloat(deltaTime)

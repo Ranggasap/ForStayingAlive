@@ -2,7 +2,6 @@
 //  LockerSprite.swift
 //  ForStayingAlive
 //
-
 //  Created by Gusti Rizky Fajar on 12/06/24.
 //
 
@@ -14,7 +13,7 @@ public class LockerSprite : SKSpriteNode {
 		lockerSprite.size = CGSize(width: lockerSprite.size.width, height: lockerSprite.size.height)
 		lockerSprite.zPosition = 1
 		
-		lockerSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: lockerSprite.size.width / 2, height: lockerSprite.size.height / 2))
+		lockerSprite.physicsBody = SKPhysicsBody(rectangleOf: lockerSprite.size)
 		lockerSprite.physicsBody?.affectedByGravity = false
 		lockerSprite.physicsBody?.allowsRotation = false
 		lockerSprite.physicsBody?.pinned = true
