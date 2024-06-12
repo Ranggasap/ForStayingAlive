@@ -41,8 +41,10 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         hideButton.hideButtonAction = {
             if(self.hero.isHidden == true){
                 self.hero.isHidden = false
+                self.hideButton.hideButtonChange()
             } else {
                 self.hero.isHidden = true
+                self.hideButton.hideButtonChange()
             }
         }
         hideButton.isHidden = true
