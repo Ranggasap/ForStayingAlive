@@ -2,23 +2,26 @@
 //  LockerSprite.swift
 //  ForStayingAlive
 //
-//  Created by Rangga Saputra on 10/06/24.
+
+//  Created by Gusti Rizky Fajar on 12/06/24.
 //
 
-import Foundation
 import SpriteKit
 
-public class LockerSprite: SKSpriteNode{
-    public static func newInstance() -> LockerSprite{
-        let locker = LockerSprite(imageNamed: "locker")
-        
-        locker.physicsBody = SKPhysicsBody(rectangleOf: locker.size)
-        locker.physicsBody?.categoryBitMask = LockerCategory
-        locker.physicsBody?.contactTestBitMask = HeroCategory
-        locker.physicsBody?.affectedByGravity = false
-        locker.physicsBody?.isDynamic = false
-        locker.zPosition = 3
-        
-        return locker
-    }
+public class LockerSprite : SKSpriteNode {
+	public static func newInstance() -> LockerSprite {
+		let lockerSprite = LockerSprite(imageNamed: "locker")
+		lockerSprite.size = CGSize(width: lockerSprite.size.width, height: lockerSprite.size.height)
+		lockerSprite.zPosition = 1
+		
+		lockerSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: lockerSprite.size.width / 2, height: lockerSprite.size.height / 2))
+		lockerSprite.physicsBody?.affectedByGravity = false
+		lockerSprite.physicsBody?.allowsRotation = false
+		lockerSprite.physicsBody?.pinned = true
+		
+		lockerSprite.physicsBody?.categoryBitMask = LockerCategory
+		lockerSprite.physicsBody?.contactTestBitMask = HeroCategory
+		
+		return lockerSprite
+	}
 }

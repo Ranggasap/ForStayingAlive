@@ -24,6 +24,10 @@
 		E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */; };
 		E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E882C1417E400FF73F4 /* RunningButton.swift */; };
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
+		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
+		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
+		E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB75132C194B880059FED9 /* LockerSprite.swift */; };
+		E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E14A312C1834ED00A8E101 /* HidingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		E42E8E882C1417E400FF73F4 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
+		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
+		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
+		E4CB75132C194B880059FED9 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
+		E4E14A312C1834ED00A8E101 /* HidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +166,11 @@
 				8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */,
 				8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */,
 				E48D483B2C15259200B97DEB /* UndeadSprite.swift */,
+				E49C38D72C17F95500868DDA /* ChestSprite.swift */,
+				E4CB75132C194B880059FED9 /* LockerSprite.swift */,
 				E42E8E882C1417E400FF73F4 /* RunningButton.swift */,
+				E49C38D92C18024A00868DDA /* InteractButton.swift */,
+				E4E14A312C1834ED00A8E101 /* HidingButton.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -339,10 +351,17 @@
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
 				8B66D0AB2C18303D00BB6573 /* HideButtonSprite.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
+				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
+				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
+
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
+
+				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
+
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
+				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,
 				8B66D0A62C17FF6200BB6573 /* LockerSprite.swift in Sources */,
