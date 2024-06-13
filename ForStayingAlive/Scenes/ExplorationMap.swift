@@ -8,6 +8,9 @@
 import SpriteKit
 import GameplayKit
 
+import SpriteKit
+import GameplayKit
+
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
 	private let undead = UndeadSprite.newInstance()
@@ -54,6 +57,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		spawnUndead()
 		spawnChest()
 		spawnLocker()
+		
+		undead.onHeroEnterAttackRange = { [weak self] in
+			self?.startReducingHeroHealth()
+		}
+		undead.onHeroExitAttackRange = { [weak self] in
+			self?.stopReducingHeroHealth()
+		}
 		
 		//		minX = frame.minX + 70
 		//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
@@ -225,7 +235,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	func startReducingHeroHealth() {
 		if !heroIsAttacked {
 			heroIsAttacked = true
-			reduceHeroHealth()
 			startHealthReductionTimer()
 		}
 	}
@@ -301,16 +310,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
 		undead.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
-		
-		if hero.isHidden {
-			undead.physicsBody?.pinned = false
-		}
-		
-		if hero.position.distance(to: undead.position) <= undead.getUndeadAttackRange() {
-			startReducingHeroHealth()
-		} else {
-			stopReducingHeroHealth()
-		}
 		
 		healthBar.update(progress: hero.getHeroStatus() / 100.0)
 	}

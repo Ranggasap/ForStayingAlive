@@ -8,9 +8,9 @@
 import SpriteKit
 
 public class UndeadSprite : SKSpriteNode {
-	private let undeadSpeed : CGFloat = 115
-	private let undeadSenseRadius : CGFloat = 165
-	private let undeadAttackRange : CGFloat = 50
+	private let undeadSpeed : CGFloat = 110
+	private let undeadSenseRadius : CGFloat = 160
+	private let undeadAttackRange : CGFloat = 60
 	private let undeadSpawnPositionToleranceArea : CGFloat = 5
 	
 	private let undeadIdleKey = "undead_idle"
@@ -18,6 +18,9 @@ public class UndeadSprite : SKSpriteNode {
 	private let undeadAttackingKey = "undead_attacking"
 	
 	private var undeadSpawnPosition: CGPoint!
+	
+	var onHeroEnterAttackRange: (() -> Void)?
+	var onHeroExitAttackRange: (() -> Void)?
 	
 	public static func newInstance() -> UndeadSprite {
 		let undeadSprite = UndeadSprite(imageNamed: "undead-test-normal")
@@ -88,6 +91,10 @@ public class UndeadSprite : SKSpriteNode {
 	public func undeadIsAttacking(deltaTime: TimeInterval, hero: SKSpriteNode, heroIsHidden: Bool) {
 		let distanceToHero = hypot(hero.position.x - self.position.x, hero.position.y - self.position.y)
 		
+		if heroIsHidden {
+			self.physicsBody?.pinned = false
+		}
+		
 		if !heroIsHidden && distanceToHero <= undeadSenseRadius {
 			if self.physicsBody?.pinned == false {
 				let angle = atan2(hero.position.y - self.position.y, hero.position.x - self.position.x)
@@ -104,8 +111,15 @@ public class UndeadSprite : SKSpriteNode {
 				self.xScale = isMovingLeft ? -1 : 1
 			}
 			self.undeadAttackingAnimation()
+			
+			if distanceToHero <= undeadAttackRange {
+				onHeroEnterAttackRange?()
+			} else {
+				onHeroExitAttackRange?()
+			}
 		} else {
 			undeadIsReturning(deltaTime: deltaTime)
+			onHeroExitAttackRange?()
 		}
 	}
 	
