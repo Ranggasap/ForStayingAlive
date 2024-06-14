@@ -26,6 +26,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	private var joystick: AnalogJoystick!
     private let hideButton = HideButtonSprite()
+    
+    private var nextSceneNode = NextSceneNode(size: CGSize(width: 50, height: 50))
 	
 	private var backgroundOne: SKSpriteNode!
 	private var backgroundTwo: SKSpriteNode!
@@ -73,6 +75,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 //		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
 //		minY = frame.minY + 50
 //		maxY = frame.midY + 70
+        
+        nextSceneNode.position = CGPoint(x: frame.midX - 50, y: frame.midY)
+        addChild(nextSceneNode)
 	}
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -155,6 +160,14 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         }
         
         switch otherBody.categoryBitMask{
+        case NextSceneCategory:
+            print("Next Scene")
+            let transition = SKTransition.fade(withDuration: 1.0)
+            let evacuationScene = EvacuationScene(size: size)
+            evacuationScene.scaleMode = scaleMode
+            
+            view?.presentScene(evacuationScene, transition: transition)
+            
         case UndeadCategory:
             hero.healthReduce(health: 25)
         case LockerCategory:
