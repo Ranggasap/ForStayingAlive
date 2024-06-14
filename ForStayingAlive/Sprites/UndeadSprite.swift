@@ -8,8 +8,8 @@
 import SpriteKit
 
 public class UndeadSprite : SKSpriteNode {
-	private let undeadSpeed : CGFloat = 110
-	private let undeadSenseRadius : CGFloat = 160
+	private let undeadSpeed : CGFloat = 115
+	private let undeadSenseRadius : CGFloat = 165
 	private let undeadAttackRange : CGFloat = 60
 	private let undeadSpawnPositionToleranceArea : CGFloat = 5
 	

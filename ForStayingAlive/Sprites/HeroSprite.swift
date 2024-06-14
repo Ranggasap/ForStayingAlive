@@ -31,6 +31,10 @@ public class HeroSprite : SKSpriteNode {
 		return playerHero
 	}
 	
+	public func isHeroIdle() -> Bool {
+		return action(forKey: heroIdleKey) != nil
+	}
+	
 	override public var isHidden: Bool {
 		didSet {
 			if isHidden {
@@ -114,8 +118,12 @@ public class HeroSprite : SKSpriteNode {
 		}
 	}
 	
-	public func getHeroStatus() -> (CGFloat) {
+	public func getHeroHealth() -> (CGFloat) {
 		return(heroHealth)
+	}
+	
+	public func getHeroStamina() -> (CGFloat) {
+		return(heroStamina)
 	}
 	
 	public func heroHealthReduced(health: CGFloat) {
@@ -123,6 +131,22 @@ public class HeroSprite : SKSpriteNode {
 		
 		if self.heroHealth < 0 {
 			self.heroHealth = 0
+		}
+	}
+	
+	public func heroStaminaReduced(stamina: CGFloat) {
+		self.heroStamina -= stamina
+		
+		if self.heroStamina < 0 {
+			self.heroStamina = 0
+		}
+	}
+	
+	public func heroStaminaIncreased(stamina: CGFloat) {
+		self.heroStamina += stamina
+		
+		if self.heroStamina > 100 {
+			self.heroStamina = 100
 		}
 	}
 }

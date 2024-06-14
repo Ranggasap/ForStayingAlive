@@ -8,9 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-import SpriteKit
-import GameplayKit
-
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
 	private let undead = UndeadSprite.newInstance()
@@ -22,10 +19,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hidingButton = HidingButton.newInstance()
 	
 	private let healthBar = ProgressBarNode(color: .red, size: CGSize(width: 100, height: 10))
-	private let staminaBar = ProgressBarNode(color: .yellow, size: CGSize(width: 100, height: 10))
+	private let staminaBar = ProgressBarNode(color: .blue, size: CGSize(width: 100, height: 10))
 	
 	private var heroIsAttacked = false
 	private var heroHealthReductionTimer: Timer?
+	
+	private var heroStaminaReductionTimer: Timer?
+	private var heroStaminaRecoveryTimer: Timer?
 	
 	private let heroCamera = SKCameraNode()
 	
@@ -36,10 +36,10 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	private var lastUpdateTime: TimeInterval = 0
 	
-	//	private var minX: CGFloat = 0
-	//	private var maxX: CGFloat = 0
-	//	private var minY: CGFloat = 0
-	//	private var maxY: CGFloat = 0
+	private var minX: CGFloat = 0
+	private var maxX: CGFloat = 0
+	private var minY: CGFloat = 0
+	private var maxY: CGFloat = 0
 	
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
@@ -65,10 +65,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			self?.stopReducingHeroHealth()
 		}
 		
-		//		minX = frame.minX + 70
-		//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
-		//		minY = frame.minY + 50
-		//		maxY = frame.midY + 70
+		runningButton.onPress = { [weak self] in
+			self?.startStaminaReductionTimer()
+			self?.stopStaminaRecoveryTimer()
+		}
+		
+		runningButton.onRelease = { [weak self] in
+			if self?.heroStaminaRecoveryTimer == nil {
+				self?.stopStaminaReductionTimer()
+				self?.startStaminaRecoveryTimer()
+			}
+		}
+		
+		minX = frame.minX + 70
+		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
+		minY = frame.minY + 50
+		maxY = frame.midY + 70
 	}
 	
 	func addBackground() {
@@ -101,7 +113,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		joystick.trackingHandler = { [unowned self] data in
 			let velocity = data.velocity
-			let moveSpeed: CGFloat = self.runningButton.isRunningButtonPressed ? 0.35 : 0.2
+			let moveSpeed: CGFloat = self.runningButton.isRunningButtonPressed && hero.getHeroStamina() > 0 ? 0.35 : 0.2
 			self.hero.position = CGPoint(x: self.hero.position.x + velocity.x * moveSpeed, y: self.hero.position.y + velocity.y * moveSpeed)
 		}
 	}
@@ -129,9 +141,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		healthBar.zPosition = 10
 		heroCamera.addChild(healthBar)
 		
-		//		staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: size.height / 2 - 50)
-		//		staminaBar.zPosition = 10
-		//		heroCamera.addChild(staminaBar)
+		staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: size.height / 2 - 45)
+		staminaBar.zPosition = 10
+		heroCamera.addChild(staminaBar)
 	}
 	
 	func setupHeroCamera() {
@@ -162,10 +174,106 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addChild(locker)
 	}
 	
-	//	func clampPosition(of node: SKNode) {
-	//		node.position.x = min(maxX, max(minX, node.position.x))
-	//		node.position.y = min(maxY, max(minY, node.position.y))
-	//	}
+	func clampPosition(of node: SKNode) {
+		node.position.x = min(maxX, max(minX, node.position.x))
+		node.position.y = min(maxY, max(minY, node.position.y))
+	}
+	
+	func startHealthReductionTimer() {
+		heroHealthReductionTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reduceHeroHealth), userInfo: nil, repeats: true)
+	}
+	
+	func stopHealthReductionTimer() {
+		heroHealthReductionTimer?.invalidate()
+		heroHealthReductionTimer = nil
+	}
+	
+	@objc func reduceHeroHealth() {
+		hero.heroHealthReduced(health: 10)
+		healthBar.update(progress: hero.getHeroHealth() / 100.0)
+	}
+	
+	func startReducingHeroHealth() {
+		if !heroIsAttacked {
+			heroIsAttacked = true
+			startHealthReductionTimer()
+		}
+	}
+	
+	func stopReducingHeroHealth() {
+		if heroIsAttacked {
+			heroIsAttacked = false
+			stopHealthReductionTimer()
+		}
+	}
+	
+	func startStaminaReductionTimer() {
+		heroStaminaReductionTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(reduceHeroStamina), userInfo: nil, repeats: true)
+	}
+	
+	func stopStaminaReductionTimer() {
+		heroStaminaReductionTimer?.invalidate()
+		heroStaminaReductionTimer = nil
+	}
+	
+	@objc func reduceHeroStamina() {
+		hero.heroStaminaReduced(stamina: 2.0)
+		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
+	}
+	
+	private func startStaminaRecoveryTimer() {
+		heroStaminaRecoveryTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(recoverHeroStamina), userInfo: nil, repeats: true)
+	}
+	
+	private func stopStaminaRecoveryTimer() {
+		heroStaminaRecoveryTimer?.invalidate()
+		heroStaminaRecoveryTimer = nil
+	}
+	
+	@objc private func recoverHeroStamina() {
+		hero.heroStaminaIncreased(stamina: 1.5)
+		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
+	}
+	
+	func didBegin(_ contact: SKPhysicsContact) {
+		if contact.bodyA.categoryBitMask == ChestCategory || contact.bodyB.categoryBitMask == ChestCategory {
+			handleChestCollision(contact: contact)
+			
+			return
+		}
+		
+		if contact.bodyA.categoryBitMask == LockerCategory || contact.bodyB.categoryBitMask == LockerCategory {
+			handleLockerCollision(contact: contact)
+			
+			return
+		}
+		
+		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
+			handleHeroCollision(contact: contact)
+			
+			return
+		}
+	}
+	
+	func didEnd(_ contact: SKPhysicsContact) {
+		if contact.bodyA.categoryBitMask == ChestCategory || contact.bodyB.categoryBitMask == ChestCategory {
+			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
+				interactButton.isHidden = true
+			}
+		}
+		
+		if contact.bodyA.categoryBitMask == LockerCategory || contact.bodyB.categoryBitMask == LockerCategory {
+			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
+				hidingButton.isHidden = true
+			}
+		}
+		
+		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
+			if (contact.bodyA.categoryBitMask == UndeadCategory || contact.bodyB.categoryBitMask == UndeadCategory) {
+				undead.physicsBody?.pinned = false
+			}
+		}
+	}
 	
 	func handleChestCollision(contact: SKPhysicsContact) {
 		var otherBody: SKPhysicsBody
@@ -218,74 +326,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 	
-	func startHealthReductionTimer() {
-		heroHealthReductionTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reduceHeroHealth), userInfo: nil, repeats: true)
-	}
-	
-	func stopHealthReductionTimer() {
-		heroHealthReductionTimer?.invalidate()
-		heroHealthReductionTimer = nil
-	}
-	
-	@objc func reduceHeroHealth() {
-		hero.heroHealthReduced(health: 10)
-		healthBar.update(progress: hero.getHeroStatus() / 100.0)
-	}
-	
-	func startReducingHeroHealth() {
-		if !heroIsAttacked {
-			heroIsAttacked = true
-			startHealthReductionTimer()
-		}
-	}
-	
-	func stopReducingHeroHealth() {
-		if heroIsAttacked {
-			heroIsAttacked = false
-			stopHealthReductionTimer()
-		}
-	}
-	
-	func didBegin(_ contact: SKPhysicsContact) {
-		if contact.bodyA.categoryBitMask == ChestCategory || contact.bodyB.categoryBitMask == ChestCategory {
-			handleChestCollision(contact: contact)
-			
-			return
-		}
-		
-		if contact.bodyA.categoryBitMask == LockerCategory || contact.bodyB.categoryBitMask == LockerCategory {
-			handleLockerCollision(contact: contact)
-			
-			return
-		}
-		
-		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
-			handleHeroCollision(contact: contact)
-			
-			return
-		}
-	}
-	
-	func didEnd(_ contact: SKPhysicsContact) {
-		if contact.bodyA.categoryBitMask == ChestCategory || contact.bodyB.categoryBitMask == ChestCategory {
-			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
-				interactButton.isHidden = true
-			}
-		}
-		
-		if contact.bodyA.categoryBitMask == LockerCategory || contact.bodyB.categoryBitMask == LockerCategory {
-			if (contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory) {
-				hidingButton.isHidden = true
-			}
-		}
-		
-		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
-			if (contact.bodyA.categoryBitMask == UndeadCategory || contact.bodyB.categoryBitMask == UndeadCategory) {
-				undead.physicsBody?.pinned = false
-			}
-		}
-	}
-	
 	override func update(_ currentTime: TimeInterval) {
 		if (self.lastUpdateTime == 0) {
 			self.lastUpdateTime = currentTime
@@ -294,23 +334,28 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-		//		clampPosition(of: hero)
-		//		clampPosition(of: undead)
+		clampPosition(of: hero)
+		clampPosition(of: undead)
 		
-		//		let cameraX = max(hero.position.x, size.width / 2)
-		//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
-		//		heroCamera.position.x = min(maxCameraX, cameraX)
+		let cameraX = max(hero.position.x, size.width / 2)
+		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
+		heroCamera.position.x = min(maxCameraX, cameraX)
 		
-		heroCamera.position = hero.position
+		//		heroCamera.position = hero.position
 		
-		let isRunning = runningButton.isRunningButtonPressed
+		let isRunning = runningButton.isRunningButtonPressed && hero.getHeroStamina() > 0
+		let heroIsIdleOrHidden = hero.isHidden || hero.isHeroIdle()
+		
 		let joystickPosition = joystick.stick.position
 		
 		joystick.isHidden = hero.isHidden
 		
+		runningButton.isUserInteractionEnabled = !heroIsIdleOrHidden /*&& heroIsMoving*/
+		
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
 		undead.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
 		
-		healthBar.update(progress: hero.getHeroStatus() / 100.0)
+		healthBar.update(progress: hero.getHeroHealth() / 100.0)
+		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
 	}
 }
