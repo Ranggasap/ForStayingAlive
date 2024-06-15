@@ -21,6 +21,7 @@
 		8B66D0A62C17FF6200BB6573 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */; };
 		8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */; };
 		8B66D0AB2C18303D00BB6573 /* HideButtonSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */; };
+		8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */; };
 		E42E8E752C11729300FF73F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E742C11729300FF73F4 /* Constants.swift */; };
 		E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E762C118B1900FF73F4 /* HeroSprite.swift */; };
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
@@ -68,6 +69,7 @@
 		8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
 		8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarNode.swift; sourceTree = "<group>"; };
 		8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideButtonSprite.swift; sourceTree = "<group>"; };
+		8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		E42E8E742C11729300FF73F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E42E8E762C118B1900FF73F4 /* HeroSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSprite.swift; sourceTree = "<group>"; };
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				E42E8E782C11955900FF73F4 /* ExplorationMap.swift */,
+				8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */,
 				8B00C48C2C1C3AE30083D972 /* EvacuationScene.swift */,
 			);
 			path = Scenes;
@@ -366,6 +369,7 @@
 				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
+				8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,

@@ -49,6 +49,15 @@ public class HeroSprite : SKSpriteNode {
     
     public func healthReduce(health: CGFloat){
         self.health = self.health - health
+        if self.health <= 0 {
+            if let scene = self.scene{
+                let gameOverScene = GameOverScene(size: scene.size)
+                gameOverScene.scaleMode = .aspectFit
+                let transition = SKTransition.fade(withDuration: 1.0)
+                scene.view?.presentScene(gameOverScene, transition: transition)
+            }
+        }
+        
     }
 	
 	private let idleFrames: [SKTexture] = (0...1).flatMap { i in
