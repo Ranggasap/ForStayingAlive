@@ -26,7 +26,7 @@ public class HeroSprite : SKSpriteNode {
 		playerHero.physicsBody?.allowsRotation = false
 		
 		playerHero.physicsBody?.categoryBitMask = HeroCategory
-		playerHero.physicsBody?.contactTestBitMask = UndeadCategory | ChestCategory
+		playerHero.physicsBody?.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory
 		
 		return playerHero
 	}
@@ -131,6 +131,14 @@ public class HeroSprite : SKSpriteNode {
 		
 		if self.heroHealth < 0 {
 			self.heroHealth = 0
+		}
+	}
+	
+	public func heroHealthIncreased(health: CGFloat) {
+		self.heroHealth += health
+		
+		if self.heroHealth > 100 {
+			self.heroHealth = 100
 		}
 	}
 	

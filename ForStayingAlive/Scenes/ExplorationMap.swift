@@ -15,6 +15,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let locker = LockerSprite.newInstance()
 	
 	private let runningButton = RunningButton.newInstance()
+	private let medkitButton = MedkitButton.newInstance()
 	private let interactButton = InteractButton.newInstance()
 	private let hidingButton = HidingButton.newInstance()
 	
@@ -51,12 +52,15 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addRunningButton()
 		addInteractButton()
 		addHidingButton()
+		addMedkitButton()
 		addStatusBar()
 		
 		spawnHero()
 		spawnUndead()
 		spawnChest()
 		spawnLocker()
+		
+		updateMedkitButtonState()
 		
 		undead.onHeroEnterAttackRange = { [weak self] in
 			self?.startReducingHeroHealth()
@@ -66,14 +70,18 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		}
 		
 		runningButton.onPress = { [weak self] in
-			self?.startStaminaReductionTimer()
-			self?.stopStaminaRecoveryTimer()
+			guard let self = self else { return }
+			if self.hero.getHeroStamina() > 0 {
+				self.startStaminaReductionTimer()
+				self.stopStaminaRecoveryTimer()
+			}
 		}
 		
 		runningButton.onRelease = { [weak self] in
-			if self?.heroStaminaRecoveryTimer == nil {
-				self?.stopStaminaReductionTimer()
-				self?.startStaminaRecoveryTimer()
+			guard let self = self else { return }
+			if self.heroStaminaRecoveryTimer == nil {
+				self.stopStaminaReductionTimer()
+				self.startStaminaRecoveryTimer()
 			}
 		}
 		
@@ -127,6 +135,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	func addInteractButton() {
 		interactButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 170)
 		interactButton.zPosition = 10
+		interactButton.setMedkitButton(medkitButton)
 		heroCamera.addChild(interactButton)
 	}
 	
@@ -134,6 +143,16 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		hidingButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 170)
 		hidingButton.zPosition = 10
 		heroCamera.addChild(hidingButton)
+	}
+	
+	func addMedkitButton() {
+		medkitButton.position = CGPoint(x: size.width / 2 - 135, y: size.height / 2 - 35)
+		medkitButton.zPosition = 10
+		heroCamera.addChild(medkitButton)
+	}
+	
+	func updateMedkitButtonState() {
+		medkitButton.isUserInteractionEnabled = hero.getHeroHealth() < 100 && medkitButton.getMedkitCount() > 0
 	}
 	
 	func addStatusBar() {
@@ -191,6 +210,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	@objc func reduceHeroHealth() {
 		hero.heroHealthReduced(health: 10)
 		healthBar.update(progress: hero.getHeroHealth() / 100.0)
+		updateMedkitButtonState()
 	}
 	
 	func startReducingHeroHealth() {
@@ -205,6 +225,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			heroIsAttacked = false
 			stopHealthReductionTimer()
 		}
+	}
+	
+	func heroUseMedkit() {
+		hero.heroHealthIncreased(health: 20)
+		healthBar.update(progress: hero.getHeroHealth() / 100.0)
+		updateMedkitButtonState()
 	}
 	
 	func startStaminaReductionTimer() {
@@ -334,14 +360,14 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-		clampPosition(of: hero)
-		clampPosition(of: undead)
+//		clampPosition(of: hero)
+//		clampPosition(of: undead)
+//		
+//		let cameraX = max(hero.position.x, size.width / 2)
+//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
+//		heroCamera.position.x = min(maxCameraX, cameraX)
 		
-		let cameraX = max(hero.position.x, size.width / 2)
-		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
-		heroCamera.position.x = min(maxCameraX, cameraX)
-		
-		//		heroCamera.position = hero.position
+		heroCamera.position = hero.position
 		
 		let isRunning = runningButton.isRunningButtonPressed && hero.getHeroStamina() > 0
 		let heroIsIdleOrHidden = hero.isHidden || hero.isHeroIdle()
@@ -357,5 +383,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		healthBar.update(progress: hero.getHeroHealth() / 100.0)
 		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
+		
+		updateMedkitButtonState()
 	}
 }
