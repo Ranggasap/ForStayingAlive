@@ -38,9 +38,15 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var maxX: CGFloat = 0
 	private var minY: CGFloat = 0
 	private var maxY: CGFloat = 0
+    
+    private var thrillerBackSoundEffect = Sound(fileName: "the-hired-thriller-drama-mystery-background-111015", fileType: "mp3")
+    private var helicopterSoundEffect = Sound(fileName: "helicopter-129052", fileType: "mp3")
 	
 	override func didMove(to view: SKView) {
-
+        SoundManager.shared.playSound(thrillerBackSoundEffect, withIdentifier: "backSoundEffect")
+        SoundManager.shared.setVolume(for: "backSoundEffect", volume: 0.5)
+        SoundManager.shared.playSound(helicopterSoundEffect, withIdentifier: "helicopterSoundEffect")
+        SoundManager.shared.setVolume(for: "helicopterSoundEffect", volume: 0.5)
         
 		self.physicsWorld.contactDelegate = self
 
