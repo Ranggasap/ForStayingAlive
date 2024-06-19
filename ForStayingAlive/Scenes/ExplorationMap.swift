@@ -64,7 +64,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		testBoundary.physicsBody?.isDynamic = false
 		addChild(testBoundary)
 		
-		//		addBackground()
+//		addBackground()
 		addJoystick()
 		addRunningButton()
 		addInteractButton()
@@ -114,8 +114,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		// Create dark overlay
 		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2))
 		darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-		darkOverlay.alpha = 0.8 // Adjust as needed
+		darkOverlay.alpha = 0.9 // Adjust as needed
 		darkOverlay.zPosition = 5
+		darkOverlay.isUserInteractionEnabled = false
 		
 		// Create circular mask
 		let maskRadius: CGFloat = 100.0 // Adjust the radius as needed
@@ -129,6 +130,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		maskNode.fillColor = .black
 		maskNode.strokeColor = .clear
 		maskNode.lineWidth = 0
+		maskNode.isUserInteractionEnabled = false
 		
 		// Create crop node
 		cropNode = SKCropNode()
@@ -136,7 +138,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		// Add dark overlay to crop node
 		cropNode.addChild(darkOverlay)
-		cropNode.zPosition = 5 // Ensure it's above other nodes
+		cropNode.zPosition = 4 // Ensure it's above other nodes
+		cropNode.isUserInteractionEnabled = false
 		
 		// Add crop node to scene
 		addChild(cropNode)
