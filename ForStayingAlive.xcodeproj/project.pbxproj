@@ -215,8 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				E42E8E762C118B1900FF73F4 /* HeroSprite.swift */,
-				E4CB75132C194B880059FED9 /* LockerSprite.swift */,
 				E48D483B2C15259200B97DEB /* UndeadSprite.swift */,
+				E4CB75132C194B880059FED9 /* LockerSprite.swift */,
 				E49C38D72C17F95500868DDA /* ChestSprite.swift */,
 			);
 			path = Sprites;

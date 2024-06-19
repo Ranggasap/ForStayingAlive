@@ -1,10 +1,3 @@
-//
-//  ExplorationMap.swift
-//  ForStayingAlive
-//
-//  Created by Gusti Rizky Fajar on 06/06/24.
-//
-
 import SpriteKit
 import GameplayKit
 
@@ -35,6 +28,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var backgroundOne: SKSpriteNode!
 	private var backgroundTwo: SKSpriteNode!
 	
+	private var testBackground: SKSpriteNode!
+	private var testBoundary: SKSpriteNode!
+	
 	private var lastUpdateTime: TimeInterval = 0
 	
 	private var minX: CGFloat = 0
@@ -42,12 +38,33 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var minY: CGFloat = 0
 	private var maxY: CGFloat = 0
 	
+	var maskNode: SKShapeNode!
+	var darkOverlay: SKSpriteNode!
+	var cropNode: SKCropNode!
+	
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
 		
 		setupHeroCamera()
 		
-		addBackground()
+		testBackground = SKSpriteNode(imageNamed: "test_map")
+		testBackground.size = CGSize(width: testBackground.size.width, height: testBackground.size.height)
+		testBackground.position = CGPoint(x: frame.midX, y: frame.midY)
+		testBackground.zPosition = 0
+		addChild(testBackground)
+		
+		testBoundary = SKSpriteNode(imageNamed: "boundary")
+		testBoundary.size = CGSize(width: testBoundary.size.width, height: testBoundary.size.height)
+		testBoundary.position = CGPoint(x: frame.midX, y: frame.midY)
+		testBoundary.zPosition = -1
+		
+		let boundaryTexture = testBoundary.texture
+		testBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: testBoundary.size)
+		testBoundary.physicsBody?.affectedByGravity = false
+		testBoundary.physicsBody?.isDynamic = false
+		addChild(testBoundary)
+		
+		//		addBackground()
 		addJoystick()
 		addRunningButton()
 		addInteractButton()
@@ -59,6 +76,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		spawnUndead()
 		spawnChest()
 		spawnLocker()
+		
+		addLightingEffect()
 		
 		updateMedkitButtonState()
 		
@@ -85,10 +104,42 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 		
-		minX = frame.minX + 70
-		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
-		minY = frame.minY + 50
-		maxY = frame.midY + 70
+		//		minX = frame.minX + 70
+		//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
+		//		minY = frame.minY + 50
+		//		maxY = frame.midY + 70
+	}
+	
+	func addLightingEffect() {
+		// Create dark overlay
+		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2))
+		darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
+		darkOverlay.alpha = 0.8 // Adjust as needed
+		darkOverlay.zPosition = 5
+		
+		// Create circular mask
+		let maskRadius: CGFloat = 100.0 // Adjust the radius as needed
+		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
+		
+		let maskPath = CGMutablePath()
+		maskPath.addRect(CGRect(origin: .zero, size: maskSize))
+		maskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: maskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+		
+		maskNode = SKShapeNode(path: maskPath)
+		maskNode.fillColor = .black
+		maskNode.strokeColor = .clear
+		maskNode.lineWidth = 0
+		
+		// Create crop node
+		cropNode = SKCropNode()
+		cropNode.maskNode = maskNode
+		
+		// Add dark overlay to crop node
+		cropNode.addChild(darkOverlay)
+		cropNode.zPosition = 5 // Ensure it's above other nodes
+		
+		// Add crop node to scene
+		addChild(cropNode)
 	}
 	
 	func addBackground() {
@@ -178,7 +229,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func spawnUndead() {
-		undead.position = CGPoint(x: frame.midX + 200, y: frame.midY)
+		undead.position = CGPoint(x: frame.midX + 300, y: frame.midY)
 		undead.setUndeadSpawnPosition()
 		addChild(undead)
 	}
@@ -189,7 +240,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func spawnLocker() {
-		locker.position = CGPoint(x: frame.minX + 200, y: frame.midY + 50)
+		locker.position = CGPoint(x: frame.minX + 150, y: frame.midY + 50)
 		addChild(locker)
 	}
 	
@@ -360,12 +411,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-//		clampPosition(of: hero)
-//		clampPosition(of: undead)
-//		
-//		let cameraX = max(hero.position.x, size.width / 2)
-//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
-//		heroCamera.position.x = min(maxCameraX, cameraX)
+		//		clampPosition(of: hero)
+		//		clampPosition(of: undead)
+		
+		//		let cameraX = max(hero.position.x, size.width / 2)
+		//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
+		//		heroCamera.position.x = min(maxCameraX, cameraX)
 		
 		heroCamera.position = hero.position
 		
@@ -385,5 +436,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
 		
 		updateMedkitButtonState()
+		
+		// Update maskNode position to follow the hero
+		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
+		maskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
 	}
 }
