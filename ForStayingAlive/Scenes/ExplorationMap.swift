@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
@@ -31,19 +32,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let heroCamera = SKCameraNode()
 	
 	private var joystick: AnalogJoystick!
-	
-	private var backgroundOne: SKSpriteNode!
-	private var backgroundTwo: SKSpriteNode!
-	
-	private var testBackground: SKSpriteNode!
-	private var testBoundary: SKSpriteNode!
+		
+	private var hospitalGround: SKSpriteNode!
 	
 	private var lastUpdateTime: TimeInterval = 0
 	
-	private var minX: CGFloat = 0
-	private var maxX: CGFloat = 0
-	private var minY: CGFloat = 0
-	private var maxY: CGFloat = 0
+	private var backgroundTrack: AVAudioPlayer?
+	private var helicopterTrack: AVAudioPlayer?
 	
 	private var maskNode: SKShapeNode!
 	private var darkOverlay: SKSpriteNode!
@@ -94,30 +89,30 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 				self.startStaminaRecoveryTimer()
 			}
 		}
-		
-//		minX = frame.minX + 70
-//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
-//		minY = frame.minY + 50
-//		maxY = frame.midY + 70
+	}
+	
+	override func willMove(from view: SKView) {
+		backgroundTrack?.stop()
+		helicopterTrack?.stop()
 	}
 	
 	func addBackgroundMusic() {
-		let backgroundTrack = SoundManager.sharedInstance.startPlaying(soundName: "the-hired", fileExtension: "m4a")
+		backgroundTrack = SoundManager.sharedInstance.startPlaying(soundName: "the-hired", fileExtension: "m4a")
 		backgroundTrack?.volume = 0.8
 		
-		let helicopterTrack = SoundManager.sharedInstance.startPlaying(soundName: "helicopter", fileExtension: "m4a")
+		helicopterTrack = SoundManager.sharedInstance.startPlaying(soundName: "helicopter", fileExtension: "m4a")
 		helicopterTrack?.volume = 0.6
 	}
 	
 	func addVisibilityEffect() {
-		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2))
+		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2))
 		darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
 		darkOverlay.alpha = 0.9
 		darkOverlay.zPosition = 5
 		darkOverlay.isUserInteractionEnabled = false
 		
-		let maskRadius: CGFloat = 90.0
-		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
+		let maskRadius: CGFloat = 80.0
+		let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
 		
 		let maskPath = CGMutablePath()
 		maskPath.addRect(CGRect(origin: .zero, size: maskSize))
@@ -138,22 +133,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func addBackground() {
-		testBackground = SKSpriteNode(imageNamed: "test_map")
-		testBackground.size = CGSize(width: testBackground.size.width, height: testBackground.size.height)
-		testBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-		testBackground.zPosition = 0
-		addChild(testBackground)
-		
-		testBoundary = SKSpriteNode(imageNamed: "boundary")
-		testBoundary.size = CGSize(width: testBoundary.size.width, height: testBoundary.size.height)
-		testBoundary.position = CGPoint(x: frame.midX, y: frame.midY)
-		testBoundary.zPosition = -1
-		
-		let boundaryTexture = testBoundary.texture
-		testBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: testBoundary.size)
-		testBoundary.physicsBody?.affectedByGravity = false
-		testBoundary.physicsBody?.isDynamic = false
-		addChild(testBoundary)
+		hospitalGround = SKSpriteNode(imageNamed: "hospital-ground")
+		hospitalGround.size = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
+		hospitalGround.position = CGPoint(x: frame.midX, y: frame.midY)
+		hospitalGround.zPosition = -5
+		addChild(hospitalGround)
+				
+//		testBoundary = SKSpriteNode(imageNamed: "boundary")
+//		testBoundary.size = CGSize(width: testBoundary.size.width, height: testBoundary.size.height)
+//		testBoundary.position = CGPoint(x: frame.midX, y: frame.midY)
+//		testBoundary.zPosition = -1
+//		
+//		let boundaryTexture = testBoundary.texture
+//		testBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: testBoundary.size)
+//		testBoundary.physicsBody?.affectedByGravity = false
+//		testBoundary.physicsBody?.isDynamic = false
+//		addChild(testBoundary)
 	}
 	
 	func addJoystick() {
@@ -243,11 +238,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		locker.position = CGPoint(x: frame.minX + 150, y: frame.midY + 30)
 		addChild(locker)
 	}
-	
-//	func clampPosition(of node: SKNode) {
-//		node.position.x = min(maxX, max(minX, node.position.x))
-//		node.position.y = min(maxY, max(minY, node.position.y))
-//	}
 	
 	func startHealthReductionTimer() {
 		heroHealthReductionTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reduceHeroHealth), userInfo: nil, repeats: true)
@@ -411,13 +401,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-//		clampPosition(of: hero)
-//		clampPosition(of: undead)
-
-//		let cameraX = max(hero.position.x, size.width / 2)
-//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
-//		heroCamera.position.x = min(maxCameraX, cameraX)
-		
 		heroCamera.position = hero.position
 		
 		let isRunning = runningButton.isRunningButtonPressed && hero.getHeroStamina() > 0
@@ -437,7 +420,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		updateMedkitButtonState()
 		
-		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
+		let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
 		maskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+		
+		if hero.isHidden {
+			cropNode.maskNode = nil
+		} else {
+			cropNode.maskNode = maskNode
+		}
 	}
 }
