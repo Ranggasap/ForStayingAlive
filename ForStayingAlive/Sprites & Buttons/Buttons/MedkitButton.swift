@@ -13,7 +13,7 @@ public class MedkitButton : SKSpriteNode {
 	
 	public static func newInstance() -> MedkitButton {
 		let medkitButton = MedkitButton(imageNamed: "medkit")
-		medkitButton.size = CGSize(width: medkitButton.size.width / 2, height: medkitButton.size.height / 2)
+		medkitButton.size = CGSize(width: medkitButton.size.width / 2 + 10, height: medkitButton.size.height / 2 + 10)
 		medkitButton.isUserInteractionEnabled = true
 		medkitButton.numberOfMedkitLabel()
 		
@@ -24,7 +24,7 @@ public class MedkitButton : SKSpriteNode {
 		medkitCountLabel.text = "\(numberOfMedkit)"
 		medkitCountLabel.fontColor = .white
 		medkitCountLabel.fontSize = 14
-		medkitCountLabel.position = CGPoint(x: size.width / 2, y: size.height / 2 - 45)
+		medkitCountLabel.position = CGPoint(x: size.width / 2, y: size.height / 2 - 55)
 		addChild(medkitCountLabel)
 	}
 	

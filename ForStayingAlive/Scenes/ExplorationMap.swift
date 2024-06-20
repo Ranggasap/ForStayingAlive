@@ -207,7 +207,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		heroCamera.addChild(joystick)
 		
-		joystick.trackingHandler = { [unowned self] data in
+		joystick.trackingHandler = { [weak self] data in
+			guard let self = self else { return }
+			
 			let velocity = data.velocity
 			let moveSpeed: CGFloat = self.runningButton.isRunningButtonPressed && hero.getHeroStamina() > 0 ? 0.35 : 0.2
 			self.hero.position = CGPoint(x: self.hero.position.x + velocity.x * moveSpeed, y: self.hero.position.y + velocity.y * moveSpeed)
@@ -501,5 +503,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
 		maskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+		
+		if hero.isHidden {
+			cropNode.maskNode = nil
+		} else {
+			cropNode.maskNode = maskNode
+		}
 	}
 }
