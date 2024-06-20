@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import Combine
 
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
@@ -31,6 +32,10 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let heroCamera = SKCameraNode()
 	
 	private var joystick: AnalogJoystick!
+
+    private let hideButton = HideButtonSprite()
+    
+    private var nextSceneNode = NextSceneNode(size: CGSize(width: 50, height: 50))
 	
 	private var backgroundOne: SKSpriteNode!
 	private var backgroundTwo: SKSpriteNode!
@@ -48,10 +53,51 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var maskNode: SKShapeNode!
 	private var darkOverlay: SKSpriteNode!
 	private var cropNode: SKCropNode!
-	
+
+    
+    private var thrillerBackSoundEffect = Sound(fileName: "the-hired-thriller-drama-mystery-background-111015", fileType: "mp3")
+    private var helicopterSoundEffect = Sound(fileName: "helicopter-129052", fileType: "mp3")
+    
+    private var countdownViewModel = CountdownTimerViewModel()
+    private var cancellables: Set<AnyCancellable> = []
+    
+    private var countdownLabel: SKLabelNode!
+    
 	override func didMove(to view: SKView) {
-		physicsWorld.contactDelegate = self
-		
+        countdownLabel = SKLabelNode(text: "--:--")
+        countdownLabel.fontSize = 45
+        countdownLabel.fontName = "Helvetica-Bold"
+        countdownLabel.position = CGPoint(x: heroCamera.position.x, y: heroCamera.position.y + 125)
+        heroCamera.addChild(countdownLabel)
+        
+        countdownViewModel.$displayTime.receive(on: RunLoop.main).sink{ [weak self] newTime in
+            self?.countdownLabel.text = newTime
+        }.store(in: &cancellables)
+        
+        countdownViewModel.startTimer()
+        
+        SoundManager.shared.playSound(thrillerBackSoundEffect, withIdentifier: "backSoundEffect")
+        SoundManager.shared.setVolume(for: "backSoundEffect", volume: 0.5)
+        SoundManager.shared.playSound(helicopterSoundEffect, withIdentifier: "helicopterSoundEffect")
+        SoundManager.shared.setVolume(for: "helicopterSoundEffect", volume: 0.5)
+        
+		self.physicsWorld.contactDelegate = self
+
+		hideButton.setup()
+		hideButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 200)
+		hideButton.hideButtonAction = {
+			if(self.hero.isHidden == true){
+				self.hero.isHidden = false
+				self.hideButton.hideButtonChange()
+			} else {
+				self.hero.isHidden = true
+				self.hideButton.hideButtonChange()
+			}
+		}
+		hideButton.isHidden = true
+		heroCamera.addChild(hideButton)
+        
+
 		setupHeroCamera()
 		
 		addBackground()
@@ -99,6 +145,10 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 //		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
 //		minY = frame.minY + 50
 //		maxY = frame.midY + 70
+        
+      
+        nextSceneNode.position = CGPoint(x: frame.midX - 50, y: frame.midY)
+        addChild(nextSceneNode)
 	}
 	
 	func addBackgroundMusic() {
@@ -122,7 +172,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let maskPath = CGMutablePath()
 		maskPath.addRect(CGRect(origin: .zero, size: maskSize))
 		maskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: maskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
-		
+
 		maskNode = SKShapeNode(path: maskPath)
 		maskNode.fillColor = .black
 		maskNode.strokeColor = .clear
@@ -136,6 +186,61 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		cropNode.isUserInteractionEnabled = false
 		addChild(cropNode)
 	}
+
+    
+    func heroEndCollisionHandler(contact: SKPhysicsContact){
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == HeroCategory{
+            otherBody = contact.bodyB
+        } else {
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask{
+        case LockerCategory:
+            hideButton.isHidden = true
+            print("Hero run away locker")
+        default:
+            print("Hero doesn't get hit with anything")
+        }
+    }
+    
+    func heroCollisionHandler(contact: SKPhysicsContact){
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == HeroCategory{
+            otherBody = contact.bodyB
+        } else {
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask{
+        case NextSceneCategory:
+            print("Next Scene")
+            let transition = SKTransition.fade(withDuration: 1.0)
+            let evacuationScene = EvacuationScene(size: size)
+            evacuationScene.scaleMode = scaleMode
+            
+            view?.presentScene(evacuationScene, transition: transition)
+            
+        case UndeadCategory:
+            hero.healthReduce(health: 25)
+        case LockerCategory:
+            hideButton.isHidden = false
+            print("Hero hit Locker")
+        default:
+            print("Something Hit Hero")
+        }
+    }
+    
+    func addStatusBar(){
+        healthBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 350)
+        heroCamera.addChild(healthBar)
+        
+        staminaBar.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 320)
+        heroCamera.addChild(staminaBar)
+    }
 	
 	func addBackground() {
 		testBackground = SKSpriteNode(imageNamed: "test_map")
@@ -411,6 +516,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
+		healthBar.update(datetime: dt, progress: hero.getStatus().0 / 100)
+		staminaBar.update(datetime: dt, progress: hero.getStatus().1 / 100)
+        
 //		clampPosition(of: hero)
 //		clampPosition(of: undead)
 
