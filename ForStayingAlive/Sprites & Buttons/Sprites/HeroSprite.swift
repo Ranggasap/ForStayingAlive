@@ -26,7 +26,7 @@ public class HeroSprite : SKSpriteNode {
 		playerHero.physicsBody?.allowsRotation = false
 		
 		playerHero.physicsBody?.categoryBitMask = HeroCategory
-		playerHero.physicsBody?.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory
+		playerHero.physicsBody?.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory | NextSceneCategory
 		
 		return playerHero
 	}
@@ -54,36 +54,16 @@ public class HeroSprite : SKSpriteNode {
 		physicsBody.affectedByGravity = false
 		physicsBody.allowsRotation = false
 		physicsBody.categoryBitMask = HeroCategory
-		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory
+		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory | NextSceneCategory
 		self.physicsBody = physicsBody
 	}
     
-    public func update(deltaTime: TimeInterval){
-        hungerTime += deltaTime
-        
-        if hungerTime > 3{
-            hungerTime = 0
-            health -= 10
-            stamina -= 10
-        }
-    }
+
     
     public func getStatus()->(CGFloat, CGFloat){
-        return (health, stamina)
+        return (heroHealth, heroStamina)
     }
     
-    public func healthReduce(health: CGFloat){
-        self.health = self.health - health
-        if self.health <= 0 {
-            if let scene = self.scene{
-                let gameOverScene = GameOverScene(size: scene.size)
-                gameOverScene.scaleMode = .aspectFit
-                let transition = SKTransition.fade(withDuration: 1.0)
-                scene.view?.presentScene(gameOverScene, transition: transition)
-            }
-        }
-        
-    }
 	
 	private let idleFrames: [SKTexture] = (0...1).flatMap { i in
 		Array(repeating: SKTexture(imageNamed: "player-test-idle\(i)"), count: 3)
@@ -155,10 +135,15 @@ public class HeroSprite : SKSpriteNode {
 	
 	public func heroHealthReduced(health: CGFloat) {
 		self.heroHealth -= health
-		
-		if self.heroHealth < 0 {
-			self.heroHealth = 0
-		}
+        
+        if self.heroHealth <= 0 {
+            if let scene = self.scene{
+                let gameOverScene = GameOverScene(size: scene.size)
+                gameOverScene.scaleMode = .aspectFit
+                let transition = SKTransition.fade(withDuration: 1.0)
+                scene.view?.presentScene(gameOverScene, transition: transition)
+            }
+        }
 	}
 	
 	public func heroHealthIncreased(health: CGFloat) {
@@ -167,6 +152,8 @@ public class HeroSprite : SKSpriteNode {
 		if self.heroHealth > 100 {
 			self.heroHealth = 100
 		}
+        
+       
 	}
 	
 	public func heroStaminaReduced(stamina: CGFloat) {

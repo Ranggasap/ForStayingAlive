@@ -19,9 +19,6 @@
 		8B4DB2212C0DB77F0055AB7A /* ForStayingAliveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2202C0DB77F0055AB7A /* ForStayingAliveUITests.swift */; };
 		8B4DB2232C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */; };
 		8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */; };
-
-		8B66D0AB2C18303D00BB6573 /* HideButtonSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */; };
-		8B92D3672C20111900F6B2D2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92D3662C20111900F6B2D2 /* SoundManager.swift */; };
 		8B92D36A2C20134700F6B2D2 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92D3692C20134700F6B2D2 /* Sound.swift */; };
 		8B92D36D2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D36C2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 */; };
 		8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */; };
@@ -84,9 +81,6 @@
 		8B4DB2202C0DB77F0055AB7A /* ForStayingAliveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForStayingAliveUITests.swift; sourceTree = "<group>"; };
 		8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForStayingAliveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarNode.swift; sourceTree = "<group>"; };
-
-		8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideButtonSprite.swift; sourceTree = "<group>"; };
-		8B92D3662C20111900F6B2D2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		8B92D3692C20134700F6B2D2 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		8B92D36C2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-hired-thriller-drama-mystery-background-111015.mp3"; sourceTree = "<group>"; };
 		8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "indoor-footsteps-6385.mp3"; sourceTree = "<group>"; };
@@ -165,11 +159,8 @@
 		8B4DB1FB2C0DB77D0055AB7A /* ForStayingAlive */ = {
 			isa = PBXGroup;
 			children = (
-
 				E4FDDE242C23C819001EC9F6 /* Info.plist */,
-
 				8B92D36B2C20145C00F6B2D2 /* SFX */,
-
 				E42E8E6E2C11711E00FF73F4 /* Mains */,
 				8B96FDB22C22E93900E2EE7D /* ViewModels */,
 				8B92D3682C20133900F6B2D2 /* Models */,
@@ -293,7 +284,6 @@
 			children = (
 				E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */,
 				E42E8E742C11729300FF73F4 /* Constants.swift */,
-
 				E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */,
 				E437B2092C19FF0500D6E6A8 /* Extensions.swift */,
 			);
@@ -443,23 +433,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				E4FDDE202C231A84001EC9F6 /* helicopter.m4a in Resources */,
 				E4FDDE232C23C7AF001EC9F6 /* NicoClean-Regular.otf in Resources */,
 				8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */,
 				8B92D36D2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 in Resources */,
 				8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */,
-
 				8B4DB2082C0DB77D0055AB7A /* Base in Resources */,
 				8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */,
 				8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */,
 				8B92D3762C20148000F6B2D2 /* zombie-attack-6419.mp3 in Resources */,
 				8B4DB20D2C0DB77E0055AB7A /* Base in Resources */,
 				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
-
 				8B92D3752C20148000F6B2D2 /* helicopter-129052.mp3 in Resources */,
 				8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,28 +471,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
-
 				E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */,
-
 				8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */,
 				8B00C48F2C1C3CCC0083D972 /* LabelNode.swift in Sources */,
 				8B00C48D2C1C3AE30083D972 /* EvacuationScene.swift in Sources */,
-				8B66D0AB2C18303D00BB6573 /* HideButtonSprite.swift in Sources */,
-
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B92D36A2C20134700F6B2D2 /* Sound.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
-				8B92D3672C20111900F6B2D2 /* SoundManager.swift in Sources */,
 				8B96FDB12C22DC1C00E2EE7D /* CountdownTimer.swift in Sources */,
 				8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
-
 				E437B2102C1D613A00D6E6A8 /* MedkitButton.swift in Sources */,
-
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
 				8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */,
 				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
@@ -704,7 +683,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,7 +713,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
