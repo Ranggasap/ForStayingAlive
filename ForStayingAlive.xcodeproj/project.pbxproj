@@ -28,6 +28,10 @@
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
 		E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB75132C194B880059FED9 /* LockerSprite.swift */; };
 		E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E14A312C1834ED00A8E101 /* HidingButton.swift */; };
+		E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */; };
+		E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E4FDDE1D2C2319F4001EC9F6 /* the-hired.m4a */; };
+		E4FDDE202C231A84001EC9F6 /* helicopter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E4FDDE1F2C231A84001EC9F6 /* helicopter.m4a */; };
+		E4FDDE232C23C7AF001EC9F6 /* NicoClean-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E4FDDE222C23C7AF001EC9F6 /* NicoClean-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,11 @@
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
 		E4CB75132C194B880059FED9 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
 		E4E14A312C1834ED00A8E101 /* HidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingButton.swift; sourceTree = "<group>"; };
+		E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		E4FDDE1D2C2319F4001EC9F6 /* the-hired.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "the-hired.m4a"; sourceTree = "<group>"; };
+		E4FDDE1F2C231A84001EC9F6 /* helicopter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = helicopter.m4a; sourceTree = "<group>"; };
+		E4FDDE222C23C7AF001EC9F6 /* NicoClean-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NicoClean-Regular.otf"; sourceTree = "<group>"; };
+		E4FDDE242C23C819001EC9F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +131,7 @@
 		8B4DB1FB2C0DB77D0055AB7A /* ForStayingAlive */ = {
 			isa = PBXGroup;
 			children = (
+				E4FDDE242C23C819001EC9F6 /* Info.plist */,
 				E42E8E6E2C11711E00FF73F4 /* Mains */,
 				E42E8E6B2C1170EE00FF73F4 /* Delegates */,
 				E42E8E732C11728000FF73F4 /* Supports */,
@@ -129,6 +139,8 @@
 				E42E8E6C2C1170F800FF73F4 /* Scenes */,
 				8B690C2B2C115F760062B64A /* Sprites & Buttons */,
 				8B66D0A72C1803DB00BB6573 /* Nodes */,
+				E4FDDE1A2C231772001EC9F6 /* Sounds */,
+				E4FDDE212C23C79D001EC9F6 /* Fonts */,
 				8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */,
 			);
 			path = ForStayingAlive;
@@ -206,6 +218,7 @@
 			children = (
 				E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */,
 				E42E8E742C11729300FF73F4 /* Constants.swift */,
+				E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */,
 				E437B2092C19FF0500D6E6A8 /* Extensions.swift */,
 			);
 			path = Supports;
@@ -231,6 +244,23 @@
 				E437B20F2C1D613A00D6E6A8 /* MedkitButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		E4FDDE1A2C231772001EC9F6 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E4FDDE1D2C2319F4001EC9F6 /* the-hired.m4a */,
+				E4FDDE1F2C231A84001EC9F6 /* helicopter.m4a */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		E4FDDE212C23C79D001EC9F6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E4FDDE222C23C7AF001EC9F6 /* NicoClean-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,9 +367,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FDDE202C231A84001EC9F6 /* helicopter.m4a in Resources */,
+				E4FDDE232C23C7AF001EC9F6 /* NicoClean-Regular.otf in Resources */,
 				8B4DB2082C0DB77D0055AB7A /* Base in Resources */,
 				8B4DB20A2C0DB77E0055AB7A /* Assets.xcassets in Resources */,
 				8B4DB20D2C0DB77E0055AB7A /* Base in Resources */,
+				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
+				E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
@@ -562,6 +596,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -591,6 +626,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

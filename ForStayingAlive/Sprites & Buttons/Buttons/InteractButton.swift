@@ -11,8 +11,8 @@ public class InteractButton : SKSpriteNode {
 	private var medkitButton: MedkitButton!
 	
 	public static func newInstance() -> InteractButton {
-		let interactButton = InteractButton(imageNamed: "chest")
-		interactButton.size = CGSize(width: interactButton.size.width / 1.5, height: interactButton.size.height / 1.5)
+		let interactButton = InteractButton(imageNamed: "loot-medkit-button")
+		interactButton.size = CGSize(width: interactButton.size.width / 2.5, height: interactButton.size.height / 2.5)
 		interactButton.isUserInteractionEnabled = true
 		interactButton.isHidden = true
 		

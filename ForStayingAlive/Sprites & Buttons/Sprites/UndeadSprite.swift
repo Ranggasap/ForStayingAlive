@@ -27,7 +27,7 @@ public class UndeadSprite : SKSpriteNode {
 		undeadSprite.size = CGSize(width: undeadSprite.size.width * 2, height: undeadSprite.size.height * 2)
 		undeadSprite.zPosition = 3
 		
-		undeadSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: undeadSprite.size.width / 2, height: undeadSprite.size.height / 2))
+		undeadSprite.physicsBody = SKPhysicsBody(circleOfRadius: undeadSprite.size.width / 5)
 		undeadSprite.physicsBody?.affectedByGravity = false
 		undeadSprite.physicsBody?.allowsRotation = false
 		undeadSprite.physicsBody?.pinned = false

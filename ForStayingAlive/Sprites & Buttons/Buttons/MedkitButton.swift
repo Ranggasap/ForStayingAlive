@@ -9,11 +9,11 @@ import SpriteKit
 
 public class MedkitButton : SKSpriteNode {
 	private var numberOfMedkit = 0
-	private var medkitCountLabel: SKLabelNode!
+	private var medkitCountLabel = SKLabelNode(fontNamed: "NicoClean-Regular")
 	
 	public static func newInstance() -> MedkitButton {
-		let medkitButton = MedkitButton(imageNamed: "potion")
-		medkitButton.size = CGSize(width: medkitButton.size.width, height: medkitButton.size.height)
+		let medkitButton = MedkitButton(imageNamed: "medkit")
+		medkitButton.size = CGSize(width: medkitButton.size.width / 2, height: medkitButton.size.height / 2)
 		medkitButton.isUserInteractionEnabled = true
 		medkitButton.numberOfMedkitLabel()
 		
@@ -21,10 +21,10 @@ public class MedkitButton : SKSpriteNode {
 	}
 	
 	private func numberOfMedkitLabel() {
-		medkitCountLabel = SKLabelNode(text: "x \(numberOfMedkit)")
+		medkitCountLabel.text = "\(numberOfMedkit)"
 		medkitCountLabel.fontColor = .white
-		medkitCountLabel.fontSize = 30
-		medkitCountLabel.position = CGPoint(x: size.width + 10, y: size.height / 2 - 30)
+		medkitCountLabel.fontSize = 14
+		medkitCountLabel.position = CGPoint(x: size.width / 2, y: size.height / 2 - 45)
 		addChild(medkitCountLabel)
 	}
 	
@@ -39,7 +39,7 @@ public class MedkitButton : SKSpriteNode {
 			numberOfMedkit = 3
 		}
 		
-		medkitCountLabel.text = "x \(numberOfMedkit)"
+		medkitCountLabel.text = "\(numberOfMedkit)"
 		checkMedkitAvailability()
 	}
 	
@@ -50,7 +50,7 @@ public class MedkitButton : SKSpriteNode {
 			numberOfMedkit = 0
 		}
 		
-		medkitCountLabel.text = "x \(numberOfMedkit)"
+		medkitCountLabel.text = "\(numberOfMedkit)"
 		checkMedkitAvailability()
 	}
 	

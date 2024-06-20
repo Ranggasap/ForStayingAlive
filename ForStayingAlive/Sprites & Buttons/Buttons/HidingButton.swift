@@ -12,7 +12,7 @@ public class HidingButton : SKSpriteNode {
 	
 	public static func newInstance() -> HidingButton {
 		let hidingButton = HidingButton(imageNamed: "hide-button")
-		hidingButton.size = CGSize(width: hidingButton.size.width, height: hidingButton.size.height)
+		hidingButton.size = CGSize(width: hidingButton.size.width / 2.5, height: hidingButton.size.height / 2.5)
 		hidingButton.isUserInteractionEnabled = true
 		hidingButton.isHidden = true
 		

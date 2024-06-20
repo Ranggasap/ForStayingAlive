@@ -1,3 +1,10 @@
+//
+//  ProgressBarNode.swift
+//  ForStayingAlive
+//
+//  Created by Rangga Saputra on 11/06/24.
+//
+
 import SpriteKit
 import GameplayKit
 
@@ -38,33 +45,16 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var minY: CGFloat = 0
 	private var maxY: CGFloat = 0
 	
-	var maskNode: SKShapeNode!
-	var darkOverlay: SKSpriteNode!
-	var cropNode: SKCropNode!
+	private var maskNode: SKShapeNode!
+	private var darkOverlay: SKSpriteNode!
+	private var cropNode: SKCropNode!
 	
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
 		
 		setupHeroCamera()
 		
-		testBackground = SKSpriteNode(imageNamed: "test_map")
-		testBackground.size = CGSize(width: testBackground.size.width, height: testBackground.size.height)
-		testBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-		testBackground.zPosition = 0
-		addChild(testBackground)
-		
-		testBoundary = SKSpriteNode(imageNamed: "boundary")
-		testBoundary.size = CGSize(width: testBoundary.size.width, height: testBoundary.size.height)
-		testBoundary.position = CGPoint(x: frame.midX, y: frame.midY)
-		testBoundary.zPosition = -1
-		
-		let boundaryTexture = testBoundary.texture
-		testBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: testBoundary.size)
-		testBoundary.physicsBody?.affectedByGravity = false
-		testBoundary.physicsBody?.isDynamic = false
-		addChild(testBoundary)
-		
-//		addBackground()
+		addBackground()
 		addJoystick()
 		addRunningButton()
 		addInteractButton()
@@ -72,12 +62,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addMedkitButton()
 		addStatusBar()
 		
+		addVisibilityEffect()
+		addBackgroundMusic()
+		
 		spawnHero()
 		spawnUndead()
 		spawnChest()
 		spawnLocker()
-		
-		addLightingEffect()
 		
 		updateMedkitButtonState()
 		
@@ -104,22 +95,28 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 		
-		//		minX = frame.minX + 70
-		//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
-		//		minY = frame.minY + 50
-		//		maxY = frame.midY + 70
+//		minX = frame.minX + 70
+//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
+//		minY = frame.minY + 50
+//		maxY = frame.midY + 70
 	}
 	
-	func addLightingEffect() {
-		// Create dark overlay
+	func addBackgroundMusic() {
+		let backgroundTrack = SoundManager.sharedInstance.startPlaying(soundName: "the-hired", fileExtension: "m4a")
+		backgroundTrack?.volume = 0.8
+		
+		let helicopterTrack = SoundManager.sharedInstance.startPlaying(soundName: "helicopter", fileExtension: "m4a")
+		helicopterTrack?.volume = 0.6
+	}
+	
+	func addVisibilityEffect() {
 		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2))
 		darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-		darkOverlay.alpha = 0.9 // Adjust as needed
+		darkOverlay.alpha = 0.9
 		darkOverlay.zPosition = 5
 		darkOverlay.isUserInteractionEnabled = false
 		
-		// Create circular mask
-		let maskRadius: CGFloat = 100.0 // Adjust the radius as needed
+		let maskRadius: CGFloat = 90.0
 		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
 		
 		let maskPath = CGMutablePath()
@@ -132,31 +129,31 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		maskNode.lineWidth = 0
 		maskNode.isUserInteractionEnabled = false
 		
-		// Create crop node
 		cropNode = SKCropNode()
 		cropNode.maskNode = maskNode
-		
-		// Add dark overlay to crop node
 		cropNode.addChild(darkOverlay)
-		cropNode.zPosition = 4 // Ensure it's above other nodes
+		cropNode.zPosition = 4
 		cropNode.isUserInteractionEnabled = false
-		
-		// Add crop node to scene
 		addChild(cropNode)
 	}
 	
 	func addBackground() {
-		backgroundOne = SKSpriteNode(imageNamed: "background")
-		backgroundOne.size = self.size
-		backgroundOne.position = CGPoint(x: frame.midX, y: frame.midY)
-		backgroundOne.zPosition = -1
-		addChild(backgroundOne)
+		testBackground = SKSpriteNode(imageNamed: "test_map")
+		testBackground.size = CGSize(width: testBackground.size.width, height: testBackground.size.height)
+		testBackground.position = CGPoint(x: frame.midX, y: frame.midY)
+		testBackground.zPosition = 0
+		addChild(testBackground)
 		
-		backgroundTwo = SKSpriteNode(imageNamed: "background")
-		backgroundTwo.size = self.size
-		backgroundTwo.position = CGPoint(x: backgroundOne.position.x + backgroundTwo.frame.width / 2, y: frame.midY)
-		backgroundTwo.zPosition = -1
-		addChild(backgroundTwo)
+		testBoundary = SKSpriteNode(imageNamed: "boundary")
+		testBoundary.size = CGSize(width: testBoundary.size.width, height: testBoundary.size.height)
+		testBoundary.position = CGPoint(x: frame.midX, y: frame.midY)
+		testBoundary.zPosition = -1
+		
+		let boundaryTexture = testBoundary.texture
+		testBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: testBoundary.size)
+		testBoundary.physicsBody?.affectedByGravity = false
+		testBoundary.physicsBody?.isDynamic = false
+		addChild(testBoundary)
 	}
 	
 	func addJoystick() {
@@ -187,20 +184,20 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func addInteractButton() {
-		interactButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 170)
+		interactButton.position = CGPoint(x: runningButton.position.x, y: runningButton.position.y + 80)
 		interactButton.zPosition = 10
 		interactButton.setMedkitButton(medkitButton)
 		heroCamera.addChild(interactButton)
 	}
 	
 	func addHidingButton() {
-		hidingButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 170)
+		hidingButton.position = CGPoint(x: runningButton.position.x, y: runningButton.position.y + 80)
 		hidingButton.zPosition = 10
 		heroCamera.addChild(hidingButton)
 	}
 	
 	func addMedkitButton() {
-		medkitButton.position = CGPoint(x: size.width / 2 - 135, y: size.height / 2 - 35)
+		medkitButton.position = CGPoint(x: runningButton.position.x - 90, y: runningButton.position.y + 10)
 		medkitButton.zPosition = 10
 		heroCamera.addChild(medkitButton)
 	}
@@ -243,14 +240,14 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func spawnLocker() {
-		locker.position = CGPoint(x: frame.minX + 150, y: frame.midY + 50)
+		locker.position = CGPoint(x: frame.minX + 150, y: frame.midY + 30)
 		addChild(locker)
 	}
 	
-	func clampPosition(of node: SKNode) {
-		node.position.x = min(maxX, max(minX, node.position.x))
-		node.position.y = min(maxY, max(minY, node.position.y))
-	}
+//	func clampPosition(of node: SKNode) {
+//		node.position.x = min(maxX, max(minX, node.position.x))
+//		node.position.y = min(maxY, max(minY, node.position.y))
+//	}
 	
 	func startHealthReductionTimer() {
 		heroHealthReductionTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reduceHeroHealth), userInfo: nil, repeats: true)
@@ -414,12 +411,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let dt = currentTime - self.lastUpdateTime
 		self.lastUpdateTime = currentTime
 		
-		//		clampPosition(of: hero)
-		//		clampPosition(of: undead)
-		
-		//		let cameraX = max(hero.position.x, size.width / 2)
-		//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
-		//		heroCamera.position.x = min(maxCameraX, cameraX)
+//		clampPosition(of: hero)
+//		clampPosition(of: undead)
+
+//		let cameraX = max(hero.position.x, size.width / 2)
+//		let maxCameraX = backgroundOne.position.x + backgroundTwo.frame.width / 2
+//		heroCamera.position.x = min(maxCameraX, cameraX)
 		
 		heroCamera.position = hero.position
 		
@@ -430,7 +427,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		joystick.isHidden = hero.isHidden
 		
-		runningButton.isUserInteractionEnabled = !heroIsIdleOrHidden /*&& heroIsMoving*/
+		runningButton.isUserInteractionEnabled = !heroIsIdleOrHidden
 		
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
 		undead.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
@@ -440,7 +437,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		updateMedkitButtonState()
 		
-		// Update maskNode position to follow the hero
 		let maskSize = CGSize(width: testBackground.size.width * 2, height: testBackground.size.height * 2)
 		maskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
 	}
