@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import Combine
 
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
@@ -41,8 +42,25 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     private var thrillerBackSoundEffect = Sound(fileName: "the-hired-thriller-drama-mystery-background-111015", fileType: "mp3")
     private var helicopterSoundEffect = Sound(fileName: "helicopter-129052", fileType: "mp3")
-	
+    
+    private var countdownViewModel = CountdownTimerViewModel()
+    private var cancellables: Set<AnyCancellable> = []
+    
+    private var countdownLabel: SKLabelNode!
+    
 	override func didMove(to view: SKView) {
+        countdownLabel = SKLabelNode(text: "--:--")
+        countdownLabel.fontSize = 45
+        countdownLabel.fontName = "Helvetica-Bold"
+        countdownLabel.position = CGPoint(x: heroCamera.position.x, y: heroCamera.position.y + 125)
+        heroCamera.addChild(countdownLabel)
+        
+        countdownViewModel.$displayTime.receive(on: RunLoop.main).sink{ [weak self] newTime in
+            self?.countdownLabel.text = newTime
+        }.store(in: &cancellables)
+        
+        countdownViewModel.startTimer()
+        
         SoundManager.shared.playSound(thrillerBackSoundEffect, withIdentifier: "backSoundEffect")
         SoundManager.shared.setVolume(for: "backSoundEffect", volume: 0.5)
         SoundManager.shared.playSound(helicopterSoundEffect, withIdentifier: "helicopterSoundEffect")
@@ -82,6 +100,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 //		minY = frame.minY + 50
 //		maxY = frame.midY + 70
         
+      
         nextSceneNode.position = CGPoint(x: frame.midX - 50, y: frame.midY)
         addChild(nextSceneNode)
 	}
@@ -340,7 +359,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     healthBar.update(datetime: dt, progress: hero.getStatus().0 / 100)
     staminaBar.update(datetime: dt, progress: hero.getStatus().1 / 100)
         
-
 //		clampPosition(of: hero)
 //		clampPosition(of: undead)
 		

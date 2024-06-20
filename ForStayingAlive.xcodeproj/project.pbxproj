@@ -30,6 +30,8 @@
 		8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */; };
 		8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */; };
 		8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */; };
+		8B96FDB12C22DC1C00E2EE7D /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96FDB02C22DC1C00E2EE7D /* CountdownTimer.swift */; };
+		8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */; };
 		8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */; };
 		E42E8E752C11729300FF73F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E742C11729300FF73F4 /* Constants.swift */; };
 		E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E762C118B1900FF73F4 /* HeroSprite.swift */; };
@@ -87,6 +89,8 @@
 		8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zmb2_dead-92305.mp3"; sourceTree = "<group>"; };
 		8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zombie-screaming-207590.mp3"; sourceTree = "<group>"; };
 		8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mutated-zombie-sound-211722.mp3"; sourceTree = "<group>"; };
+		8B96FDB02C22DC1C00E2EE7D /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerViewModel.swift; sourceTree = "<group>"; };
 		8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		E42E8E742C11729300FF73F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E42E8E762C118B1900FF73F4 /* HeroSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSprite.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			children = (
 				8B92D36B2C20145C00F6B2D2 /* SFX */,
 				E42E8E6E2C11711E00FF73F4 /* Mains */,
+				8B96FDB22C22E93900E2EE7D /* ViewModels */,
 				8B92D3682C20133900F6B2D2 /* Models */,
 				E42E8E6B2C1170EE00FF73F4 /* Delegates */,
 				E42E8E732C11728000FF73F4 /* Supports */,
@@ -209,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				8B92D3692C20134700F6B2D2 /* Sound.swift */,
+				8B96FDB02C22DC1C00E2EE7D /* CountdownTimer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +231,14 @@
 				8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */,
 			);
 			path = SFX;
+			sourceTree = "<group>";
+		};
+		8B96FDB22C22E93900E2EE7D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E42E8E6B2C1170EE00FF73F4 /* Delegates */ = {
@@ -421,11 +435,13 @@
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
 				8B92D3672C20111900F6B2D2 /* SoundManager.swift in Sources */,
+				8B96FDB12C22DC1C00E2EE7D /* CountdownTimer.swift in Sources */,
 				8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
+				8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */,
 				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,
