@@ -12,11 +12,16 @@ import Combine
 
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let hero = HeroSprite.newInstance()
-	private let undead = UndeadSprite.newInstance()
+	
+	private let undeadOne = UndeadSprite.newInstance()
+	private let undeadTwo = UndeadSprite.newInstance()
+	
 	private let chestOne = ChestSprite.newInstance()
 	private let chestTwo = ChestSprite.newInstance()
+	
 	private let lockerOne = LockerSprite.newInstance()
 	private let lockerTwo = LockerSprite.newInstance()
+	
 	private let nextFloor = NextFloorSprite.newInstance()
 	
 	private let runningButton = RunningButton.newInstance()
@@ -82,12 +87,23 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		updateMedkitButtonState()
 		
-		undead.onHeroEnterAttackRange = { [weak self] in
-			self?.startReducingHeroHealth()
+		undeadOne.onHeroEnterAttackRange = { [weak self] in
+			guard let self = self else { return }
+			self.startReducingHeroHealth()
 		}
-		undead.onHeroExitAttackRange = { [weak self] in
-			self?.stopReducingHeroHealth()
+		undeadOne.onHeroExitAttackRange = { [weak self] in
+			guard let self = self else { return }
+			self.stopReducingHeroHealth()
 		}
+		
+//		undeadTwo.onHeroEnterAttackRange = { [weak self] in
+//			guard let self = self else { return }
+//			self.startReducingHeroHealth()
+//		}
+//		undeadTwo.onHeroExitAttackRange = { [weak self] in
+//			guard let self = self else { return }
+//			self.stopReducingHeroHealth()
+//		}
 		
 		runningButton.onPress = { [weak self] in
 			guard let self = self else { return }
@@ -276,9 +292,15 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func spawnUndead() {
-		undead.position = CGPoint(x: frame.midX + 300, y: frame.midY)
-		undead.setUndeadSpawnPosition()
-		addChild(undead)
+		undeadOne.position = CGPoint(x: frame.midX + 300, y: frame.midY)
+		undeadOne.name = "undead-one"
+		undeadOne.setUndeadSpawnPosition()
+		addChild(undeadOne)
+		
+		undeadTwo.position = CGPoint(x: frame.maxX + 200, y: frame.midY)
+		undeadTwo.name = "undead-two"
+		undeadTwo.setUndeadSpawnPosition()
+		addChild(undeadTwo)
 	}
 	
 	func spawnChest() {
@@ -400,7 +422,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		if contact.bodyA.categoryBitMask == HeroCategory || contact.bodyB.categoryBitMask == HeroCategory {
 			if (contact.bodyA.categoryBitMask == UndeadCategory || contact.bodyB.categoryBitMask == UndeadCategory) {
-				undead.physicsBody?.pinned = false
+				if contact.bodyA.node?.name == "undead-one" || contact.bodyB.node?.name == "undead-one" {
+					undeadOne.physicsBody?.pinned = false
+				} else if contact.bodyA.node?.name == "undead-two" || contact.bodyB.node?.name == "undead-two" {
+					undeadTwo.physicsBody?.pinned = false
+				}
 			}
 		}
 	}
@@ -450,7 +476,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		switch otherBody.categoryBitMask {
 			case UndeadCategory:
-				undead.physicsBody?.pinned = true
+				if otherBody.node?.name == "undead-one" {
+					undeadOne.physicsBody?.pinned = true
+				} else if otherBody.node?.name == "undead-two" {
+					undeadTwo.physicsBody?.pinned = true
+				}
 			case NextFloorCategory:
 				let transition = SKTransition.fade(withDuration: 1.0)
 				let evacuationScene = EvacuationScene(size: size)
@@ -470,14 +500,14 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			SFXManager.shared.playSFX(name: "Helicopter2Minutes", type: "wav")
 		}
 		
-//		if countdownManager?.getTimer().remainingTime == 3 {
-//			SFXManager.shared.playSFX(name: "HelicopterTakeOff", type: "wav")
-//			subtitleManager.updateSubtitle("The helicopter is taking off now", duration: 3.25)
-//			subtitleManager.updateSubtitle("For survivors who are not evacuated", duration: 2)
-//			subtitleManager.updateSubtitle("Await government's radio signals", duration: 1.3)
-//			subtitleManager.updateSubtitle("For the next evacuation spot", duration: 1.5)
-//			subtitleManager.updateSubtitle("Take care of yourselves", duration: 1.5)
-//		}
+		if countdownManager?.getTimer().remainingTime == 1 {
+			SFXManager.shared.playSFX(name: "HelicopterTakeOff", type: "wav")
+			subtitleManager.updateSubtitle("The helicopter is taking off now", duration: 3.25)
+			subtitleManager.updateSubtitle("For survivors who are not evacuated", duration: 2)
+			subtitleManager.updateSubtitle("Await government's radio signals", duration: 1.3)
+			subtitleManager.updateSubtitle("For the next evacuation spot", duration: 1.5)
+			subtitleManager.updateSubtitle("Take care of yourselves", duration: 1.5)
+		}
 	}
 	
 	override func update(_ currentTime: TimeInterval) {
@@ -500,7 +530,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		runningButton.isUserInteractionEnabled = !heroIsIdleOrHidden
 		
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
-		undead.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
+		undeadOne.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
+		undeadTwo.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
 		
 		healthBar.update(progress: hero.getHeroHealth() / 100.0)
 		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
