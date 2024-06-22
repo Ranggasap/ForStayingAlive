@@ -41,6 +41,11 @@ public class MedkitButton : SKSpriteNode {
 		
 		medkitCountLabel.text = "\(numberOfMedkit)"
 		checkMedkitAvailability()
+		
+		let medkitScaleUp = SKAction.scale(to: 1.1, duration: 0.2)
+		let medkitScaleDown = SKAction.scale(to: 1.0, duration: 0.2)
+		let medkitScaleSequence = SKAction.sequence([medkitScaleUp, medkitScaleDown])
+		run(medkitScaleSequence)
 	}
 	
 	public func reduceMedkitCount() {
@@ -49,6 +54,11 @@ public class MedkitButton : SKSpriteNode {
 		if numberOfMedkit < 0 {
 			numberOfMedkit = 0
 		}
+		
+		let medkitScaleUp = SKAction.scale(to: 1.0, duration: 0.2)
+		let medkitScaleDown = SKAction.scale(to: 0.9, duration: 0.2)
+		let medkitScaleSequence = SKAction.sequence([medkitScaleDown, medkitScaleUp])
+		run(medkitScaleSequence)
 		
 		medkitCountLabel.text = "\(numberOfMedkit)"
 		checkMedkitAvailability()

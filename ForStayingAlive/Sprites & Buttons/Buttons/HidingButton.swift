@@ -28,7 +28,17 @@ public class HidingButton : SKSpriteNode {
 		}
 	}
 	
-	override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+	public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		toggleHidingState()
+	}
+	
+	public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let buttonReleased = SKAction.scale(to: 1.0, duration: 0.2)
+		self.run(buttonReleased)
+	}
+	
+	public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let buttonReleased = SKAction.scale(to: 1.0, duration: 0.2)
+		self.run(buttonReleased)
 	}
 }

@@ -25,5 +25,17 @@ public class InteractButton : SKSpriteNode {
 	
 	public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		medkitButton.addMedkitCount()
+		let buttonPressed = SKAction.scale(to: 0.9, duration: 0.2)
+		self.run(buttonPressed)
+	}
+	
+	public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let buttonReleased = SKAction.scale(to: 1.0, duration: 0.2)
+		self.run(buttonReleased)
+	}
+	
+	public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let buttonReleased = SKAction.scale(to: 1.0, duration: 0.2)
+		self.run(buttonReleased)
 	}
 }

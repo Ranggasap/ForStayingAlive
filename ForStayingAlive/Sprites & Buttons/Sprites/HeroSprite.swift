@@ -54,7 +54,7 @@ public class HeroSprite : SKSpriteNode {
 		physicsBody.affectedByGravity = false
 		physicsBody.allowsRotation = false
 		physicsBody.categoryBitMask = HeroCategory
-		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory
+		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory
 		self.physicsBody = physicsBody
 	}
 	
@@ -129,8 +129,13 @@ public class HeroSprite : SKSpriteNode {
 	public func heroHealthReduced(health: CGFloat) {
 		self.heroHealth -= health
 		
-		if self.heroHealth < 0 {
-			self.heroHealth = 0
+		if self.heroHealth == 0 {
+			if let scene = self.scene{
+				let deathScene = DeathScene(size: scene.size)
+				deathScene.scaleMode = .aspectFit
+				let transition = SKTransition.fade(withDuration: 1.0)
+				scene.view?.presentScene(deathScene, transition: transition)
+			}
 		}
 	}
 	
