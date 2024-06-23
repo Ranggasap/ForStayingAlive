@@ -29,11 +29,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private let interactButton = InteractButton.newInstance()
 	private let hidingButton = HidingButton.newInstance()
 	
-	private let healthBar = ProgressBarNode(color: .red, size: CGSize(width: 100, height: 10))
-	private let staminaBar = ProgressBarNode(color: .green, size: CGSize(width: 100, height: 10))
+	private let healthBar = ProgressBarNode(color: .systemRed, size: CGSize(width: 100, height: 10))
+	private let staminaBar = ProgressBarNode(color: .systemGreen, size: CGSize(width: 100, height: 10))
 	
-	private var heroIsAttacked = false
 	private var heroHealthReductionTimer: Timer?
+	private var undeadsInRange: Set<UndeadSprite> = []
 	
 	private var heroStaminaReductionTimer: Timer?
 	private var heroStaminaRecoveryTimer: Timer?
@@ -84,42 +84,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		spawnChest()
 		spawnLocker()
 		spawnNextFloor()
-		
-		updateMedkitButtonState()
-		
-		undeadOne.onHeroEnterAttackRange = { [weak self] in
-			guard let self = self else { return }
-			self.startReducingHeroHealth()
-		}
-		undeadOne.onHeroExitAttackRange = { [weak self] in
-			guard let self = self else { return }
-			self.stopReducingHeroHealth()
-		}
-		
-//		undeadTwo.onHeroEnterAttackRange = { [weak self] in
-//			guard let self = self else { return }
-//			self.startReducingHeroHealth()
-//		}
-//		undeadTwo.onHeroExitAttackRange = { [weak self] in
-//			guard let self = self else { return }
-//			self.stopReducingHeroHealth()
-//		}
-		
-		runningButton.onPress = { [weak self] in
-			guard let self = self else { return }
-			if self.hero.getHeroStamina() > 0 {
-				self.startStaminaReductionTimer()
-				self.stopStaminaRecoveryTimer()
-			}
-		}
-		
-		runningButton.onRelease = { [weak self] in
-			guard let self = self else { return }
-			if self.heroStaminaRecoveryTimer == nil {
-				self.stopStaminaReductionTimer()
-				self.startStaminaRecoveryTimer()
-			}
-		}
 	}
 	
 	override func willMove(from view: SKView) {
@@ -175,11 +139,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	func addPrologue() {
 		subtitleManager = SubtitleManager(parentNode: heroCamera)
 		subtitleManager.setPosition(xPoint: 0, yPoint: -140)
-		subtitleManager.updateSubtitle("Attention all survivors", duration: 1.2)
+		subtitleManager.updateSubtitle("Attention all survivors", duration: 1.6)
 		subtitleManager.updateSubtitle("The helicopter takes off in 5 minutes", duration: 2.5)
-		subtitleManager.updateSubtitle("Get to the rooftop now", duration: 1.25)
+		subtitleManager.updateSubtitle("Get to the rooftop now", duration: 1.6)
 		subtitleManager.updateSubtitle("We repeat", duration: 0.75)
-		subtitleManager.updateSubtitle("Get to the rooftop now", duration: 1.5)
+		subtitleManager.updateSubtitle("Get to the rooftop now", duration: 1.6)
 		SFXManager.shared.playSFX(name: "HelicopterProlog", type: "m4a"){
 			self.countdownManager = CountdownManager(totalTime: 300)
 			
@@ -244,6 +208,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		runningButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 100)
 		runningButton.zPosition = 10
 		heroCamera.addChild(runningButton)
+		
+		runningButton.onPress = { [weak self] in
+			guard let self = self else { return }
+			if self.hero.getHeroStamina() > 0 {
+				self.startStaminaReductionTimer()
+				self.stopStaminaRecoveryTimer()
+			}
+		}
+		
+		runningButton.onRelease = { [weak self] in
+			guard let self = self else { return }
+			if self.heroStaminaRecoveryTimer == nil {
+				self.stopStaminaReductionTimer()
+				self.startStaminaRecoveryTimer()
+			}
+		}
 	}
 	
 	func addInteractButton() {
@@ -301,6 +281,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		undeadTwo.name = "undead-two"
 		undeadTwo.setUndeadSpawnPosition()
 		addChild(undeadTwo)
+		
+		undeadOne.onHeroEnterAttackRange = { [weak self] in
+			self?.heroEnteredUndeadRange(undead: self?.undeadOne)
+		}
+		
+		undeadOne.onHeroExitAttackRange = { [weak self] in
+			self?.heroExitedUndeadRange(undead: self?.undeadOne)
+		}
+		
+		undeadTwo.onHeroEnterAttackRange = { [weak self] in
+			self?.heroEnteredUndeadRange(undead: self?.undeadTwo)
+		}
+		
+		undeadTwo.onHeroExitAttackRange = { [weak self] in
+			self?.heroExitedUndeadRange(undead: self?.undeadTwo)
+		}
 	}
 	
 	func spawnChest() {
@@ -324,39 +320,36 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		addChild(nextFloor)
 	}
 	
-	func startHealthReductionTimer() {
-		heroHealthReductionTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(reduceHeroHealth), userInfo: nil, repeats: true)
+	func heroEnteredUndeadRange(undead: UndeadSprite?) {
+		guard let undead = undead else { return }
+		undeadsInRange.insert(undead)
+		startReducingHeroHealth()
 	}
 	
-	func stopHealthReductionTimer() {
-		heroHealthReductionTimer?.invalidate()
-		heroHealthReductionTimer = nil
-	}
-	
-	@objc func reduceHeroHealth() {
-		hero.heroHealthReduced(health: 10)
-		healthBar.update(progress: hero.getHeroHealth() / 100.0)
-		updateMedkitButtonState()
+	func heroExitedUndeadRange(undead: UndeadSprite?) {
+		guard let undead = undead else { return }
+		undeadsInRange.remove(undead)
+		stopReducingHeroHealth()
 	}
 	
 	func startReducingHeroHealth() {
-		if !heroIsAttacked {
-			heroIsAttacked = true
-			startHealthReductionTimer()
+		if heroHealthReductionTimer == nil && !undeadsInRange.isEmpty {
+			heroHealthReductionTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+				self?.hero.heroHealthReduced(health: 10)
+			}
 		}
 	}
 	
 	func stopReducingHeroHealth() {
-		if heroIsAttacked {
-			heroIsAttacked = false
-			stopHealthReductionTimer()
+		if undeadsInRange.isEmpty {
+			heroHealthReductionTimer?.invalidate()
+			heroHealthReductionTimer = nil
 		}
 	}
 	
 	func heroUseMedkit() {
 		hero.heroHealthIncreased(health: 20)
 		healthBar.update(progress: hero.getHeroHealth() / 100.0)
-		updateMedkitButtonState()
 	}
 	
 	func startStaminaReductionTimer() {
@@ -370,7 +363,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	@objc func reduceHeroStamina() {
 		hero.heroStaminaReduced(stamina: 2.0)
-		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
 	}
 	
 	private func startStaminaRecoveryTimer() {
@@ -383,8 +375,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	@objc private func recoverHeroStamina() {
-		hero.heroStaminaIncreased(stamina: 1.5)
-		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
+		hero.heroStaminaIncreased(stamina: 2.0)
 	}
 	
 	func didBegin(_ contact: SKPhysicsContact) {
@@ -478,7 +469,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			case UndeadCategory:
 				if otherBody.node?.name == "undead-one" {
 					undeadOne.physicsBody?.pinned = true
-				} else if otherBody.node?.name == "undead-two" {
+				}
+				
+				if otherBody.node?.name == "undead-two" {
 					undeadTwo.physicsBody?.pinned = true
 				}
 			case NextFloorCategory:
@@ -548,7 +541,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		}
 		
 		countdownManager?.updateTimer(dt: dt)
-		
 		countdownAnnouncement()
 	}
 }
