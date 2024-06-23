@@ -55,6 +55,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var countdownLabel: SKLabelNode!
 	
 	private var subtitleManager: SubtitleManager!
+	private var twoMinutesAnnouncementMade = false
+	private var takeOffAnnouncementMade = false
 	
 	private var maskNode: SKShapeNode!
 	private var darkOverlay: SKSpriteNode!
@@ -485,21 +487,25 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func countdownAnnouncement() {
-		if countdownManager?.getTimer().remainingTime == 120 {
-			subtitleManager.updateSubtitle("All survivors", duration: 2)
-			subtitleManager.updateSubtitle("Two minutes before liftoff", duration: 1.75)
-			subtitleManager.updateSubtitle("We repeat", duration: 0.75)
-			subtitleManager.updateSubtitle("Two minutes before liftoff", duration: 1.75)
-			SFXManager.shared.playSFX(name: "Helicopter2Minutes", type: "wav")
-		}
-		
-		if countdownManager?.getTimer().remainingTime == 1 {
-			SFXManager.shared.playSFX(name: "HelicopterTakeOff", type: "wav")
-			subtitleManager.updateSubtitle("The helicopter is taking off now", duration: 3.25)
-			subtitleManager.updateSubtitle("For survivors who are not evacuated", duration: 2)
-			subtitleManager.updateSubtitle("Await government's radio signals", duration: 1.3)
-			subtitleManager.updateSubtitle("For the next evacuation spot", duration: 1.5)
-			subtitleManager.updateSubtitle("Take care of yourselves", duration: 1.5)
+		if let remainingTime = countdownManager?.getTimer().remainingTime {
+			if remainingTime <= 120 && !twoMinutesAnnouncementMade {
+				subtitleManager.updateSubtitle("All survivors", duration: 2)
+				subtitleManager.updateSubtitle("Two minutes before liftoff", duration: 1.75)
+				subtitleManager.updateSubtitle("We repeat", duration: 0.75)
+				subtitleManager.updateSubtitle("Two minutes before liftoff", duration: 1.75)
+				SFXManager.shared.playSFX(name: "Helicopter2Minutes", type: "wav")
+				twoMinutesAnnouncementMade = true
+			}
+			
+			if remainingTime <= 1 && !takeOffAnnouncementMade {
+				SFXManager.shared.playSFX(name: "HelicopterTakeOff", type: "wav")
+				subtitleManager.updateSubtitle("The helicopter is taking off now", duration: 3.25)
+				subtitleManager.updateSubtitle("For survivors who are not evacuated", duration: 2)
+				subtitleManager.updateSubtitle("Await government's radio signals", duration: 1.3)
+				subtitleManager.updateSubtitle("For the next evacuation spot", duration: 1.5)
+				subtitleManager.updateSubtitle("Take care of yourselves", duration: 1.5)
+				takeOffAnnouncementMade = true
+			}
 		}
 	}
 	

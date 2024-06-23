@@ -14,7 +14,7 @@ public class RunningButton : SKSpriteNode {
 	var onRelease: (() -> Void)?
 	
 	public static func newInstance() -> RunningButton {
-		let runningButton = RunningButton(imageNamed: "run-button")
+		let runningButton = RunningButton(imageNamed: "hero-run-button")
 		runningButton.size = CGSize(width: runningButton.size.width / 2 + 20, height: runningButton.size.height / 2 + 20)
 		runningButton.isUserInteractionEnabled = true
 		

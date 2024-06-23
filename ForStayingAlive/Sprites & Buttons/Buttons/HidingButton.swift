@@ -11,8 +11,8 @@ public class HidingButton : SKSpriteNode {
 	private var isHeroHiding = false
 	
 	public static func newInstance() -> HidingButton {
-		let hidingButton = HidingButton(imageNamed: "hide-button")
-		hidingButton.size = CGSize(width: hidingButton.size.width / 2.5, height: hidingButton.size.height / 2.5)
+		let hidingButton = HidingButton(imageNamed: "hero-hide-button")
+		hidingButton.size = CGSize(width: hidingButton.size.width / 2, height: hidingButton.size.height / 2)
 		hidingButton.isUserInteractionEnabled = true
 		hidingButton.isHidden = true
 		
@@ -23,7 +23,7 @@ public class HidingButton : SKSpriteNode {
 		if let hero = parent?.parent?.childNode(withName: "Hero") as? HeroSprite {
 			isHeroHiding.toggle()
 			hero.isHidden = isHeroHiding
-			let hideButton = isHeroHiding ? "out-button" : "hide-button"
+			let hideButton = isHeroHiding ? "hero-out-button" : "hero-hide-button"
 			self.texture = SKTexture(imageNamed: hideButton)
 		}
 	}
