@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ED049972C28BD57008BFCB4 /* UndeadSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED049962C28BD57008BFCB4 /* UndeadSpawner.swift */; };
 		8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */; };
 		8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2042C0DB77D0055AB7A /* GameViewController.swift */; };
 		8B4DB2082C0DB77D0055AB7A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2072C0DB77D0055AB7A /* Base */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ED049962C28BD57008BFCB4 /* UndeadSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSpawner.swift; sourceTree = "<group>"; };
 		8B4DB1F92C0DB77D0055AB7A /* ForStayingAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForStayingAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B4DB2042C0DB77D0055AB7A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		8B690C2B2C115F760062B64A /* Sprites & Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				0ED049962C28BD57008BFCB4 /* UndeadSpawner.swift */,
 				E437B20D2C1D606000D6E6A8 /* Sprites */,
 				E437B20E2C1D606900D6E6A8 /* Buttons */,
 			);
@@ -447,6 +450,7 @@
 				E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				E451A5C82C2476180061A7DC /* CountdownTimer.swift in Sources */,
+				0ED049972C28BD57008BFCB4 /* UndeadSpawner.swift in Sources */,
 				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
@@ -644,7 +648,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 749DSANFYP;
+				DEVELOPMENT_TEAM = 56MX8FP3GC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
@@ -676,7 +680,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 749DSANFYP;
+				DEVELOPMENT_TEAM = 56MX8FP3GC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
