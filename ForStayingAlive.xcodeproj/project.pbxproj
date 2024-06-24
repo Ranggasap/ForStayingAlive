@@ -19,9 +19,7 @@
 		8B4DB2232C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */; };
 		8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */; };
 		8B92D36A2C20134700F6B2D2 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92D3692C20134700F6B2D2 /* Sound.swift */; };
-		8B92D36D2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D36C2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 */; };
 		8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */; };
-		8B92D3752C20148000F6B2D2 /* helicopter-129052.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D36F2C20148000F6B2D2 /* helicopter-129052.mp3 */; };
 		8B92D3762C20148000F6B2D2 /* zombie-attack-6419.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */; };
 		8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */; };
 		8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */; };
@@ -88,9 +86,7 @@
 		8B4DB2222C0DB77F0055AB7A /* ForStayingAliveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForStayingAliveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarNode.swift; sourceTree = "<group>"; };
 		8B92D3692C20134700F6B2D2 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
-		8B92D36C2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-hired-thriller-drama-mystery-background-111015.mp3"; sourceTree = "<group>"; };
 		8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "indoor-footsteps-6385.mp3"; sourceTree = "<group>"; };
-		8B92D36F2C20148000F6B2D2 /* helicopter-129052.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "helicopter-129052.mp3"; sourceTree = "<group>"; };
 		8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zombie-attack-6419.mp3"; sourceTree = "<group>"; };
 		8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zmb2_dead-92305.mp3"; sourceTree = "<group>"; };
 		8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zombie-screaming-207590.mp3"; sourceTree = "<group>"; };
@@ -238,8 +234,6 @@
 		8B92D36B2C20145C00F6B2D2 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
-				8B92D36C2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 */,
-				8B92D36F2C20148000F6B2D2 /* helicopter-129052.mp3 */,
 				8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */,
 				8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */,
 				8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */,
@@ -467,7 +461,6 @@
 				E4FDDE202C231A84001EC9F6 /* helicopter.m4a in Resources */,
 				E4FDDE232C23C7AF001EC9F6 /* NicoClean-Regular.otf in Resources */,
 				8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */,
-				8B92D36D2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 in Resources */,
 				8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */,
 				E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */,
 				E451A5D52C256FD40061A7DC /* Helicopter2Minutes.wav in Resources */,
@@ -478,7 +471,6 @@
 				8B4DB20D2C0DB77E0055AB7A /* Base in Resources */,
 				E451A5D62C256FD40061A7DC /* HelicopterProlog.m4a in Resources */,
 				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
-				8B92D3752C20148000F6B2D2 /* helicopter-129052.mp3 in Resources */,
 				8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

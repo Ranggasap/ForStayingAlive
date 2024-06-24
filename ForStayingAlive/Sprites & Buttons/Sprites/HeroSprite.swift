@@ -11,6 +11,7 @@ public class HeroSprite : SKSpriteNode {
 	private let heroIdleKey = "hero_idle"
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
+	private let heroDyingKey = "hero_dying"
 	
 	private var heroHealth : CGFloat = 100
 	private var heroStamina : CGFloat = 100
@@ -77,6 +78,10 @@ public class HeroSprite : SKSpriteNode {
 		SKTexture(imageNamed: "player-hero-run\(i)")
 	}
 	
+	private let dyingFrames: [SKTexture] = (0...3).map { i in
+		SKTexture(imageNamed: "player-hero-dying\(i)")
+	}
+	
 	public func heroIdleAnimation() {
 		removeAction(forKey: heroRunningKey)
 		removeAction(forKey: heroWalkingKey)
@@ -104,6 +109,16 @@ public class HeroSprite : SKSpriteNode {
 			let runningAnimation = SKAction.repeatForever(
 				SKAction.animate(with: runningFrames, timePerFrame: 0.1))
 			run(runningAnimation, withKey: heroRunningKey)
+		}
+	}
+	
+	public func heroDyingAnimation() {
+		removeAction(forKey: heroIdleKey)
+		removeAction(forKey: heroWalkingKey)
+		removeAction(forKey: heroRunningKey)
+		if action(forKey: heroDyingKey) == nil {
+			let dyingAnimation = SKAction.animate(with: dyingFrames, timePerFrame: 0.2)
+			run(dyingAnimation, withKey: heroDyingKey)
 		}
 	}
 	

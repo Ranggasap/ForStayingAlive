@@ -42,7 +42,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var joystick: AnalogJoystick!
     
     private var nextSceneNode = NextSceneNode(size: CGSize(width: 50, height: 50))
-	
 		
 	private var hospitalGround: SKSpriteNode!
 	private var hospitalBoundary: SKSpriteNode!
@@ -57,7 +56,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	private var darkOverlay: SKSpriteNode!
 	private var cropNode: SKCropNode!
 
-    
     private var countdownViewModel = CountdownTimerViewModel()
     private var countdownManager: CountdownManager?
     
@@ -69,9 +67,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     private var helicopterTrack: AVAudioPlayer?
     
 	override func didMove(to view: SKView) {
-        
 		self.physicsWorld.contactDelegate = self
-        
 
 		setupHeroCamera()
 		
@@ -446,24 +442,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 	}
-    
-    func heroEndCollisionHandler(contact: SKPhysicsContact){
-        var otherBody: SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask == HeroCategory{
-            otherBody = contact.bodyB
-        } else {
-            otherBody = contact.bodyA
-        }
-        
-        switch otherBody.categoryBitMask{
-        case LockerCategory:
-            print("Hero run away locker")
-        default:
-            print("Hero doesn't get hit with anything")
-        }
-    }
-    
 	
 	func handleChestCollision(contact: SKPhysicsContact) {
 		var otherBody: SKPhysicsBody
