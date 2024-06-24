@@ -143,7 +143,7 @@ open class AnalogJoystick: SKNode {
 	private(set) var data = AnalogJoystickData()
 	
 	// Speed scaling factor
-	var speedFactor: CGFloat = 0.2
+	var speedFactor: CGFloat = 0.175
 	
 	var disabled: Bool {
 		get {

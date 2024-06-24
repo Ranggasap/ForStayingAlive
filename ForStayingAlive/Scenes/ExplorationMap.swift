@@ -112,7 +112,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		darkOverlay.zPosition = 5
 		darkOverlay.isUserInteractionEnabled = false
 		
-		let maskRadius: CGFloat = 80.0
+		let maskRadius: CGFloat = 90.0
 		let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
 		
 		let maskPath = CGMutablePath()
@@ -188,7 +188,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func addJoystick() {
-		let joystickDiameter: CGFloat = min(size.width, size.height) * 0.2
+		let joystickDiameter: CGFloat = min(size.width, size.height) * 0.25
 		
 		let substrate = AnalogJoystickSubstrate(diameter: joystickDiameter, borderColor: .gray, fillColor: .white)
 		substrate.borderWidth = 10.0
@@ -196,7 +196,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		let stick = AnalogJoystickStick(diameter: joystickDiameter * 0.6, borderColor: .gray, fillColor: .gray)
 		
 		joystick = AnalogJoystick(substrate: substrate, stick: stick)
-		joystick.position = CGPoint(x: -size.width / 2 + 150, y: -size.height / 2 + 100)
+		joystick.position = CGPoint(x: -size.width / 2 + 125, y: -size.height / 2 + 90)
 		joystick.zPosition = 10
 		
 		heroCamera.addChild(joystick)
@@ -335,7 +335,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func spawnNextFloor() {
-		nextSceneNode.position = CGPoint(x: frame.midX, y: frame.midY - 400)
+		nextSceneNode.position = CGPoint(x: frame.midX - 75, y: frame.midY - 550)
 		addChild(nextSceneNode)
 	}
 	
