@@ -18,6 +18,57 @@
 		8B66D0A62C17FF6200BB6573 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */; };
 		8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */; };
 		8B66D0AB2C18303D00BB6573 /* HideButtonSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */; };
+		C165CA662C2939080072E9AB /* 1_Generic_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA322C2939080072E9AB /* 1_Generic_32x32.png */; };
+		C165CA672C2939080072E9AB /* 2_LivingRoom_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA342C2939080072E9AB /* 2_LivingRoom_32x32.png */; };
+		C165CA682C2939080072E9AB /* 3_Bathroom_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA362C2939080072E9AB /* 3_Bathroom_32x32.png */; };
+		C165CA692C2939080072E9AB /* 4_Bedroom_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA382C2939080072E9AB /* 4_Bedroom_32x32.png */; };
+		C165CA6A2C2939080072E9AB /* 5_Classroom_and_library_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA3A2C2939080072E9AB /* 5_Classroom_and_library_32x32.png */; };
+		C165CA6B2C2939080072E9AB /* 6_Music_and_sport_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA3C2C2939080072E9AB /* 6_Music_and_sport_32x32.png */; };
+		C165CA6C2C2939080072E9AB /* 7_Art_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA3D2C2939080072E9AB /* 7_Art_32x32.png */; };
+		C165CA6D2C2939080072E9AB /* 8_Gym_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA3E2C2939080072E9AB /* 8_Gym_32x32.png */; };
+		C165CA6E2C2939080072E9AB /* 9_Fishing_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA3F2C2939080072E9AB /* 9_Fishing_32x32.png */; };
+		C165CA6F2C2939080072E9AB /* 10_Birthday_party_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA402C2939080072E9AB /* 10_Birthday_party_32x32.png */; };
+		C165CA702C2939080072E9AB /* 11_Halloween_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA412C2939080072E9AB /* 11_Halloween_32x32.png */; };
+		C165CA712C2939080072E9AB /* 12_Kitchen_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA422C2939080072E9AB /* 12_Kitchen_32x32.png */; };
+		C165CA722C2939080072E9AB /* 13_Conference_Hall_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA432C2939080072E9AB /* 13_Conference_Hall_32x32.png */; };
+		C165CA732C2939080072E9AB /* 14_Basement_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA442C2939080072E9AB /* 14_Basement_32x32.png */; };
+		C165CA742C2939080072E9AB /* 15_Christmas_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA462C2939080072E9AB /* 15_Christmas_32x32.png */; };
+		C165CA752C2939080072E9AB /* 16_Grocery_store_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA472C2939080072E9AB /* 16_Grocery_store_32x32.png */; };
+		C165CA762C2939080072E9AB /* 17_Visibile_Upstairs_System_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA482C2939080072E9AB /* 17_Visibile_Upstairs_System_32x32.png */; };
+		C165CA772C2939080072E9AB /* 18_Jail_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA492C2939080072E9AB /* 18_Jail_32x32.png */; };
+		C165CA782C2939080072E9AB /* 19_Hospital_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA4A2C2939080072E9AB /* 19_Hospital_32x32.png */; };
+		C165CA792C2939080072E9AB /* 20_Japanese_interiors_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA4C2C2939080072E9AB /* 20_Japanese_interiors_32x32.png */; };
+		C165CA7A2C2939080072E9AB /* 21_Clothing_Store_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA4E2C2939080072E9AB /* 21_Clothing_Store_32x32.png */; };
+		C165CA7B2C2939080072E9AB /* 22_Museum_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA4F2C2939080072E9AB /* 22_Museum_32x32.png */; };
+		C165CA7C2C2939080072E9AB /* 23_Television_and_Film_Studio_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA512C2939080072E9AB /* 23_Television_and_Film_Studio_32x32.png */; };
+		C165CA7D2C2939080072E9AB /* 24_Ice_Cream_Shop_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA522C2939080072E9AB /* 24_Ice_Cream_Shop_32x32.png */; };
+		C165CA7E2C2939080072E9AB /* 25_Shooting_Range_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA532C2939080072E9AB /* 25_Shooting_Range_32x32.png */; };
+		C165CA7F2C2939080072E9AB /* 26_Condominium_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA542C2939080072E9AB /* 26_Condominium_32x32.png */; };
+		C165CA802C2939080072E9AB /* 1000.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA562C2939080072E9AB /* 1000.tmx */; };
+		C165CA812C2939080072E9AB /* Interiors_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA572C2939080072E9AB /* Interiors_32x32.png */; };
+		C165CA822C2939080072E9AB /* map 25_3D Wall.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA592C2939080072E9AB /* map 25_3D Wall.png */; };
+		C165CA832C2939080072E9AB /* map 25_ground.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA5A2C2939080072E9AB /* map 25_ground.png */; };
+		C165CA842C2939080072E9AB /* map 25_Wall.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA5B2C2939080072E9AB /* map 25_Wall.png */; };
+		C165CA852C2939080072E9AB /* map 25.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA5C2C2939080072E9AB /* map 25.png */; };
+		C165CA862C2939080072E9AB /* map_25.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA5D2C2939080072E9AB /* map_25.tmx */; };
+		C165CA872C2939080072E9AB /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA5E2C2939080072E9AB /* map.png */; };
+		C165CA882C2939080072E9AB /* map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA5F2C2939080072E9AB /* map.tmx */; };
+		C165CA892C2939080072E9AB /* Room_Builder_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA602C2939080072E9AB /* Room_Builder_32x32.png */; };
+		C165CA8A2C2939080072E9AB /* test.tiled-project in Resources */ = {isa = PBXBuildFile; fileRef = C165CA622C2939080072E9AB /* test.tiled-project */; };
+		C165CA8B2C2939080072E9AB /* test.tiled-session in Resources */ = {isa = PBXBuildFile; fileRef = C165CA632C2939080072E9AB /* test.tiled-session */; };
+		C165CA8C2C2939080072E9AB /* Zombie Apocalypse Tileset Reference.png in Resources */ = {isa = PBXBuildFile; fileRef = C165CA642C2939080072E9AB /* Zombie Apocalypse Tileset Reference.png */; };
+		C165CA8D2C2939880072E9AB /* 1_Generic_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA332C2939080072E9AB /* 1_Generic_32x32.tsx */; };
+		C165CA8E2C2939880072E9AB /* 2_LivingRoom_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA352C2939080072E9AB /* 2_LivingRoom_32x32.tsx */; };
+		C165CA8F2C2939880072E9AB /* 3_Bathroom_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA372C2939080072E9AB /* 3_Bathroom_32x32.tsx */; };
+		C165CA902C2939880072E9AB /* 4_Bedroom_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA392C2939080072E9AB /* 4_Bedroom_32x32.tsx */; };
+		C165CA912C2939880072E9AB /* 5_Classroom_and_library_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA3B2C2939080072E9AB /* 5_Classroom_and_library_32x32.tsx */; };
+		C165CA922C2939880072E9AB /* 14_Basement_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA452C2939080072E9AB /* 14_Basement_32x32.tsx */; };
+		C165CA932C2939880072E9AB /* 19_Hospital_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA4B2C2939080072E9AB /* 19_Hospital_32x32.tsx */; };
+		C165CA942C2939880072E9AB /* 20_Japanese_interiors_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA4D2C2939080072E9AB /* 20_Japanese_interiors_32x32.tsx */; };
+		C165CA952C2939880072E9AB /* 22_Museum_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA502C2939080072E9AB /* 22_Museum_32x32.tsx */; };
+		C165CA962C2939880072E9AB /* 26_Condominium_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA552C2939080072E9AB /* 26_Condominium_32x32.tsx */; };
+		C165CA972C2939880072E9AB /* Interiors_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA582C2939080072E9AB /* Interiors_32x32.tsx */; };
+		C165CA982C2939880072E9AB /* Room_Builder_32x32.tsx in Resources */ = {isa = PBXBuildFile; fileRef = C165CA612C2939080072E9AB /* Room_Builder_32x32.tsx */; };
 		E42E8E752C11729300FF73F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E742C11729300FF73F4 /* Constants.swift */; };
 		E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E762C118B1900FF73F4 /* HeroSprite.swift */; };
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
@@ -62,6 +113,57 @@
 		8B66D0A52C17FF6200BB6573 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
 		8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarNode.swift; sourceTree = "<group>"; };
 		8B66D0AA2C18303D00BB6573 /* HideButtonSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideButtonSprite.swift; sourceTree = "<group>"; };
+		C165CA322C2939080072E9AB /* 1_Generic_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_Generic_32x32.png; sourceTree = "<group>"; };
+		C165CA332C2939080072E9AB /* 1_Generic_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 1_Generic_32x32.tsx; sourceTree = "<group>"; };
+		C165CA342C2939080072E9AB /* 2_LivingRoom_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_LivingRoom_32x32.png; sourceTree = "<group>"; };
+		C165CA352C2939080072E9AB /* 2_LivingRoom_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 2_LivingRoom_32x32.tsx; sourceTree = "<group>"; };
+		C165CA362C2939080072E9AB /* 3_Bathroom_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_Bathroom_32x32.png; sourceTree = "<group>"; };
+		C165CA372C2939080072E9AB /* 3_Bathroom_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 3_Bathroom_32x32.tsx; sourceTree = "<group>"; };
+		C165CA382C2939080072E9AB /* 4_Bedroom_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4_Bedroom_32x32.png; sourceTree = "<group>"; };
+		C165CA392C2939080072E9AB /* 4_Bedroom_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 4_Bedroom_32x32.tsx; sourceTree = "<group>"; };
+		C165CA3A2C2939080072E9AB /* 5_Classroom_and_library_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5_Classroom_and_library_32x32.png; sourceTree = "<group>"; };
+		C165CA3B2C2939080072E9AB /* 5_Classroom_and_library_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 5_Classroom_and_library_32x32.tsx; sourceTree = "<group>"; };
+		C165CA3C2C2939080072E9AB /* 6_Music_and_sport_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6_Music_and_sport_32x32.png; sourceTree = "<group>"; };
+		C165CA3D2C2939080072E9AB /* 7_Art_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7_Art_32x32.png; sourceTree = "<group>"; };
+		C165CA3E2C2939080072E9AB /* 8_Gym_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8_Gym_32x32.png; sourceTree = "<group>"; };
+		C165CA3F2C2939080072E9AB /* 9_Fishing_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9_Fishing_32x32.png; sourceTree = "<group>"; };
+		C165CA402C2939080072E9AB /* 10_Birthday_party_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10_Birthday_party_32x32.png; sourceTree = "<group>"; };
+		C165CA412C2939080072E9AB /* 11_Halloween_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11_Halloween_32x32.png; sourceTree = "<group>"; };
+		C165CA422C2939080072E9AB /* 12_Kitchen_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12_Kitchen_32x32.png; sourceTree = "<group>"; };
+		C165CA432C2939080072E9AB /* 13_Conference_Hall_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13_Conference_Hall_32x32.png; sourceTree = "<group>"; };
+		C165CA442C2939080072E9AB /* 14_Basement_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14_Basement_32x32.png; sourceTree = "<group>"; };
+		C165CA452C2939080072E9AB /* 14_Basement_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 14_Basement_32x32.tsx; sourceTree = "<group>"; };
+		C165CA462C2939080072E9AB /* 15_Christmas_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15_Christmas_32x32.png; sourceTree = "<group>"; };
+		C165CA472C2939080072E9AB /* 16_Grocery_store_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16_Grocery_store_32x32.png; sourceTree = "<group>"; };
+		C165CA482C2939080072E9AB /* 17_Visibile_Upstairs_System_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 17_Visibile_Upstairs_System_32x32.png; sourceTree = "<group>"; };
+		C165CA492C2939080072E9AB /* 18_Jail_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 18_Jail_32x32.png; sourceTree = "<group>"; };
+		C165CA4A2C2939080072E9AB /* 19_Hospital_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 19_Hospital_32x32.png; sourceTree = "<group>"; };
+		C165CA4B2C2939080072E9AB /* 19_Hospital_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 19_Hospital_32x32.tsx; sourceTree = "<group>"; };
+		C165CA4C2C2939080072E9AB /* 20_Japanese_interiors_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20_Japanese_interiors_32x32.png; sourceTree = "<group>"; };
+		C165CA4D2C2939080072E9AB /* 20_Japanese_interiors_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 20_Japanese_interiors_32x32.tsx; sourceTree = "<group>"; };
+		C165CA4E2C2939080072E9AB /* 21_Clothing_Store_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 21_Clothing_Store_32x32.png; sourceTree = "<group>"; };
+		C165CA4F2C2939080072E9AB /* 22_Museum_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22_Museum_32x32.png; sourceTree = "<group>"; };
+		C165CA502C2939080072E9AB /* 22_Museum_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 22_Museum_32x32.tsx; sourceTree = "<group>"; };
+		C165CA512C2939080072E9AB /* 23_Television_and_Film_Studio_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 23_Television_and_Film_Studio_32x32.png; sourceTree = "<group>"; };
+		C165CA522C2939080072E9AB /* 24_Ice_Cream_Shop_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 24_Ice_Cream_Shop_32x32.png; sourceTree = "<group>"; };
+		C165CA532C2939080072E9AB /* 25_Shooting_Range_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 25_Shooting_Range_32x32.png; sourceTree = "<group>"; };
+		C165CA542C2939080072E9AB /* 26_Condominium_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26_Condominium_32x32.png; sourceTree = "<group>"; };
+		C165CA552C2939080072E9AB /* 26_Condominium_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = 26_Condominium_32x32.tsx; sourceTree = "<group>"; };
+		C165CA562C2939080072E9AB /* 1000.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 1000.tmx; sourceTree = "<group>"; };
+		C165CA572C2939080072E9AB /* Interiors_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Interiors_32x32.png; sourceTree = "<group>"; };
+		C165CA582C2939080072E9AB /* Interiors_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = Interiors_32x32.tsx; sourceTree = "<group>"; };
+		C165CA592C2939080072E9AB /* map 25_3D Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map 25_3D Wall.png"; sourceTree = "<group>"; };
+		C165CA5A2C2939080072E9AB /* map 25_ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map 25_ground.png"; sourceTree = "<group>"; };
+		C165CA5B2C2939080072E9AB /* map 25_Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map 25_Wall.png"; sourceTree = "<group>"; };
+		C165CA5C2C2939080072E9AB /* map 25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map 25.png"; sourceTree = "<group>"; };
+		C165CA5D2C2939080072E9AB /* map_25.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map_25.tmx; sourceTree = "<group>"; };
+		C165CA5E2C2939080072E9AB /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		C165CA5F2C2939080072E9AB /* map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map.tmx; sourceTree = "<group>"; };
+		C165CA602C2939080072E9AB /* Room_Builder_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Room_Builder_32x32.png; sourceTree = "<group>"; };
+		C165CA612C2939080072E9AB /* Room_Builder_32x32.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.typescript; path = Room_Builder_32x32.tsx; sourceTree = "<group>"; };
+		C165CA622C2939080072E9AB /* test.tiled-project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test.tiled-project"; sourceTree = "<group>"; };
+		C165CA632C2939080072E9AB /* test.tiled-session */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test.tiled-session"; sourceTree = "<group>"; };
+		C165CA642C2939080072E9AB /* Zombie Apocalypse Tileset Reference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Zombie Apocalypse Tileset Reference.png"; sourceTree = "<group>"; };
 		E42E8E742C11729300FF73F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E42E8E762C118B1900FF73F4 /* HeroSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSprite.swift; sourceTree = "<group>"; };
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
@@ -122,6 +224,7 @@
 		8B4DB1FB2C0DB77D0055AB7A /* ForStayingAlive */ = {
 			isa = PBXGroup;
 			children = (
+				C165CA652C2939080072E9AB /* Tilemap */,
 				E42E8E6E2C11711E00FF73F4 /* Mains */,
 				E42E8E6B2C1170EE00FF73F4 /* Delegates */,
 				E42E8E732C11728000FF73F4 /* Supports */,
@@ -173,6 +276,64 @@
 				E4E14A312C1834ED00A8E101 /* HidingButton.swift */,
 			);
 			path = Sprites;
+			sourceTree = "<group>";
+		};
+		C165CA652C2939080072E9AB /* Tilemap */ = {
+			isa = PBXGroup;
+			children = (
+				C165CA322C2939080072E9AB /* 1_Generic_32x32.png */,
+				C165CA332C2939080072E9AB /* 1_Generic_32x32.tsx */,
+				C165CA342C2939080072E9AB /* 2_LivingRoom_32x32.png */,
+				C165CA352C2939080072E9AB /* 2_LivingRoom_32x32.tsx */,
+				C165CA362C2939080072E9AB /* 3_Bathroom_32x32.png */,
+				C165CA372C2939080072E9AB /* 3_Bathroom_32x32.tsx */,
+				C165CA382C2939080072E9AB /* 4_Bedroom_32x32.png */,
+				C165CA392C2939080072E9AB /* 4_Bedroom_32x32.tsx */,
+				C165CA3A2C2939080072E9AB /* 5_Classroom_and_library_32x32.png */,
+				C165CA3B2C2939080072E9AB /* 5_Classroom_and_library_32x32.tsx */,
+				C165CA3C2C2939080072E9AB /* 6_Music_and_sport_32x32.png */,
+				C165CA3D2C2939080072E9AB /* 7_Art_32x32.png */,
+				C165CA3E2C2939080072E9AB /* 8_Gym_32x32.png */,
+				C165CA3F2C2939080072E9AB /* 9_Fishing_32x32.png */,
+				C165CA402C2939080072E9AB /* 10_Birthday_party_32x32.png */,
+				C165CA412C2939080072E9AB /* 11_Halloween_32x32.png */,
+				C165CA422C2939080072E9AB /* 12_Kitchen_32x32.png */,
+				C165CA432C2939080072E9AB /* 13_Conference_Hall_32x32.png */,
+				C165CA442C2939080072E9AB /* 14_Basement_32x32.png */,
+				C165CA452C2939080072E9AB /* 14_Basement_32x32.tsx */,
+				C165CA462C2939080072E9AB /* 15_Christmas_32x32.png */,
+				C165CA472C2939080072E9AB /* 16_Grocery_store_32x32.png */,
+				C165CA482C2939080072E9AB /* 17_Visibile_Upstairs_System_32x32.png */,
+				C165CA492C2939080072E9AB /* 18_Jail_32x32.png */,
+				C165CA4A2C2939080072E9AB /* 19_Hospital_32x32.png */,
+				C165CA4B2C2939080072E9AB /* 19_Hospital_32x32.tsx */,
+				C165CA4C2C2939080072E9AB /* 20_Japanese_interiors_32x32.png */,
+				C165CA4D2C2939080072E9AB /* 20_Japanese_interiors_32x32.tsx */,
+				C165CA4E2C2939080072E9AB /* 21_Clothing_Store_32x32.png */,
+				C165CA4F2C2939080072E9AB /* 22_Museum_32x32.png */,
+				C165CA502C2939080072E9AB /* 22_Museum_32x32.tsx */,
+				C165CA512C2939080072E9AB /* 23_Television_and_Film_Studio_32x32.png */,
+				C165CA522C2939080072E9AB /* 24_Ice_Cream_Shop_32x32.png */,
+				C165CA532C2939080072E9AB /* 25_Shooting_Range_32x32.png */,
+				C165CA542C2939080072E9AB /* 26_Condominium_32x32.png */,
+				C165CA552C2939080072E9AB /* 26_Condominium_32x32.tsx */,
+				C165CA562C2939080072E9AB /* 1000.tmx */,
+				C165CA572C2939080072E9AB /* Interiors_32x32.png */,
+				C165CA582C2939080072E9AB /* Interiors_32x32.tsx */,
+				C165CA592C2939080072E9AB /* map 25_3D Wall.png */,
+				C165CA5A2C2939080072E9AB /* map 25_ground.png */,
+				C165CA5B2C2939080072E9AB /* map 25_Wall.png */,
+				C165CA5C2C2939080072E9AB /* map 25.png */,
+				C165CA5D2C2939080072E9AB /* map_25.tmx */,
+				C165CA5E2C2939080072E9AB /* map.png */,
+				C165CA5F2C2939080072E9AB /* map.tmx */,
+				C165CA602C2939080072E9AB /* Room_Builder_32x32.png */,
+				C165CA612C2939080072E9AB /* Room_Builder_32x32.tsx */,
+				C165CA622C2939080072E9AB /* test.tiled-project */,
+				C165CA632C2939080072E9AB /* test.tiled-session */,
+				C165CA642C2939080072E9AB /* Zombie Apocalypse Tileset Reference.png */,
+			);
+			path = Tilemap;
 			sourceTree = "<group>";
 		};
 		E42E8E6B2C1170EE00FF73F4 /* Delegates */ = {
@@ -321,8 +482,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C165CA8D2C2939880072E9AB /* 1_Generic_32x32.tsx in Resources */,
+				C165CA8E2C2939880072E9AB /* 2_LivingRoom_32x32.tsx in Resources */,
+				C165CA8F2C2939880072E9AB /* 3_Bathroom_32x32.tsx in Resources */,
+				C165CA902C2939880072E9AB /* 4_Bedroom_32x32.tsx in Resources */,
+				C165CA912C2939880072E9AB /* 5_Classroom_and_library_32x32.tsx in Resources */,
+				C165CA922C2939880072E9AB /* 14_Basement_32x32.tsx in Resources */,
+				C165CA932C2939880072E9AB /* 19_Hospital_32x32.tsx in Resources */,
+				C165CA942C2939880072E9AB /* 20_Japanese_interiors_32x32.tsx in Resources */,
+				C165CA952C2939880072E9AB /* 22_Museum_32x32.tsx in Resources */,
+				C165CA962C2939880072E9AB /* 26_Condominium_32x32.tsx in Resources */,
+				C165CA972C2939880072E9AB /* Interiors_32x32.tsx in Resources */,
+				C165CA982C2939880072E9AB /* Room_Builder_32x32.tsx in Resources */,
+				C165CA7E2C2939080072E9AB /* 25_Shooting_Range_32x32.png in Resources */,
+				C165CA812C2939080072E9AB /* Interiors_32x32.png in Resources */,
+				C165CA682C2939080072E9AB /* 3_Bathroom_32x32.png in Resources */,
+				C165CA762C2939080072E9AB /* 17_Visibile_Upstairs_System_32x32.png in Resources */,
+				C165CA782C2939080072E9AB /* 19_Hospital_32x32.png in Resources */,
+				C165CA792C2939080072E9AB /* 20_Japanese_interiors_32x32.png in Resources */,
+				C165CA7F2C2939080072E9AB /* 26_Condominium_32x32.png in Resources */,
+				C165CA742C2939080072E9AB /* 15_Christmas_32x32.png in Resources */,
+				C165CA7A2C2939080072E9AB /* 21_Clothing_Store_32x32.png in Resources */,
+				C165CA6B2C2939080072E9AB /* 6_Music_and_sport_32x32.png in Resources */,
+				C165CA872C2939080072E9AB /* map.png in Resources */,
+				C165CA8B2C2939080072E9AB /* test.tiled-session in Resources */,
+				C165CA8C2C2939080072E9AB /* Zombie Apocalypse Tileset Reference.png in Resources */,
+				C165CA6D2C2939080072E9AB /* 8_Gym_32x32.png in Resources */,
+				C165CA662C2939080072E9AB /* 1_Generic_32x32.png in Resources */,
+				C165CA712C2939080072E9AB /* 12_Kitchen_32x32.png in Resources */,
 				8B4DB2082C0DB77D0055AB7A /* Base in Resources */,
+				C165CA672C2939080072E9AB /* 2_LivingRoom_32x32.png in Resources */,
+				C165CA802C2939080072E9AB /* 1000.tmx in Resources */,
+				C165CA822C2939080072E9AB /* map 25_3D Wall.png in Resources */,
+				C165CA862C2939080072E9AB /* map_25.tmx in Resources */,
+				C165CA7B2C2939080072E9AB /* 22_Museum_32x32.png in Resources */,
+				C165CA6F2C2939080072E9AB /* 10_Birthday_party_32x32.png in Resources */,
+				C165CA892C2939080072E9AB /* Room_Builder_32x32.png in Resources */,
+				C165CA772C2939080072E9AB /* 18_Jail_32x32.png in Resources */,
 				8B4DB20A2C0DB77E0055AB7A /* Assets.xcassets in Resources */,
+				C165CA7D2C2939080072E9AB /* 24_Ice_Cream_Shop_32x32.png in Resources */,
+				C165CA832C2939080072E9AB /* map 25_ground.png in Resources */,
+				C165CA6E2C2939080072E9AB /* 9_Fishing_32x32.png in Resources */,
+				C165CA692C2939080072E9AB /* 4_Bedroom_32x32.png in Resources */,
+				C165CA732C2939080072E9AB /* 14_Basement_32x32.png in Resources */,
+				C165CA752C2939080072E9AB /* 16_Grocery_store_32x32.png in Resources */,
+				C165CA722C2939080072E9AB /* 13_Conference_Hall_32x32.png in Resources */,
+				C165CA6A2C2939080072E9AB /* 5_Classroom_and_library_32x32.png in Resources */,
+				C165CA6C2C2939080072E9AB /* 7_Art_32x32.png in Resources */,
+				C165CA7C2C2939080072E9AB /* 23_Television_and_Film_Studio_32x32.png in Resources */,
+				C165CA852C2939080072E9AB /* map 25.png in Resources */,
+				C165CA882C2939080072E9AB /* map.tmx in Resources */,
+				C165CA702C2939080072E9AB /* 11_Halloween_32x32.png in Resources */,
+				C165CA842C2939080072E9AB /* map 25_Wall.png in Resources */,
+				C165CA8A2C2939080072E9AB /* test.tiled-project in Resources */,
 				8B4DB20D2C0DB77E0055AB7A /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,11 +567,8 @@
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
-
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
-
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
-
 				E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */,
 				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
@@ -547,7 +756,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 749DSANFYP;
+				DEVELOPMENT_TEAM = VLB4X97QN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -575,7 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 749DSANFYP;
+				DEVELOPMENT_TEAM = VLB4X97QN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
