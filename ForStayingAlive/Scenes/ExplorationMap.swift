@@ -108,7 +108,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	func addVisibilityEffect() {
 		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height))
 		darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-		darkOverlay.alpha = 0.9
+		darkOverlay.alpha = 0.85
 		darkOverlay.zPosition = 5
 		darkOverlay.isUserInteractionEnabled = false
 		
