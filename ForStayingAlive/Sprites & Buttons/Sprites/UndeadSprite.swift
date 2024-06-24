@@ -23,11 +23,11 @@ public class UndeadSprite : SKSpriteNode {
 	var onHeroExitAttackRange: (() -> Void)?
 	
 	public static func newInstance() -> UndeadSprite {
-		let undeadSprite = UndeadSprite(imageNamed: "undead-test-normal")
-		undeadSprite.size = CGSize(width: undeadSprite.size.width * 2, height: undeadSprite.size.height * 2)
-		undeadSprite.zPosition = 3
+		let undeadSprite = UndeadSprite(imageNamed: "undead-normal")
+		undeadSprite.size = CGSize(width: undeadSprite.size.width / 1.5, height: undeadSprite.size.height / 1.5)
+		undeadSprite.zPosition = 2
 		
-		undeadSprite.physicsBody = SKPhysicsBody(circleOfRadius: undeadSprite.size.width / 5)
+		undeadSprite.physicsBody = SKPhysicsBody(circleOfRadius: undeadSprite.size.width / 3)
 		undeadSprite.physicsBody?.affectedByGravity = false
 		undeadSprite.physicsBody?.allowsRotation = false
 		undeadSprite.physicsBody?.pinned = false
@@ -47,15 +47,15 @@ public class UndeadSprite : SKSpriteNode {
 	}
 	
 	private let idleFrames: [SKTexture] = (0...3).flatMap { i in
-		Array(repeating: SKTexture(imageNamed: "undead-test-idle\(i)"), count: i == 0 ? 3 : 2)
+		Array(repeating: SKTexture(imageNamed: "undead-idle\(i)"), count: 2)
 	}
 	
-	private let walkingFrames: [SKTexture] = (0...5).map { i in
-		SKTexture(imageNamed: "undead-test-walk\(i)")
+	private let walkingFrames: [SKTexture] = (0...3).map { i in
+		SKTexture(imageNamed: "undead-walk\(i)")
 	}
 	
 	private let attackingFrames: [SKTexture] = (0...5).map { i in
-		SKTexture(imageNamed: "undead-test-attack\(i)")
+		SKTexture(imageNamed: "undead-run\(i)")
 	}
 	
 	public func undeadIdleAnimation() {
@@ -73,7 +73,7 @@ public class UndeadSprite : SKSpriteNode {
 		removeAction(forKey: undeadAttackingKey)
 		if action(forKey: undeadWalkingKey) == nil {
 			let walkingAnimation = SKAction.repeatForever(
-				SKAction.animate(with: walkingFrames, timePerFrame: 0.1))
+				SKAction.animate(with: walkingFrames, timePerFrame: 0.15))
 			run(walkingAnimation, withKey: undeadWalkingKey)
 		}
 	}

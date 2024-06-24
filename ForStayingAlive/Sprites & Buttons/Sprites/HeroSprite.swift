@@ -16,8 +16,8 @@ public class HeroSprite : SKSpriteNode {
 	private var heroStamina : CGFloat = 100
 	
 	public static func newInstance() -> HeroSprite {
-		let playerHero = HeroSprite(imageNamed: "player-test-normal")
-		playerHero.size = CGSize(width: playerHero.size.width, height: playerHero.size.height)
+		let playerHero = HeroSprite(imageNamed: "player-hero-normal")
+		playerHero.size = CGSize(width: playerHero.size.width / 1.5, height: playerHero.size.height / 1.5)
 		playerHero.zPosition = 2
 		playerHero.isHidden = false
 		
@@ -65,16 +65,16 @@ public class HeroSprite : SKSpriteNode {
     }
     
 	
-	private let idleFrames: [SKTexture] = (0...1).flatMap { i in
-		Array(repeating: SKTexture(imageNamed: "player-test-idle\(i)"), count: 3)
+	private let idleFrames: [SKTexture] = (0...3).flatMap { i in
+		Array(repeating: SKTexture(imageNamed: "player-hero-idle\(i)"), count: 2)
 	}
 	
 	private let walkingFrames: [SKTexture] = (0...3).map { i in
-		SKTexture(imageNamed: "player-test-walk\(i)")
+		SKTexture(imageNamed: "player-hero-walk\(i)")
 	}
 	
-	private let runningFrames: [SKTexture] = (0...3).map { i in
-		SKTexture(imageNamed: "player-test-run\(i)")
+	private let runningFrames: [SKTexture] = (0...5).map { i in
+		SKTexture(imageNamed: "player-hero-run\(i)")
 	}
 	
 	public func heroIdleAnimation() {
@@ -92,7 +92,7 @@ public class HeroSprite : SKSpriteNode {
 		removeAction(forKey: heroRunningKey)
 		if action(forKey: heroWalkingKey) == nil {
 			let walkingAnimation = SKAction.repeatForever(
-				SKAction.animate(with: walkingFrames, timePerFrame: 0.1))
+				SKAction.animate(with: walkingFrames, timePerFrame: 0.15))
 			run(walkingAnimation, withKey: heroWalkingKey)
 		}
 	}
@@ -135,15 +135,15 @@ public class HeroSprite : SKSpriteNode {
 	
 	public func heroHealthReduced(health: CGFloat) {
 		self.heroHealth -= health
-        
-        if self.heroHealth <= 0 {
-            if let scene = self.scene{
-                let gameOverScene = GameOverScene(size: scene.size)
-                gameOverScene.scaleMode = .aspectFit
-                let transition = SKTransition.fade(withDuration: 1.0)
-                scene.view?.presentScene(gameOverScene, transition: transition)
-            }
-        }
+		
+		if self.heroHealth == 0 {
+			if let scene = self.scene{
+				let deathScene = DeathScene(size: scene.size)
+				deathScene.scaleMode = .aspectFit
+				let transition = SKTransition.fade(withDuration: 1.0)
+				scene.view?.presentScene(deathScene, transition: transition)
+			}
+		}
 	}
 	
 	public func heroHealthIncreased(health: CGFloat) {

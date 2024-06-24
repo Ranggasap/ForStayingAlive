@@ -37,6 +37,16 @@
 		E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E882C1417E400FF73F4 /* RunningButton.swift */; };
 		E437B20A2C19FF0500D6E6A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E437B2092C19FF0500D6E6A8 /* Extensions.swift */; };
 		E437B2102C1D613A00D6E6A8 /* MedkitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E437B20F2C1D613A00D6E6A8 /* MedkitButton.swift */; };
+		E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5C12C2453390061A7DC /* EvacuationScene.swift */; };
+		E451A5C42C2455530061A7DC /* NextFloorSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5C32C2455530061A7DC /* NextFloorSprite.swift */; };
+		E451A5C62C245A270061A7DC /* DeathScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5C52C245A270061A7DC /* DeathScene.swift */; };
+		E451A5C82C2476180061A7DC /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5C72C2476180061A7DC /* CountdownTimer.swift */; };
+		E451A5CE2C256D140061A7DC /* SFXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5CD2C256D140061A7DC /* SFXManager.swift */; };
+		E451A5D02C256F250061A7DC /* CountdownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5CF2C256F250061A7DC /* CountdownManager.swift */; };
+		E451A5D52C256FD40061A7DC /* Helicopter2Minutes.wav in Resources */ = {isa = PBXBuildFile; fileRef = E451A5D12C256FD40061A7DC /* Helicopter2Minutes.wav */; };
+		E451A5D62C256FD40061A7DC /* HelicopterProlog.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E451A5D22C256FD40061A7DC /* HelicopterProlog.m4a */; };
+		E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */ = {isa = PBXBuildFile; fileRef = E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */; };
+		E451A5DD2C25C02B0061A7DC /* SubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */; };
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
@@ -99,6 +109,16 @@
 		E42E8E882C1417E400FF73F4 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
 		E437B2092C19FF0500D6E6A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E437B20F2C1D613A00D6E6A8 /* MedkitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedkitButton.swift; sourceTree = "<group>"; };
+		E451A5C12C2453390061A7DC /* EvacuationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvacuationScene.swift; sourceTree = "<group>"; };
+		E451A5C32C2455530061A7DC /* NextFloorSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFloorSprite.swift; sourceTree = "<group>"; };
+		E451A5C52C245A270061A7DC /* DeathScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathScene.swift; sourceTree = "<group>"; };
+		E451A5C72C2476180061A7DC /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		E451A5CD2C256D140061A7DC /* SFXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFXManager.swift; sourceTree = "<group>"; };
+		E451A5CF2C256F250061A7DC /* CountdownManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownManager.swift; sourceTree = "<group>"; };
+		E451A5D12C256FD40061A7DC /* Helicopter2Minutes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Helicopter2Minutes.wav; sourceTree = "<group>"; };
+		E451A5D22C256FD40061A7DC /* HelicopterProlog.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelicopterProlog.m4a; sourceTree = "<group>"; };
+		E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HelicopterTakeOff.wav; sourceTree = "<group>"; };
+		E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleManager.swift; sourceTree = "<group>"; };
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
@@ -257,7 +277,8 @@
 			children = (
 				E42E8E782C11955900FF73F4 /* ExplorationMap.swift */,
 				8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */,
-				8B00C48C2C1C3AE30083D972 /* EvacuationScene.swift */,
+				E451A5C12C2453390061A7DC /* EvacuationScene.swift */,
+				E451A5C52C245A270061A7DC /* DeathScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -282,10 +303,14 @@
 		E42E8E732C11728000FF73F4 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
-				E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */,
-				E42E8E742C11729300FF73F4 /* Constants.swift */,
-				E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */,
 				E437B2092C19FF0500D6E6A8 /* Extensions.swift */,
+				E42E8E742C11729300FF73F4 /* Constants.swift */,
+				E42E8E862C13F5BF00FF73F4 /* AnalogJoystick.swift */,
+				E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */,
+				E451A5CD2C256D140061A7DC /* SFXManager.swift */,
+				E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */,
+				E451A5CF2C256F250061A7DC /* CountdownManager.swift */,
+				E451A5C72C2476180061A7DC /* CountdownTimer.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -297,6 +322,7 @@
 				E48D483B2C15259200B97DEB /* UndeadSprite.swift */,
 				E4CB75132C194B880059FED9 /* LockerSprite.swift */,
 				E49C38D72C17F95500868DDA /* ChestSprite.swift */,
+				E451A5C32C2455530061A7DC /* NextFloorSprite.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -312,9 +338,20 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		E451A5D42C256FD40061A7DC /* ChopperVoices */ = {
+			isa = PBXGroup;
+			children = (
+				E451A5D12C256FD40061A7DC /* Helicopter2Minutes.wav */,
+				E451A5D22C256FD40061A7DC /* HelicopterProlog.m4a */,
+				E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */,
+			);
+			path = ChopperVoices;
+			sourceTree = "<group>";
+		};
 		E4FDDE1A2C231772001EC9F6 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E451A5D42C256FD40061A7DC /* ChopperVoices */,
 				E4FDDE1D2C2319F4001EC9F6 /* the-hired.m4a */,
 				E4FDDE1F2C231A84001EC9F6 /* helicopter.m4a */,
 			);
@@ -417,6 +454,8 @@
 				Base,
 			);
 			mainGroup = 8B4DB1F02C0DB77D0055AB7A;
+			packageReferences = (
+			);
 			productRefGroup = 8B4DB1FA2C0DB77D0055AB7A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -438,11 +477,14 @@
 				8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */,
 				8B92D36D2C20147200F6B2D2 /* the-hired-thriller-drama-mystery-background-111015.mp3 in Resources */,
 				8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */,
+				E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */,
+				E451A5D52C256FD40061A7DC /* Helicopter2Minutes.wav in Resources */,
 				8B4DB2082C0DB77D0055AB7A /* Base in Resources */,
 				8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */,
 				8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */,
 				8B92D3762C20148000F6B2D2 /* zombie-attack-6419.mp3 in Resources */,
 				8B4DB20D2C0DB77E0055AB7A /* Base in Resources */,
+				E451A5D62C256FD40061A7DC /* HelicopterProlog.m4a in Resources */,
 				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
 				8B92D3752C20148000F6B2D2 /* helicopter-129052.mp3 in Resources */,
 				8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */,
@@ -470,12 +512,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E451A5C62C245A270061A7DC /* DeathScene.swift in Sources */,
+				E451A5D02C256F250061A7DC /* CountdownManager.swift in Sources */,
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
 				E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */,
 				8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */,
 				8B00C48F2C1C3CCC0083D972 /* LabelNode.swift in Sources */,
-				8B00C48D2C1C3AE30083D972 /* EvacuationScene.swift in Sources */,
+				E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
+				E451A5C82C2476180061A7DC /* CountdownTimer.swift in Sources */,
 				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B92D36A2C20134700F6B2D2 /* Sound.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
@@ -483,6 +528,7 @@
 				8B96FDB12C22DC1C00E2EE7D /* CountdownTimer.swift in Sources */,
 				8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
+				E451A5DD2C25C02B0061A7DC /* SubtitleManager.swift in Sources */,
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
 				E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */,
 				E437B2102C1D613A00D6E6A8 /* MedkitButton.swift in Sources */,
@@ -490,9 +536,11 @@
 				8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */,
 				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
 				E437B20A2C19FF0500D6E6A8 /* Extensions.swift in Sources */,
+				E451A5C42C2455530061A7DC /* NextFloorSprite.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,
 				E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */,
+				E451A5CE2C256D140061A7DC /* SFXManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,11 +725,13 @@
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -707,11 +757,13 @@
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (

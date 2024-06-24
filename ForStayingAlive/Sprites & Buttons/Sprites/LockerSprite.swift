@@ -10,7 +10,7 @@ import SpriteKit
 public class LockerSprite : SKSpriteNode {
 	public static func newInstance() -> LockerSprite {
 		let lockerSprite = LockerSprite(imageNamed: "locker")
-		lockerSprite.size = CGSize(width: lockerSprite.size.width, height: lockerSprite.size.height)
+		lockerSprite.size = CGSize(width: lockerSprite.size.width / 1.5, height: lockerSprite.size.height / 1.5)
 		lockerSprite.zPosition = 1
 		
 		lockerSprite.physicsBody = SKPhysicsBody(rectangleOf: lockerSprite.size)

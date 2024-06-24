@@ -7,12 +7,14 @@
 
 import Foundation
 import GameplayKit
-
+import SpriteKit
 class EvacuationScene: SKScene{
-    private let gameOverLabel = LabelNode(text: "Game Over", fontSize: 48, fontColor: .blue)
+	private var evacuationLabel = SKLabelNode(fontNamed: "NicoClean-Regular")
     
-    override func sceneDidLoad() {
-        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 50)
-        addChild(gameOverLabel)
-    }
+	override func didMove(to view: SKView) {
+		evacuationLabel.text = "You have been evacuated!"
+		evacuationLabel.fontSize = 40
+		evacuationLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+		addChild(evacuationLabel)
+	}
 }
