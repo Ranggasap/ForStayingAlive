@@ -27,7 +27,7 @@
 		8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */; };
 		8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */; };
 		8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */; };
-		8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */; };
+		8BC6D8E82C1DCE2A00F73142 /* LeftBehindScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */; };
 		E42E8E752C11729300FF73F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E742C11729300FF73F4 /* Constants.swift */; };
 		E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E762C118B1900FF73F4 /* HeroSprite.swift */; };
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
@@ -44,6 +44,7 @@
 		E451A5D62C256FD40061A7DC /* HelicopterProlog.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E451A5D22C256FD40061A7DC /* HelicopterProlog.m4a */; };
 		E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */ = {isa = PBXBuildFile; fileRef = E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */; };
 		E451A5DD2C25C02B0061A7DC /* SubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */; };
+		E451A5E32C29A4180061A7DC /* UndeadSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5E22C29A4170061A7DC /* UndeadSpawner.swift */; };
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
@@ -96,7 +97,7 @@
 		8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zombie-screaming-207590.mp3"; sourceTree = "<group>"; };
 		8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mutated-zombie-sound-211722.mp3"; sourceTree = "<group>"; };
 		8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerViewModel.swift; sourceTree = "<group>"; };
-		8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBehindScene.swift; sourceTree = "<group>"; };
 		E42E8E742C11729300FF73F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E42E8E762C118B1900FF73F4 /* HeroSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSprite.swift; sourceTree = "<group>"; };
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		E451A5D22C256FD40061A7DC /* HelicopterProlog.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelicopterProlog.m4a; sourceTree = "<group>"; };
 		E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HelicopterTakeOff.wav; sourceTree = "<group>"; };
 		E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleManager.swift; sourceTree = "<group>"; };
+		E451A5E22C29A4170061A7DC /* UndeadSpawner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndeadSpawner.swift; sourceTree = "<group>"; };
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		8B690C2B2C115F760062B64A /* Sprites & Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				E451A5E22C29A4170061A7DC /* UndeadSpawner.swift */,
 				E437B20D2C1D606000D6E6A8 /* Sprites */,
 				E437B20E2C1D606900D6E6A8 /* Buttons */,
 			);
@@ -267,9 +270,9 @@
 			isa = PBXGroup;
 			children = (
 				E42E8E782C11955900FF73F4 /* ExplorationMap.swift */,
-				8BC6D8E72C1DCE2A00F73142 /* GameOverScene.swift */,
 				E451A5C12C2453390061A7DC /* EvacuationScene.swift */,
 				E451A5C52C245A270061A7DC /* DeathScene.swift */,
+				8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -310,10 +313,10 @@
 			isa = PBXGroup;
 			children = (
 				E42E8E762C118B1900FF73F4 /* HeroSprite.swift */,
-				8B05B5C32C296D020001384E /* HelicopterSprite.swift */,
 				E48D483B2C15259200B97DEB /* UndeadSprite.swift */,
 				E4CB75132C194B880059FED9 /* LockerSprite.swift */,
 				E49C38D72C17F95500868DDA /* ChestSprite.swift */,
+				8B05B5C32C296D020001384E /* HelicopterSprite.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -323,9 +326,9 @@
 			children = (
 				E42E8E882C1417E400FF73F4 /* RunningButton.swift */,
 				E49C38D92C18024A00868DDA /* InteractButton.swift */,
-				8B05B5C52C2970140001384E /* RetryButton.swift */,
 				E4E14A312C1834ED00A8E101 /* HidingButton.swift */,
 				E437B20F2C1D613A00D6E6A8 /* MedkitButton.swift */,
+				8B05B5C52C2970140001384E /* RetryButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */,
 				8B00C48F2C1C3CCC0083D972 /* LabelNode.swift in Sources */,
 				E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */,
+				E451A5E32C29A4180061A7DC /* UndeadSpawner.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				E451A5C82C2476180061A7DC /* CountdownTimer.swift in Sources */,
 				8B05B5C62C2970140001384E /* RetryButton.swift in Sources */,
@@ -516,7 +520,7 @@
 				8B92D36A2C20134700F6B2D2 /* Sound.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
 				E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */,
-				8BC6D8E82C1DCE2A00F73142 /* GameOverScene.swift in Sources */,
+				8BC6D8E82C1DCE2A00F73142 /* LeftBehindScene.swift in Sources */,
 				8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */,
 				E451A5DD2C25C02B0061A7DC /* SubtitleManager.swift in Sources */,
 				8B66D0A92C1803F100BB6573 /* ProgressBarNode.swift in Sources */,
@@ -712,7 +716,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
@@ -744,7 +748,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";

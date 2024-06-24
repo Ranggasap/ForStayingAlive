@@ -22,12 +22,7 @@ public class HeroSprite : SKSpriteNode {
 		playerHero.zPosition = 2
 		playerHero.isHidden = false
 		
-		playerHero.physicsBody =  SKPhysicsBody(rectangleOf: CGSize(width: playerHero.size.width / 2, height: playerHero.size.height / 2))
-		playerHero.physicsBody?.affectedByGravity = false
-		playerHero.physicsBody?.allowsRotation = false
-		
-		playerHero.physicsBody?.categoryBitMask = HeroCategory
-		playerHero.physicsBody?.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory | NextSceneCategory
+		playerHero.addPhysicsBody()
 		
 		return playerHero
 	}
@@ -54,8 +49,11 @@ public class HeroSprite : SKSpriteNode {
 		let physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width / 2, height: self.size.height / 2))
 		physicsBody.affectedByGravity = false
 		physicsBody.allowsRotation = false
+		physicsBody.pinned = false
+		
 		physicsBody.categoryBitMask = HeroCategory
 		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory | NextSceneCategory
+		
 		self.physicsBody = physicsBody
 	}
     
@@ -153,6 +151,7 @@ public class HeroSprite : SKSpriteNode {
 		
 		if self.heroHealth == 0 {
 			if let scene = self.scene{
+				self.physicsBody?.pinned = true
 				let deathScene = DeathScene(size: scene.size)
 				deathScene.scaleMode = .aspectFit
 				let transition = SKTransition.fade(withDuration: 1.0)

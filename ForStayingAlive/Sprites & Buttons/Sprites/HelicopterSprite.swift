@@ -11,7 +11,7 @@ import SpriteKit
 public class HelicopterSprite: SKSpriteNode {
     public static func newInstance() -> HelicopterSprite{
         
-        let helicopterSprite = HelicopterSprite(imageNamed: "helicopterSprite")
+        let helicopterSprite = HelicopterSprite(imageNamed: "helicopter")
         helicopterSprite.size = CGSize(width: helicopterSprite.size.width, height: helicopterSprite.size.height)
         helicopterSprite.zPosition = 1
         

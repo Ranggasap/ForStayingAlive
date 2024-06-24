@@ -89,13 +89,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		spawnUndead()
 		spawnChest()
 		spawnLocker()
-		
-		updateMedkitButtonState()
-		
-        nextSceneNode.position = CGPoint(x: frame.midX, y: frame.midY - 400)
-        addChild(nextSceneNode)
+		spawnNextFloor()
 	}
-
     
     override func willMove(from view: SKView) {
         backgroundTrack?.stop()
@@ -277,26 +272,26 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func spawnHero() {
-		hero.position = CGPoint(x: frame.midX - 100, y: frame.midY)
+		hero.position = CGPoint(x: frame.midX - 800, y: frame.midY + 1150)
 		hero.name = "Hero"
 		addChild(hero)
 	}
 	
 	func spawnUndead() {
-		undeadOne.position = CGPoint(x: frame.midX + 300, y: frame.midY)
+		undeadOne.position = CGPoint(x: frame.midX - 400, y: frame.midY + 120)
 		undeadOne.name = "undead-one"
 		undeadOne.setUndeadSpawnPosition()
 		addChild(undeadOne)
 		
-		undeadTwo.position = CGPoint(x: frame.maxX + 200, y: frame.midY)
+		undeadTwo.position = CGPoint(x: frame.maxX + 10, y: frame.midY + 70)
 		undeadTwo.name = "undead-two"
 		undeadTwo.setUndeadSpawnPosition()
 		addChild(undeadTwo)
-        
-        undeadThree.position = CGPoint(x: frame.maxX + 250, y: frame.midY)
-        undeadThree.name = "undead-three"
-        undeadThree.setUndeadSpawnPosition()
-        addChild(undeadThree)
+		
+		undeadThree.position = CGPoint(x: frame.maxX - 220, y: frame.midY - 300)
+		undeadThree.name = "undead-three"
+		undeadThree.setUndeadSpawnPosition()
+		addChild(undeadThree)
 		
 		undeadOne.onHeroEnterAttackRange = { [weak self] in
 			self?.heroEnteredUndeadRange(undead: self?.undeadOne)
@@ -313,30 +308,35 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		undeadTwo.onHeroExitAttackRange = { [weak self] in
 			self?.heroExitedUndeadRange(undead: self?.undeadTwo)
 		}
-        
-        undeadThree.onHeroEnterAttackRange = { [weak self] in
-            self?.heroEnteredUndeadRange(undead: self?.undeadTwo)
-        }
-        
-        undeadThree.onHeroExitAttackRange = { [weak self] in
-            self?.heroExitedUndeadRange(undead: self?.undeadTwo)
-        }
+		
+		undeadThree.onHeroEnterAttackRange = { [weak self] in
+			self?.heroEnteredUndeadRange(undead: self?.undeadThree)
+		}
+		
+		undeadThree.onHeroExitAttackRange = { [weak self] in
+			self?.heroExitedUndeadRange(undead: self?.undeadThree)
+		}
 	}
 	
 	func spawnChest() {
-		chestOne.position = CGPoint(x: frame.midX, y: frame.midY - 100)
+		chestOne.position = CGPoint(x: frame.midX + 10, y: frame.midY + 220)
 		addChild(chestOne)
 		
-		chestTwo.position = CGPoint(x: frame.minX + 20, y: frame.midY - 100)
+		chestTwo.position = CGPoint(x: frame.minX - 100, y: frame.midY - 410)
 		addChild(chestTwo)
 	}
 	
 	func spawnLocker() {
-		lockerOne.position = CGPoint(x: frame.minX + 100, y: frame.midY)
+		lockerOne.position = CGPoint(x: frame.minX + 150, y: frame.midY + 220)
 		addChild(lockerOne)
 		
-		lockerTwo.position = CGPoint(x: frame.midX, y: frame.minY - 100)
+		lockerTwo.position = CGPoint(x: frame.midX - 100, y: frame.minY - 215)
 		addChild(lockerTwo)
+	}
+	
+	func spawnNextFloor() {
+		nextSceneNode.position = CGPoint(x: frame.midX, y: frame.midY - 400)
+		addChild(nextSceneNode)
 	}
 	
 	func heroEnteredUndeadRange(undead: UndeadSprite?) {
@@ -535,7 +535,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 				takeOffAnnouncementMade = true
                 
                 let transition = SKTransition.fade(withDuration: 1.0)
-                let gameOverScene = GameOverScene(size: size)
+                let gameOverScene = LeftBehindScene(size: size)
                 gameOverScene.scaleMode = scaleMode
                 view?.presentScene(gameOverScene, transition: transition)
 

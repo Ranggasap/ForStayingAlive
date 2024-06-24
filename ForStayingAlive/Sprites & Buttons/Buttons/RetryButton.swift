@@ -10,7 +10,7 @@ import SpriteKit
 
 class RetryButton: SKSpriteNode {
     public static func newInstance() -> RetryButton {
-        let retryButton = RetryButton(imageNamed: "backButton")
+        let retryButton = RetryButton(imageNamed: "retry-button")
         retryButton.size = CGSize(width: retryButton.size.width * 0.5, height: retryButton.size.height * 0.5)
         retryButton.isUserInteractionEnabled = true
         return retryButton

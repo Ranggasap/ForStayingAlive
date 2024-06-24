@@ -10,10 +10,8 @@ import GameplayKit
 import SpriteKit
 class EvacuationScene: SKScene{
 	private var evacuationLabel = SKLabelNode(fontNamed: "NicoClean-Regular")
-    
-    private var retryButton = RetryButton.newInstance()
-    
-    private var helicopterSprite = HelicopterSprite.newInstance()
+    private let retryButton = RetryButton.newInstance()
+    private let helicopterSprite = HelicopterSprite.newInstance()
     
 	override func didMove(to view: SKView) {
 		evacuationLabel.text = "You have been evacuated!"
@@ -24,7 +22,7 @@ class EvacuationScene: SKScene{
         helicopterSprite.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(helicopterSprite)
         
-        retryButton.position = CGPoint(x: frame.width - 75, y: 50)
+		retryButton.position = CGPoint(x: frame.maxX - 100, y: frame.minY / 2 + 50)
         addChild(retryButton)
 	}
 }
