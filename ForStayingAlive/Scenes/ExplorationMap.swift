@@ -533,6 +533,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 				subtitleManager.updateSubtitle("For the next evacuation spot", duration: 1.5)
 				subtitleManager.updateSubtitle("Take care of yourselves", duration: 1.5)
 				takeOffAnnouncementMade = true
+                
+                let transition = SKTransition.fade(withDuration: 1.0)
+                let gameOverScene = GameOverScene(size: size)
+                gameOverScene.scaleMode = scaleMode
+                view?.presentScene(gameOverScene, transition: transition)
+
 			}
 		}
 	}

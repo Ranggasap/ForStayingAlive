@@ -10,6 +10,8 @@
 		8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C4872C1BD9030083D972 /* NextSceneNode.swift */; };
 		8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */; };
 		8B00C48F2C1C3CCC0083D972 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C48E2C1C3CCC0083D972 /* LabelNode.swift */; };
+		8B05B5C42C296D020001384E /* HelicopterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C32C296D020001384E /* HelicopterSprite.swift */; };
+		8B05B5C62C2970140001384E /* RetryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C52C2970140001384E /* RetryButton.swift */; };
 		8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */; };
 		8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB2042C0DB77D0055AB7A /* GameViewController.swift */; };
 		8B4DB2082C0DB77D0055AB7A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2072C0DB77D0055AB7A /* Base */; };
@@ -73,6 +75,8 @@
 /* Begin PBXFileReference section */
 		8B00C4872C1BD9030083D972 /* NextSceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSceneNode.swift; sourceTree = "<group>"; };
 		8B00C48E2C1C3CCC0083D972 /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		8B05B5C32C296D020001384E /* HelicopterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelicopterSprite.swift; sourceTree = "<group>"; };
+		8B05B5C52C2970140001384E /* RetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryButton.swift; sourceTree = "<group>"; };
 		8B4DB1F92C0DB77D0055AB7A /* ForStayingAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForStayingAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B4DB2042C0DB77D0055AB7A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				E42E8E762C118B1900FF73F4 /* HeroSprite.swift */,
+				8B05B5C32C296D020001384E /* HelicopterSprite.swift */,
 				E48D483B2C15259200B97DEB /* UndeadSprite.swift */,
 				E4CB75132C194B880059FED9 /* LockerSprite.swift */,
 				E49C38D72C17F95500868DDA /* ChestSprite.swift */,
@@ -318,6 +323,7 @@
 			children = (
 				E42E8E882C1417E400FF73F4 /* RunningButton.swift */,
 				E49C38D92C18024A00868DDA /* InteractButton.swift */,
+				8B05B5C52C2970140001384E /* RetryButton.swift */,
 				E4E14A312C1834ED00A8E101 /* HidingButton.swift */,
 				E437B20F2C1D613A00D6E6A8 /* MedkitButton.swift */,
 			);
@@ -505,6 +511,7 @@
 				E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
 				E451A5C82C2476180061A7DC /* CountdownTimer.swift in Sources */,
+				8B05B5C62C2970140001384E /* RetryButton.swift in Sources */,
 				E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */,
 				8B92D36A2C20134700F6B2D2 /* Sound.swift in Sources */,
 				8B4DB2052C0DB77D0055AB7A /* GameViewController.swift in Sources */,
@@ -519,6 +526,7 @@
 				8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */,
 				E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */,
 				E437B20A2C19FF0500D6E6A8 /* Extensions.swift in Sources */,
+				8B05B5C42C296D020001384E /* HelicopterSprite.swift in Sources */,
 				E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */,
 				E42E8E872C13F5BF00FF73F4 /* AnalogJoystick.swift in Sources */,
 				E42E8E892C1417E400FF73F4 /* RunningButton.swift in Sources */,
