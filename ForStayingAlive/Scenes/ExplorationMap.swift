@@ -15,14 +15,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	private let undeadOne = UndeadSprite.newInstance()
 	private let undeadTwo = UndeadSprite.newInstance()
+    private let undeadThree = UndeadSprite.newInstance()
 	
 	private let chestOne = ChestSprite.newInstance()
 	private let chestTwo = ChestSprite.newInstance()
 	
 	private let lockerOne = LockerSprite.newInstance()
 	private let lockerTwo = LockerSprite.newInstance()
-	
-	private let nextFloor = NextFloorSprite.newInstance()
 	
 	private let runningButton = RunningButton.newInstance()
 	private let medkitButton = MedkitButton.newInstance()
@@ -50,13 +49,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	private var lastUpdateTime: TimeInterval = 0
 	
-	private var backgroundTrack: AVAudioPlayer?
-	private var helicopterTrack: AVAudioPlayer?
-	
-	private var countdownManager: CountdownManager?
-	private var cancellables: Set<AnyCancellable> = []
-	private var countdownLabel: SKLabelNode!
-	
 	private var subtitleManager: SubtitleManager!
 	private var twoMinutesAnnouncementMade = false
 	private var takeOffAnnouncementMade = false
@@ -67,6 +59,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 
     
     private var countdownViewModel = CountdownTimerViewModel()
+    private var countdownManager: CountdownManager?
+    
     private var cancellables: Set<AnyCancellable> = []
     
     private var countdownLabel: SKLabelNode!
@@ -75,18 +69,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     private var helicopterTrack: AVAudioPlayer?
     
 	override func didMove(to view: SKView) {
-        countdownLabel = SKLabelNode(text: "--:--")
-        countdownLabel.fontSize = 45
-        countdownLabel.fontName = "Helvetica-Bold"
-        countdownLabel.position = CGPoint(x: heroCamera.position.x, y: heroCamera.position.y + 125)
-        countdownLabel.zPosition = 10
-        heroCamera.addChild(countdownLabel)
-        
-        countdownViewModel.$displayTime.receive(on: RunLoop.main).sink{ [weak self] newTime in
-            self?.countdownLabel.text = newTime
-        }.store(in: &cancellables)
-        
-        countdownViewModel.startTimer()
         
 		self.physicsWorld.contactDelegate = self
         
@@ -114,39 +96,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		updateMedkitButtonState()
 		
-		undead.onHeroEnterAttackRange = { [weak self] in
-			self?.startReducingHeroHealth()
-		}
-
-		undead.onHeroExitAttackRange = { [weak self] in
-			self?.stopReducingHeroHealth()
-		}
-		
-		runningButton.onPress = { [weak self] in
-			guard let self = self else { return }
-			if self.hero.getHeroStamina() > 0 {
-				self.startStaminaReductionTimer()
-				self.stopStaminaRecoveryTimer()
-			}
-		}
-		
-		runningButton.onRelease = { [weak self] in
-			guard let self = self else { return }
-			if self.heroStaminaRecoveryTimer == nil {
-				self.stopStaminaReductionTimer()
-				self.startStaminaRecoveryTimer()
-			}
-		}
-		
-//		minX = frame.minX + 70
-//		maxX = backgroundOne.position.x + backgroundTwo.position.x - 70
-//		minY = frame.minY + 50
-//		maxY = frame.midY + 70
-        
-      
-        nextSceneNode.position = CGPoint(x: frame.midX - 50, y: frame.midY)
+        nextSceneNode.position = CGPoint(x: frame.midX, y: frame.midY - 400)
         addChild(nextSceneNode)
-		spawnNextFloor()
 	}
 
     
@@ -345,6 +296,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		undeadTwo.name = "undead-two"
 		undeadTwo.setUndeadSpawnPosition()
 		addChild(undeadTwo)
+        
+        undeadThree.position = CGPoint(x: frame.maxX + 250, y: frame.midY)
+        undeadThree.name = "undead-three"
+        undeadThree.setUndeadSpawnPosition()
+        addChild(undeadThree)
 		
 		undeadOne.onHeroEnterAttackRange = { [weak self] in
 			self?.heroEnteredUndeadRange(undead: self?.undeadOne)
@@ -361,6 +317,14 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		undeadTwo.onHeroExitAttackRange = { [weak self] in
 			self?.heroExitedUndeadRange(undead: self?.undeadTwo)
 		}
+        
+        undeadThree.onHeroEnterAttackRange = { [weak self] in
+            self?.heroEnteredUndeadRange(undead: self?.undeadTwo)
+        }
+        
+        undeadThree.onHeroExitAttackRange = { [weak self] in
+            self?.heroExitedUndeadRange(undead: self?.undeadTwo)
+        }
 	}
 	
 	func spawnChest() {
@@ -377,11 +341,6 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		lockerTwo.position = CGPoint(x: frame.midX, y: frame.minY - 100)
 		addChild(lockerTwo)
-	}
-	
-	func spawnNextFloor() {
-		nextFloor.position = CGPoint(x: frame.midX, y: frame.midY - 400)
-		addChild(nextFloor)
 	}
 	
 	func heroEnteredUndeadRange(undead: UndeadSprite?) {
@@ -481,7 +440,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 					undeadOne.physicsBody?.pinned = false
 				} else if contact.bodyA.node?.name == "undead-two" || contact.bodyB.node?.name == "undead-two" {
 					undeadTwo.physicsBody?.pinned = false
-				}
+                } else if contact.bodyA.node?.name == "undead-three" || contact.bodyB.node?.name == "undead-three" {
+                    undeadThree.physicsBody?.pinned = false
+                }
 			}
 		}
 	}
@@ -549,7 +510,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		
 		switch otherBody.categoryBitMask {
 			case UndeadCategory:
-				undead.physicsBody?.pinned = true
+                if otherBody.node?.name == "undead-one" {
+                    undeadOne.physicsBody?.pinned = true
+                } else if otherBody.node?.name == "undead-two" {
+                    undeadTwo.physicsBody?.pinned = true
+                } else if otherBody.node?.name == "undead-three" {
+                    undeadThree.physicsBody?.pinned = true
+                }
             case NextSceneCategory:
                 print("Next Scene")
                 let transition = SKTransition.fade(withDuration: 1.0)
@@ -614,6 +581,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		hero.heroIsMoving(isRunning: isRunning, joystickPosition: joystickPosition)
 		undeadOne.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
 		undeadTwo.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
+        undeadThree.undeadIsAttacking(deltaTime: dt, hero: hero, heroIsHidden: hero.isHidden)
 		
 		healthBar.update(progress: hero.getHeroHealth() / 100.0)
 		staminaBar.update(progress: hero.getHeroStamina() / 100.0)
