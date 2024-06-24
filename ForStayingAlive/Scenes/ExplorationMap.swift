@@ -105,7 +105,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     func addVisibilityEffect() {
         darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height))
         darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-        darkOverlay.alpha = 0.9
+        darkOverlay.alpha = 0.85
         darkOverlay.zPosition = 5
         darkOverlay.isUserInteractionEnabled = false
         
@@ -316,18 +316,18 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnChest() {
-        chestOne.position = CGPoint(x: frame.midX, y: frame.midY - 100)
+        chestOne.position = CGPoint(x: frame.midX + 10, y: frame.midY + 220)
         addChild(chestOne)
         
-        chestTwo.position = CGPoint(x: frame.minX + 20, y: frame.midY - 100)
+        chestTwo.position = CGPoint(x: frame.minX - 100, y: frame.midY - 410)
         addChild(chestTwo)
     }
     
     func spawnLocker() {
-        lockerOne.position = CGPoint(x: frame.minX + 100, y: frame.midY)
+        lockerOne.position = CGPoint(x: frame.minX + 150, y: frame.midY + 220)
         addChild(lockerOne)
         
-        lockerTwo.position = CGPoint(x: frame.midX, y: frame.minY - 100)
+        lockerTwo.position = CGPoint(x: frame.midX - 100, y: frame.minY - 215)
         addChild(lockerTwo)
     }
     
