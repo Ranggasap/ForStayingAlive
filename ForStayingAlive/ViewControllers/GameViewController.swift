@@ -12,7 +12,7 @@ class GameViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let sceneNode = ExplorationMap(size: view.frame.size)
+		let sceneNode = MainMenuScreen(size: view.frame.size)
 		
 		if let view = self.view as! SKView? {
 			view.presentScene(sceneNode)
@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
 			
 			view.showsFPS = false
 			view.showsNodeCount = false
-            view.showsPhysics = true
+            view.showsPhysics = false
 			
 			view.preferredFramesPerSecond = 30
 		}
