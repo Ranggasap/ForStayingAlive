@@ -82,9 +82,11 @@ public class UndeadSprite : SKSpriteNode {
 		removeAction(forKey: undeadIdleKey)
 		removeAction(forKey: undeadWalkingKey)
 		if action(forKey: undeadAttackingKey) == nil {
+			let attackingSound = SKAction.playSoundFileNamed("undead-attack", waitForCompletion: false)
 			let attackingAnimation = SKAction.repeatForever(
 				SKAction.animate(with: attackingFrames, timePerFrame: 0.1))
-			run(attackingAnimation, withKey: undeadAttackingKey)
+			let attackingGroup = SKAction.group([attackingSound, attackingAnimation])
+			run(attackingGroup, withKey: undeadAttackingKey)
 		}
 	}
 	

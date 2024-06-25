@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public class HeroSprite : SKSpriteNode {
+public class HeroSprite : SKSpriteNode { 
 	private let heroIdleKey = "hero_idle"
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
@@ -53,6 +53,7 @@ public class HeroSprite : SKSpriteNode {
 		
 		physicsBody.categoryBitMask = HeroCategory
 		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory | NextSceneCategory
+		physicsBody.collisionBitMask = ChestCategory | LockerCategory | NextSceneCategory
 		
 		self.physicsBody = physicsBody
 	}

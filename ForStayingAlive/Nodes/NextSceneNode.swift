@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 
 class NextSceneNode: SKNode{
-    
     var nextSceneBar: SKSpriteNode!
     
     convenience init(size: CGSize) {
