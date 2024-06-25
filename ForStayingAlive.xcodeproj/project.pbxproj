@@ -23,7 +23,7 @@
 		8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */; };
 		8B92D3762C20148000F6B2D2 /* zombie-attack-6419.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */; };
 		8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */; };
-		8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */; };
+		8B92D3782C20148000F6B2D2 /* undead-scream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3722C20148000F6B2D2 /* undead-scream.mp3 */; };
 		8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */; };
 		8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */; };
 		8BC6D8E82C1DCE2A00F73142 /* LeftBehindScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */; };
@@ -44,6 +44,8 @@
 		E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */ = {isa = PBXBuildFile; fileRef = E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */; };
 		E451A5DD2C25C02B0061A7DC /* SubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */; };
 		E451A5E32C29A4180061A7DC /* UndeadSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451A5E22C29A4170061A7DC /* UndeadSpawner.swift */; };
+		E451A5E52C2A638B0061A7DC /* undead-attack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */; };
+		E451A5E72C2A64FC0061A7DC /* undead-bite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */; };
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
@@ -92,7 +94,7 @@
 		8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "indoor-footsteps-6385.mp3"; sourceTree = "<group>"; };
 		8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zombie-attack-6419.mp3"; sourceTree = "<group>"; };
 		8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zmb2_dead-92305.mp3"; sourceTree = "<group>"; };
-		8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "zombie-screaming-207590.mp3"; sourceTree = "<group>"; };
+		8B92D3722C20148000F6B2D2 /* undead-scream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "undead-scream.mp3"; sourceTree = "<group>"; };
 		8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mutated-zombie-sound-211722.mp3"; sourceTree = "<group>"; };
 		8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerViewModel.swift; sourceTree = "<group>"; };
 		8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBehindScene.swift; sourceTree = "<group>"; };
@@ -113,6 +115,8 @@
 		E451A5D32C256FD40061A7DC /* HelicopterTakeOff.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HelicopterTakeOff.wav; sourceTree = "<group>"; };
 		E451A5DC2C25C02B0061A7DC /* SubtitleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleManager.swift; sourceTree = "<group>"; };
 		E451A5E22C29A4170061A7DC /* UndeadSpawner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndeadSpawner.swift; sourceTree = "<group>"; };
+		E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "undead-attack.mp3"; sourceTree = "<group>"; };
+		E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "undead-bite.mp3"; sourceTree = "<group>"; };
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
@@ -241,7 +245,9 @@
 				8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */,
 				8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */,
 				8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */,
-				8B92D3722C20148000F6B2D2 /* zombie-screaming-207590.mp3 */,
+				8B92D3722C20148000F6B2D2 /* undead-scream.mp3 */,
+				E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */,
+				E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */,
 			);
 			path = SFX;
 			sourceTree = "<group>";
@@ -469,15 +475,17 @@
 				8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */,
 				8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */,
 				E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */,
+				E451A5E52C2A638B0061A7DC /* undead-attack.mp3 in Resources */,
 				E451A5D52C256FD40061A7DC /* Helicopter2Minutes.wav in Resources */,
 				8B4DB2082C0DB77D0055AB7A /* Base in Resources */,
 				8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */,
-				8B92D3782C20148000F6B2D2 /* zombie-screaming-207590.mp3 in Resources */,
+				8B92D3782C20148000F6B2D2 /* undead-scream.mp3 in Resources */,
 				8B92D3762C20148000F6B2D2 /* zombie-attack-6419.mp3 in Resources */,
 				8B4DB20D2C0DB77E0055AB7A /* Base in Resources */,
 				E451A5D62C256FD40061A7DC /* HelicopterProlog.m4a in Resources */,
 				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
 				8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */,
+				E451A5E72C2A64FC0061A7DC /* undead-bite.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

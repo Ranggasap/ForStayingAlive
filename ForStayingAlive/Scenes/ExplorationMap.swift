@@ -108,7 +108,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	func addVisibilityEffect() {
 		darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height))
 		darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-		darkOverlay.alpha = 0.85
+		darkOverlay.alpha = 0.9
 		darkOverlay.zPosition = 5
 		darkOverlay.isUserInteractionEnabled = false
 		
@@ -352,9 +352,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	func startReducingHeroHealth() {
+		let biteSound = SKAction.playSoundFileNamed("undead-bite", waitForCompletion: false)
 		if heroHealthReductionTimer == nil && !undeadsInRange.isEmpty {
 			heroHealthReductionTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
 				self?.hero.heroHealthReduced(health: 10)
+				self?.run(biteSound)
 			}
 		}
 	}
@@ -525,19 +527,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			}
 			
 			if remainingTime <= 1 && !takeOffAnnouncementMade {
-				SFXManager.shared.playSFX(name: "HelicopterTakeOff", type: "wav")
-				subtitleManager.updateSubtitle("The helicopter is taking off now", duration: 3.25)
-				subtitleManager.updateSubtitle("For survivors who are not evacuated", duration: 2)
-				subtitleManager.updateSubtitle("Await government's radio signals", duration: 1.3)
-				subtitleManager.updateSubtitle("For the next evacuation spot", duration: 1.5)
-				subtitleManager.updateSubtitle("Take care of yourselves", duration: 1.5)
-				takeOffAnnouncementMade = true
-                
                 let transition = SKTransition.fade(withDuration: 1.0)
                 let gameOverScene = LeftBehindScene(size: size)
                 gameOverScene.scaleMode = scaleMode
                 view?.presentScene(gameOverScene, transition: transition)
-
+				takeOffAnnouncementMade = true
 			}
 		}
 	}
