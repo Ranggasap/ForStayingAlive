@@ -63,9 +63,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     private var twoMinutesAnnouncementMade = false
     private var takeOffAnnouncementMade = false
     
-    private var maskNode: SKShapeNode!
+    private var innerMaskNode: SKShapeNode!
+	private var outerMaskNode: SKShapeNode!
     private var darkOverlay: SKSpriteNode!
-    private var cropNode: SKCropNode!
+    private var innerCropNode: SKCropNode!
+	private var outerCropNode: SKCropNode!
     
     private var countdownViewModel = CountdownTimerViewModel()
     private var countdownManager: CountdownManager?
@@ -123,25 +125,45 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         darkOverlay.zPosition = 5
         darkOverlay.isUserInteractionEnabled = false
         
-        let maskRadius: CGFloat = 90.0
+        let innerMaskRadius: CGFloat = 50.0
+		let outerMaskRadius: CGFloat = 150.0
         let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
         
-        let maskPath = CGMutablePath()
-        maskPath.addRect(CGRect(origin: .zero, size: maskSize))
-        maskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: maskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+        let innerMaskPath = CGMutablePath()
+        innerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
+        innerMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: innerMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+		
+		let outerMaskPath = CGMutablePath()
+		outerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
+		outerMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: outerMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
         
-        maskNode = SKShapeNode(path: maskPath)
-        maskNode.fillColor = .black
-        maskNode.strokeColor = .clear
-        maskNode.lineWidth = 0
-        maskNode.isUserInteractionEnabled = false
+        innerMaskNode = SKShapeNode(path: innerMaskPath)
+        innerMaskNode.fillColor = .black
+        innerMaskNode.strokeColor = .clear
+        innerMaskNode.lineWidth = 0
+		innerMaskNode.alpha = 1.0
+        innerMaskNode.isUserInteractionEnabled = false
+		
+		outerMaskNode = SKShapeNode(path: outerMaskPath)
+		outerMaskNode.fillColor = .black
+		outerMaskNode.strokeColor = .clear
+		outerMaskNode.lineWidth = 0
+		outerMaskNode.alpha = 0.8
+		outerMaskNode.isUserInteractionEnabled = false
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = maskNode
-        cropNode.addChild(darkOverlay)
-        cropNode.zPosition = 4
-        cropNode.isUserInteractionEnabled = false
-        addChild(cropNode)
+        innerCropNode = SKCropNode()
+        innerCropNode.maskNode = innerMaskNode
+		innerCropNode.addChild(darkOverlay.copy() as! SKSpriteNode)
+        innerCropNode.zPosition = 3
+        innerCropNode.isUserInteractionEnabled = false
+        addChild(innerCropNode)
+		
+		outerCropNode = SKCropNode()
+		outerCropNode.maskNode = outerMaskNode
+		outerCropNode.addChild(darkOverlay)
+		outerCropNode.zPosition = 4
+		outerCropNode.isUserInteractionEnabled = false
+		addChild(outerCropNode)
     }
     
     func addCountdown() {
@@ -487,7 +509,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func reduceHeroStamina() {
-        hero.heroStaminaReduced(stamina: 2.0)
+        hero.heroStaminaReduced(stamina: 2.5)
     }
     
     private func startStaminaRecoveryTimer() {
@@ -670,12 +692,15 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         updateMedkitButtonState()
         
         let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
-        maskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+        innerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+		outerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
         
         if hero.isHidden {
-            cropNode.maskNode = nil
+            innerCropNode.maskNode = nil
+			outerCropNode.maskNode = nil
         } else {
-            cropNode.maskNode = maskNode
+            innerCropNode.maskNode = innerMaskNode
+			outerCropNode.maskNode = outerMaskNode
         }
         
         countdownManager?.updateTimer(dt: dt)
