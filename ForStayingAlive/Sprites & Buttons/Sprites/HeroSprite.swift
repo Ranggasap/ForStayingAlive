@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public class HeroSprite : SKSpriteNode {
+public class HeroSprite : SKSpriteNode { 
 	private let heroIdleKey = "hero_idle"
 	private let heroWalkingKey = "hero_walking"
 	private let heroRunningKey = "hero_running"
