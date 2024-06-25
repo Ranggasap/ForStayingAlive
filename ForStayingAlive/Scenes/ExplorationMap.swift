@@ -11,7 +11,7 @@ import AVFoundation
 import Combine
 
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
-    private let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    private let mediumImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
 	private let hero = HeroSprite.newInstance()
 	
@@ -355,12 +355,18 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 	
 	func startReducingHeroHealth() {
 		let biteSound = SKAction.playSoundFileNamed("undead-bite", waitForCompletion: false)
+		let flashRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.1)
+		let clearColor = SKAction.colorize(withColorBlendFactor: 0.0, duration: 0.1)
+		let flashSequence = SKAction.sequence([flashRed, clearColor])
+		
 		if heroHealthReductionTimer == nil && !undeadsInRange.isEmpty {
 			heroHealthReductionTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-				self?.hero.heroHealthReduced(health: 10)
-				self?.run(biteSound)
-                self?.lightImpactFeedbackGenerator.prepare()
-                self?.lightImpactFeedbackGenerator.impactOccurred()
+				guard let self = self else { return }
+				self.hero.heroHealthReduced(health: 10)
+				self.run(biteSound)
+				self.hero.run(flashSequence)
+				self.mediumImpactFeedbackGenerator.prepare()
+				self.mediumImpactFeedbackGenerator.impactOccurred()
 			}
 		}
 	}
