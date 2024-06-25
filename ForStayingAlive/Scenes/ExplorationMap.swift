@@ -11,6 +11,8 @@ import AVFoundation
 import Combine
 
 class ExplorationMap: SKScene, SKPhysicsContactDelegate {
+    private let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    
 	private let hero = HeroSprite.newInstance()
 	
 	private let undeadOne = UndeadSprite.newInstance()
@@ -357,6 +359,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			heroHealthReductionTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
 				self?.hero.heroHealthReduced(health: 10)
 				self?.run(biteSound)
+                self?.lightImpactFeedbackGenerator.prepare()
+                self?.lightImpactFeedbackGenerator.impactOccurred()
 			}
 		}
 	}
