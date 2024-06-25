@@ -20,6 +20,7 @@ public class LockerSprite : SKSpriteNode {
 		
 		lockerSprite.physicsBody?.categoryBitMask = LockerCategory
 		lockerSprite.physicsBody?.contactTestBitMask = HeroCategory
+		lockerSprite.physicsBody?.collisionBitMask = HeroCategory | UndeadCategory
 		
 		return lockerSprite
 	}

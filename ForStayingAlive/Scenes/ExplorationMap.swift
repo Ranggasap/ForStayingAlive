@@ -195,6 +195,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         hospitalBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: hospitalBoundary.size)
         hospitalBoundary.physicsBody?.affectedByGravity = false
         hospitalBoundary.physicsBody?.isDynamic = false
+		hospitalBoundary.physicsBody?.categoryBitMask = WallCategory
+		hospitalBoundary.physicsBody?.collisionBitMask = HeroCategory | UndeadCategory
         addChild(hospitalBoundary)
         
         furnitureBoundaryOne = SKSpriteNode(imageNamed: "furniture-boundary-1")
