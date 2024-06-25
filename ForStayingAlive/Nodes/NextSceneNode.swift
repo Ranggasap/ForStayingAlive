@@ -13,7 +13,7 @@ class NextSceneNode: SKNode{
     
     convenience init(size: CGSize) {
         self.init()
-        nextSceneBar = SKSpriteNode(color: .yellow, size: size)
+        nextSceneBar = SKSpriteNode(color: .clear, size: size)
         nextSceneBar.zPosition = 3
         nextSceneBar.physicsBody = SKPhysicsBody(rectangleOf: size)
         nextSceneBar.physicsBody?.affectedByGravity = false
