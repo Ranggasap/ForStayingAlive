@@ -53,6 +53,7 @@ public class HeroSprite : SKSpriteNode {
 		
 		physicsBody.categoryBitMask = HeroCategory
 		physicsBody.contactTestBitMask = UndeadCategory | ChestCategory | LockerCategory | NextSceneCategory
+		physicsBody.collisionBitMask = ChestCategory | LockerCategory | NextSceneCategory
 		
 		self.physicsBody = physicsBody
 	}
