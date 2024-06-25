@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C4872C1BD9030083D972 /* NextSceneNode.swift */; };
 		8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */; };
-		8B00C48F2C1C3CCC0083D972 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C48E2C1C3CCC0083D972 /* LabelNode.swift */; };
 		8B05B5C42C296D020001384E /* HelicopterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C32C296D020001384E /* HelicopterSprite.swift */; };
 		8B05B5C62C2970140001384E /* RetryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C52C2970140001384E /* RetryButton.swift */; };
 		8B4DB1FD2C0DB77D0055AB7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DB1FC2C0DB77D0055AB7A /* AppDelegate.swift */; };
@@ -75,7 +74,6 @@
 
 /* Begin PBXFileReference section */
 		8B00C4872C1BD9030083D972 /* NextSceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSceneNode.swift; sourceTree = "<group>"; };
-		8B00C48E2C1C3CCC0083D972 /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 		8B05B5C32C296D020001384E /* HelicopterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelicopterSprite.swift; sourceTree = "<group>"; };
 		8B05B5C52C2970140001384E /* RetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryButton.swift; sourceTree = "<group>"; };
 		8B4DB1F92C0DB77D0055AB7A /* ForStayingAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForStayingAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				E4FDDE242C23C819001EC9F6 /* Info.plist */,
-				8B92D36B2C20145C00F6B2D2 /* SFX */,
 				E42E8E6E2C11711E00FF73F4 /* Mains */,
 				8B96FDB22C22E93900E2EE7D /* ViewModels */,
 				8B92D3682C20133900F6B2D2 /* Models */,
@@ -214,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				8B66D0A82C1803F100BB6573 /* ProgressBarNode.swift */,
-				8B00C48E2C1C3CCC0083D972 /* LabelNode.swift */,
 				8B00C4872C1BD9030083D972 /* NextSceneNode.swift */,
 			);
 			path = Nodes;
@@ -346,6 +342,7 @@
 		E4FDDE1A2C231772001EC9F6 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				8B92D36B2C20145C00F6B2D2 /* SFX */,
 				E451A5D42C256FD40061A7DC /* ChopperVoices */,
 				E4FDDE1D2C2319F4001EC9F6 /* the-hired.m4a */,
 				E4FDDE1F2C231A84001EC9F6 /* helicopter.m4a */,
@@ -510,7 +507,6 @@
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
 				E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */,
 				8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */,
-				8B00C48F2C1C3CCC0083D972 /* LabelNode.swift in Sources */,
 				E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */,
 				E451A5E32C29A4180061A7DC /* UndeadSpawner.swift in Sources */,
 				E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */,
@@ -716,7 +712,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56MX8FP3GC;
+				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
@@ -748,7 +744,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56MX8FP3GC;
+				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";

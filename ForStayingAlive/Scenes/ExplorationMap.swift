@@ -434,9 +434,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			if (contact.bodyA.categoryBitMask == UndeadCategory || contact.bodyB.categoryBitMask == UndeadCategory) {
 				if contact.bodyA.node?.name == "undead-one" || contact.bodyB.node?.name == "undead-one" {
 					undeadOne.physicsBody?.pinned = false
-				} else if contact.bodyA.node?.name == "undead-two" || contact.bodyB.node?.name == "undead-two" {
+				}
+				
+				if contact.bodyA.node?.name == "undead-two" || contact.bodyB.node?.name == "undead-two" {
 					undeadTwo.physicsBody?.pinned = false
-                } else if contact.bodyA.node?.name == "undead-three" || contact.bodyB.node?.name == "undead-three" {
+                }
+				
+				if contact.bodyA.node?.name == "undead-three" || contact.bodyB.node?.name == "undead-three" {
                     undeadThree.physicsBody?.pinned = false
                 }
 			}
@@ -490,25 +494,20 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 			case UndeadCategory:
                 if otherBody.node?.name == "undead-one" {
                     undeadOne.physicsBody?.pinned = true
-                } else if otherBody.node?.name == "undead-two" {
+                }
+				
+				if otherBody.node?.name == "undead-two" {
                     undeadTwo.physicsBody?.pinned = true
-                } else if otherBody.node?.name == "undead-three" {
+                }
+				
+				if otherBody.node?.name == "undead-three" {
                     undeadThree.physicsBody?.pinned = true
                 }
             case NextSceneCategory:
-                print("Next Scene")
                 let transition = SKTransition.fade(withDuration: 1.0)
                 let evacuationScene = EvacuationScene(size: size)
                 evacuationScene.scaleMode = scaleMode
                 view?.presentScene(evacuationScene, transition: transition)
-
-				if otherBody.node?.name == "undead-one" {
-					undeadOne.physicsBody?.pinned = true
-				}
-				
-				if otherBody.node?.name == "undead-two" {
-					undeadTwo.physicsBody?.pinned = true
-				}
 			default:
 				break
 		}
