@@ -181,13 +181,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         hospitalGround = SKSpriteNode(imageNamed: "hospital-ground")
         hospitalGround.size = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
         hospitalGround.position = CGPoint(x: frame.midX, y: frame.midY)
-        hospitalGround.zPosition = -10
+        hospitalGround.zPosition = -1
         addChild(hospitalGround)
         
         hospitalBoundary = SKSpriteNode(imageNamed: "hospital-boundary")
         hospitalBoundary.size = CGSize(width: hospitalBoundary.size.width, height: hospitalBoundary.size.height)
         hospitalBoundary.position = CGPoint(x: frame.midX, y: frame.midY)
-        hospitalBoundary.zPosition = -8
+        hospitalBoundary.zPosition = -10
         
         let boundaryTexture = hospitalBoundary.texture
         hospitalBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: hospitalBoundary.size)
