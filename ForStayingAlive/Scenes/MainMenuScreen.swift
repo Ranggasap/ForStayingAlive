@@ -16,7 +16,7 @@ class MainMenuScreen: SKScene {
     override func didMove(to view: SKView) {
         mainMenuLabel.text = "The Last Flight Out"
         mainMenuLabel.fontSize = 40
-        mainMenuLabel.position = CGPoint(x: frame.midX, y: frame.midY + 100)
+        mainMenuLabel.position = CGPoint(x: frame.midX, y: frame.midY + 50)
         addChild(mainMenuLabel)
         
         startButtonLabel.text = "Start"
@@ -36,7 +36,7 @@ class MainMenuScreen: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             if startButtonLabel.contains(location){
-                let explorationMap = ExplorationMap(size: self.size)
+                let explorationMap = TutorialScreen(size: self.size)
                 explorationMap.scaleMode = .aspectFill
                 let transition = SKTransition.fade(withDuration: 1.0)
                 self.view?.presentScene(explorationMap, transition: transition)

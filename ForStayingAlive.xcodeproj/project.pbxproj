@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E9BB8682C2BC2AF00F328E3 /* TutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */; };
 		8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C4872C1BD9030083D972 /* NextSceneNode.swift */; };
 		8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */; };
 		8B05B5C42C296D020001384E /* HelicopterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C32C296D020001384E /* HelicopterSprite.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen.swift; sourceTree = "<group>"; };
 		8B00C4872C1BD9030083D972 /* NextSceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSceneNode.swift; sourceTree = "<group>"; };
 		8B05B5C32C296D020001384E /* HelicopterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelicopterSprite.swift; sourceTree = "<group>"; };
 		8B05B5C52C2970140001384E /* RetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryButton.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				8B05B5C72C2ACA280001384E /* MainMenuScreen.swift */,
+				0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */,
 				E42E8E782C11955900FF73F4 /* ExplorationMap.swift */,
 				E451A5C12C2453390061A7DC /* EvacuationScene.swift */,
 				E451A5C52C245A270061A7DC /* DeathScene.swift */,
@@ -519,6 +522,7 @@
 				E451A5C62C245A270061A7DC /* DeathScene.swift in Sources */,
 				E451A5D02C256F250061A7DC /* CountdownManager.swift in Sources */,
 				E42E8E752C11729300FF73F4 /* Constants.swift in Sources */,
+				0E9BB8682C2BC2AF00F328E3 /* TutorialScreen.swift in Sources */,
 				E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */,
 				8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */,
 				E451A5C22C2453390061A7DC /* EvacuationScene.swift in Sources */,
