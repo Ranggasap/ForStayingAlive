@@ -25,7 +25,7 @@ class RetryButton: SKSpriteNode {
         
         guard let view = self.scene?.view else { return }
         let transition = SKTransition.fade(withDuration: 1.0)
-        let explorationScene = ExplorationMap(size: view.bounds.size)
+        let explorationScene = MainMenuScreen(size: view.bounds.size)
         explorationScene.scaleMode = .aspectFill
         view.presentScene(explorationScene, transition: transition)
     }

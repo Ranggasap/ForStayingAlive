@@ -728,10 +728,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 56MX8FP3GC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -760,7 +761,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 56MX8FP3GC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";

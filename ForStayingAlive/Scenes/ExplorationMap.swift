@@ -125,8 +125,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         darkOverlay.zPosition = 5
         darkOverlay.isUserInteractionEnabled = false
         
-        let innerMaskRadius: CGFloat = 50.0
-		let outerMaskRadius: CGFloat = 150.0
+        let innerMaskRadius: CGFloat = 70.0
+		let outerMaskRadius: CGFloat = 160.0
         let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
         
         let innerMaskPath = CGMutablePath()
