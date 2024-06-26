@@ -32,15 +32,24 @@ public class HidingButton : SKSpriteNode {
 		toggleHidingState()
 		let buttonPressed = SKAction.scale(to: 0.9, duration: 0.2)
 		self.run(buttonPressed)
+		
+		let lockerSlam = SKAction.playSoundFileNamed("locker-slam", waitForCompletion: false)
+		self.run(lockerSlam)
 	}
 	
 	public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let buttonReleased = SKAction.scale(to: 1.0, duration: 0.2)
 		self.run(buttonReleased)
+		
+		let lockerSlam = SKAction.playSoundFileNamed("locker-slam", waitForCompletion: false)
+		self.run(lockerSlam)
 	}
 	
 	public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let buttonReleased = SKAction.scale(to: 1.0, duration: 0.2)
 		self.run(buttonReleased)
+		
+		let lockerSlam = SKAction.playSoundFileNamed("locker-slam", waitForCompletion: false)
+		self.run(lockerSlam)
 	}
 }

@@ -50,6 +50,7 @@
 		E451A5E52C2A638B0061A7DC /* undead-attack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */; };
 		E451A5E72C2A64FC0061A7DC /* undead-bite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */; };
 		E48D483C2C15259200B97DEB /* UndeadSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D483B2C15259200B97DEB /* UndeadSprite.swift */; };
+		E48FE0E82C2BE3D600AD9F06 /* locker-slam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
 		E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB75132C194B880059FED9 /* LockerSprite.swift */; };
@@ -124,6 +125,7 @@
 		E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "undead-attack.mp3"; sourceTree = "<group>"; };
 		E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "undead-bite.mp3"; sourceTree = "<group>"; };
 		E48D483B2C15259200B97DEB /* UndeadSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndeadSprite.swift; sourceTree = "<group>"; };
+		E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "locker-slam.mp3"; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
 		E4CB75132C194B880059FED9 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				8B92D3722C20148000F6B2D2 /* undead-scream.mp3 */,
 				E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */,
 				E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */,
+				E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */,
 			);
 			path = SFX;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				E4FDDE232C23C7AF001EC9F6 /* NicoClean-Regular.otf in Resources */,
 				8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */,
 				8B92D3772C20148000F6B2D2 /* zmb2_dead-92305.mp3 in Resources */,
+				E48FE0E82C2BE3D600AD9F06 /* locker-slam.mp3 in Resources */,
 				E451A5D72C256FD40061A7DC /* HelicopterTakeOff.wav in Resources */,
 				E451A5E52C2A638B0061A7DC /* undead-attack.mp3 in Resources */,
 				E451A5D52C256FD40061A7DC /* Helicopter2Minutes.wav in Resources */,
@@ -732,7 +736,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56MX8FP3GC;
+				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
@@ -765,7 +769,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56MX8FP3GC;
+				DEVELOPMENT_TEAM = 749DSANFYP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
