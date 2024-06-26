@@ -123,11 +123,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     func addVisibilityEffect() {
         darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height))
         darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-        darkOverlay.alpha = 0.9
+        darkOverlay.alpha = 0.95
         darkOverlay.zPosition = 5
         darkOverlay.isUserInteractionEnabled = false
         
-        let innerMaskRadius: CGFloat = 70.0
+        let innerMaskRadius: CGFloat = 80.0
 		let outerMaskRadius: CGFloat = 160.0
         let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
         
@@ -150,7 +150,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 		outerMaskNode.fillColor = .black
 		outerMaskNode.strokeColor = .clear
 		outerMaskNode.lineWidth = 0
-		outerMaskNode.alpha = 0.8
+		outerMaskNode.alpha = 0.9
 		outerMaskNode.isUserInteractionEnabled = false
         
         innerCropNode = SKCropNode()

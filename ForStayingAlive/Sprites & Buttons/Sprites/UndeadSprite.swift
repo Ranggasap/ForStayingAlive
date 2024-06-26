@@ -113,6 +113,7 @@ public class UndeadSprite : SKSpriteNode {
 				self.xScale = isMovingLeft ? -1 : 1
 			}
 			self.undeadAttackingAnimation()
+            self.physicsBody?.collisionBitMask = WallCategory | ChestCategory | LockerCategory
 			
 			if distanceToHero <= undeadAttackRange {
 				onHeroEnterAttackRange?()
@@ -142,6 +143,7 @@ public class UndeadSprite : SKSpriteNode {
 			self.xScale = isMovingLeft ? -1 : 1
 			
 			self.undeadWalkingAnimation()
+            self.physicsBody?.collisionBitMask = 0
 		} else {
 			self.position = undeadSpawnPosition
 			self.undeadIdleAnimation()
