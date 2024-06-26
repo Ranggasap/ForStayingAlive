@@ -275,11 +275,11 @@
 		E42E8E6C2C1170F800FF73F4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8B05B5C72C2ACA280001384E /* MainMenuScreen.swift */,
 				E42E8E782C11955900FF73F4 /* ExplorationMap.swift */,
 				E451A5C12C2453390061A7DC /* EvacuationScene.swift */,
 				E451A5C52C245A270061A7DC /* DeathScene.swift */,
 				8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */,
-				8B05B5C72C2ACA280001384E /* MainMenuScreen.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
