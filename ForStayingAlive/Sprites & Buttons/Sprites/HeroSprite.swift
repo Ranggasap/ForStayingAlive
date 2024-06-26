@@ -46,7 +46,7 @@ public class HeroSprite : SKSpriteNode {
 	}
 	
 	private func addPhysicsBody() {
-		let physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 3)
+		let physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 3 - 5)
 		physicsBody.affectedByGravity = false
 		physicsBody.allowsRotation = false
 		physicsBody.pinned = false

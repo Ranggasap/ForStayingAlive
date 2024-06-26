@@ -384,12 +384,12 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnUndead() {
-        undeadOne.position = CGPoint(x: frame.midX - 300, y: frame.midY + 170)
+        undeadOne.position = CGPoint(x: frame.midX - 330, y: frame.midY + 170)
         undeadOne.name = "undead-one"
         undeadOne.setUndeadSpawnPosition()
         addChild(undeadOne)
         
-        undeadTwo.position = CGPoint(x: frame.maxX - 100, y: frame.midY + 80)
+        undeadTwo.position = CGPoint(x: frame.maxX - 120, y: frame.midY + 170)
         undeadTwo.name = "undead-two"
         undeadTwo.setUndeadSpawnPosition()
         addChild(undeadTwo)
@@ -425,7 +425,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnChest() {
-        chestOne.position = CGPoint(x: frame.midX + 510, y: frame.maxY - 250) //chest ruangan zombie
+        chestOne.position = CGPoint(x: frame.midX + 505, y: frame.maxY - 250) //chest ruangan zombie
         addChild(chestOne)
         
 //        chestTwo.position = CGPoint(x: frame.minX - 90, y: frame.minY - 320) //chest pojok bawah
