@@ -66,9 +66,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     private var takeOffAnnouncementMade = false
     
     private var innerMaskNode: SKShapeNode!
+//	private var middleMaskNode: SKShapeNode!
 	private var outerMaskNode: SKShapeNode!
     private var darkOverlay: SKSpriteNode!
     private var innerCropNode: SKCropNode!
+//	private var middleCropNode: SKCropNode!
 	private var outerCropNode: SKCropNode!
     
     private var countdownViewModel = CountdownTimerViewModel()
@@ -123,17 +125,22 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     func addVisibilityEffect() {
         darkOverlay = SKSpriteNode(color: .black, size: CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height))
         darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
-        darkOverlay.alpha = 0.95
+        darkOverlay.alpha = 0.9
         darkOverlay.zPosition = 5
         darkOverlay.isUserInteractionEnabled = false
         
-        let innerMaskRadius: CGFloat = 80.0
-		let outerMaskRadius: CGFloat = 160.0
+        let innerMaskRadius: CGFloat = 160.0
+//		let middleMaskRadius: CGFloat = 120.0
+		let outerMaskRadius: CGFloat = 70.0
         let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
         
         let innerMaskPath = CGMutablePath()
         innerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
         innerMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: innerMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+		
+//		let middleMaskPath = CGMutablePath()
+//		middleMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
+//		middleMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: middleMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
 		
 		let outerMaskPath = CGMutablePath()
 		outerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
@@ -145,6 +152,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         innerMaskNode.lineWidth = 0
 		innerMaskNode.alpha = 1.0
         innerMaskNode.isUserInteractionEnabled = false
+		
+//		middleMaskNode = SKShapeNode(path: middleMaskPath)
+//		middleMaskNode.fillColor = .black
+//		middleMaskNode.strokeColor = .clear
+//		middleMaskNode.lineWidth = 0
+//		middleMaskNode.alpha = 0.8
+//		middleMaskNode.isUserInteractionEnabled = false
 		
 		outerMaskNode = SKShapeNode(path: outerMaskPath)
 		outerMaskNode.fillColor = .black
@@ -160,10 +174,17 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         innerCropNode.isUserInteractionEnabled = false
         addChild(innerCropNode)
 		
+//		middleCropNode = SKCropNode()
+//		middleCropNode.maskNode = middleCropNode
+//		middleCropNode.addChild(darkOverlay.copy() as! SKSpriteNode)
+//		middleCropNode.zPosition = 4
+//		middleCropNode.isUserInteractionEnabled = false
+//		addChild(middleCropNode)
+		
 		outerCropNode = SKCropNode()
 		outerCropNode.maskNode = outerMaskNode
 		outerCropNode.addChild(darkOverlay)
-		outerCropNode.zPosition = 4
+		outerCropNode.zPosition = 5
 		outerCropNode.isUserInteractionEnabled = false
 		addChild(outerCropNode)
     }
@@ -173,7 +194,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         countdownLabel.fontSize = 40
         countdownLabel.fontName = "NicoClean-Regular"
         countdownLabel.position = CGPoint(x: -size.width / 2 + size.width / 2, y: size.height / 2 - 55)
-        countdownLabel.zPosition = 10
+        countdownLabel.zPosition = 100
         heroCamera.addChild(countdownLabel)
     }
     
@@ -199,7 +220,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         objectiveLabel.text = "Find the staircase to the rooftop!"
         objectiveLabel.fontSize = 14
         objectiveLabel.position = CGPoint(x: runningButton.position.x, y: countdownLabel.position.y + 10)
-        objectiveLabel.zPosition = 10
+        objectiveLabel.zPosition = 100
         heroCamera.addChild(objectiveLabel)
     }
     
@@ -297,7 +318,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         furnitureBoundarySeven = SKSpriteNode(imageNamed: "furniture-boundary-7")
         furnitureBoundarySeven.size = CGSize(width: furnitureBoundarySeven.size.width, height: furnitureBoundarySeven.size.height)
         furnitureBoundarySeven.position = CGPoint(x: frame.midX, y: frame.midY)
-        furnitureBoundarySeven.zPosition = -5
+        furnitureBoundarySeven.zPosition = -3
         furnitureBoundarySeven.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundarySeven.size.width / 2, height: furnitureBoundarySeven.size.height / 2))
         
         let furnitureSevenBoundaryTexture = furnitureBoundarySeven.texture
@@ -309,7 +330,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         furnitureBoundaryEight = SKSpriteNode(imageNamed: "furniture-boundary-8")
         furnitureBoundaryEight.size = CGSize(width: furnitureBoundaryEight.size.width, height: furnitureBoundaryEight.size.height)
         furnitureBoundaryEight.position = CGPoint(x: frame.midX, y: frame.midY)
-        furnitureBoundaryEight.zPosition = -4
+        furnitureBoundaryEight.zPosition = -2
         furnitureBoundaryEight.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryEight.size.width / 2, height: furnitureBoundaryEight.size.height / 2))
         
         let furnitureEightBoundaryTexture = furnitureBoundaryEight.texture
@@ -329,7 +350,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         
         joystick = AnalogJoystick(substrate: substrate, stick: stick)
         joystick.position = CGPoint(x: -size.width / 2 + 125, y: -size.height / 2 + 90)
-        joystick.zPosition = 10
+        joystick.zPosition = 100
         
         heroCamera.addChild(joystick)
         
@@ -344,7 +365,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     func addRunningButton() {
         runningButton.position = CGPoint(x: size.width / 2 - 150, y: -size.height / 2 + 100)
-        runningButton.zPosition = 10
+        runningButton.zPosition = 100
         heroCamera.addChild(runningButton)
         
         runningButton.onPress = { [weak self] in
@@ -366,20 +387,20 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     func addInteractButton() {
         interactButton.position = CGPoint(x: runningButton.position.x, y: runningButton.position.y + 80)
-        interactButton.zPosition = 10
+        interactButton.zPosition = 100
         interactButton.setMedkitButton(medkitButton)
         heroCamera.addChild(interactButton)
     }
     
     func addHidingButton() {
         hidingButton.position = CGPoint(x: runningButton.position.x, y: runningButton.position.y + 80)
-        hidingButton.zPosition = 10
+        hidingButton.zPosition = 100
         heroCamera.addChild(hidingButton)
     }
     
     func addMedkitButton() {
         medkitButton.position = CGPoint(x: runningButton.position.x - 90, y: runningButton.position.y + 10)
-        medkitButton.zPosition = 10
+        medkitButton.zPosition = 100
         heroCamera.addChild(medkitButton)
     }
     
@@ -389,11 +410,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     func addStatusBar() {
         healthBar.position = CGPoint(x: joystick.position.x, y: size.height / 2 - 30)
-        healthBar.zPosition = 10
+        healthBar.zPosition = 100
         heroCamera.addChild(healthBar)
         
         staminaBar.position = CGPoint(x: joystick.position.x, y: size.height / 2 - 45)
-        staminaBar.zPosition = 10
+        staminaBar.zPosition = 100
         heroCamera.addChild(staminaBar)
     }
     
@@ -733,13 +754,16 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         
         let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
         innerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+//		middleCropNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
 		outerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
         
         if hero.isHidden {
             innerCropNode.maskNode = nil
+//			middleCropNode.maskNode = nil
 			outerCropNode.maskNode = nil
         } else {
             innerCropNode.maskNode = innerMaskNode
+//			middleCropNode.maskNode = middleMaskNode
 			outerCropNode.maskNode = outerMaskNode
         }
         
