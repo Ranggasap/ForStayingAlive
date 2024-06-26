@@ -56,6 +56,8 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     private var furnitureBoundaryFour: SKSpriteNode!
     private var furnitureBoundaryFive: SKSpriteNode!
     private var furnitureBoundarySix: SKSpriteNode!
+    private var furnitureBoundarySeven: SKSpriteNode!
+    private var furnitureBoundaryEight: SKSpriteNode!
     
     private var lastUpdateTime: TimeInterval = 0
     
@@ -291,6 +293,30 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         furnitureBoundarySix.physicsBody?.affectedByGravity = false
         furnitureBoundarySix.physicsBody?.isDynamic = false
         addChild(furnitureBoundarySix)
+        
+        furnitureBoundarySeven = SKSpriteNode(imageNamed: "furniture-boundary-7")
+        furnitureBoundarySeven.size = CGSize(width: furnitureBoundarySeven.size.width, height: furnitureBoundarySeven.size.height)
+        furnitureBoundarySeven.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundarySeven.zPosition = -5
+        furnitureBoundarySeven.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundarySeven.size.width / 2, height: furnitureBoundarySeven.size.height / 2))
+        
+        let furnitureSevenBoundaryTexture = furnitureBoundarySeven.texture
+        furnitureBoundarySeven.physicsBody = SKPhysicsBody(texture: furnitureSevenBoundaryTexture!, size: furnitureBoundarySeven.size)
+        furnitureBoundarySeven.physicsBody?.affectedByGravity = false
+        furnitureBoundarySeven.physicsBody?.isDynamic = false
+        addChild(furnitureBoundarySeven)
+        
+        furnitureBoundaryEight = SKSpriteNode(imageNamed: "furniture-boundary-8")
+        furnitureBoundaryEight.size = CGSize(width: furnitureBoundaryEight.size.width, height: furnitureBoundaryEight.size.height)
+        furnitureBoundaryEight.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundaryEight.zPosition = -4
+        furnitureBoundaryEight.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryEight.size.width / 2, height: furnitureBoundaryEight.size.height / 2))
+        
+        let furnitureEightBoundaryTexture = furnitureBoundaryEight.texture
+        furnitureBoundaryEight.physicsBody = SKPhysicsBody(texture: furnitureEightBoundaryTexture!, size: furnitureBoundaryEight.size)
+        furnitureBoundaryEight.physicsBody?.affectedByGravity = false
+        furnitureBoundaryEight.physicsBody?.isDynamic = false
+        addChild(furnitureBoundaryEight)
     }
     
     func addJoystick() {
