@@ -13,7 +13,7 @@ public class ChestSprite : SKSpriteNode {
 		chestSprite.size = CGSize(width: chestSprite.size.width, height: chestSprite.size.height)
 		chestSprite.zPosition = 1
 		
-		chestSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: chestSprite.size.width / 2, height: chestSprite.size.height / 2))
+		chestSprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: chestSprite.size.width, height: chestSprite.size.height / 2))
 		chestSprite.physicsBody?.affectedByGravity = false
 		chestSprite.physicsBody?.allowsRotation = false
 		chestSprite.physicsBody?.pinned = true

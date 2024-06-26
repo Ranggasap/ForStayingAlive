@@ -425,24 +425,24 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnChest() {
-        chestOne.position = CGPoint(x: frame.minX + 140, y: frame.midY + 40)
+        chestOne.position = CGPoint(x: frame.midX + 510, y: frame.maxY - 250) //chest ruangan zombie
         addChild(chestOne)
         
-        chestTwo.position = CGPoint(x: frame.minX - 90, y: frame.minY - 320)
-        addChild(chestTwo)
+//        chestTwo.position = CGPoint(x: frame.minX - 90, y: frame.minY - 320) //chest pojok bawah
+//        addChild(chestTwo)
         
-        chestThree.position = CGPoint(x: frame.midX - 80, y: frame.midY + 270)
+        chestThree.position = CGPoint(x: frame.midX - 55, y: frame.maxY - 250) //chest ruangan 4
         addChild(chestThree)
     }
     
     func spawnLocker() {
-        lockerOne.position = CGPoint(x: frame.maxX + 80, y: frame.maxY + 190)
+        lockerOne.position = CGPoint(x: frame.maxX + 80, y: frame.maxY + 190) //locker pojok atas
         addChild(lockerOne)
         
-        lockerTwo.position = CGPoint(x: frame.midX - 50, y: frame.minY - 120)
+        lockerTwo.position = CGPoint(x: frame.midX - 50, y: frame.minY - 120) //locker ruangan 2
         addChild(lockerTwo)
         
-        lockerThree.position = CGPoint(x: frame.maxX - 220, y: frame.maxY + 70)
+        lockerThree.position = CGPoint(x: frame.midX - 80, y: frame.midY + 270) //locker ruangan 4
         addChild(lockerThree)
     }
     
