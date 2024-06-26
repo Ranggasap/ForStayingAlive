@@ -127,7 +127,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         
         let innerMaskRadius: CGFloat = 70.0
 		let outerMaskRadius: CGFloat = 160.0
-        let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
+        let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
         
         let innerMaskPath = CGMutablePath()
         innerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
@@ -378,7 +378,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnHero() {
-        hero.position = CGPoint(x: frame.maxX, y: frame.minY - 250)
+        hero.position = CGPoint(x: frame.maxX, y: frame.minY - 170)
         hero.name = "Hero"
         addChild(hero)
     }
@@ -670,7 +670,21 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         let dt = currentTime - self.lastUpdateTime
         self.lastUpdateTime = currentTime
         
-        heroCamera.position = hero.position
+		// Calculate the camera's target position
+		var targetPosition = hero.position
+		
+		// Determine the minimum and maximum allowable positions for the camera
+		let cameraMinX = hospitalGround.frame.minX + size.width / 2
+		let cameraMaxX = hospitalGround.frame.maxX - size.width / 2
+		let cameraMinY = hospitalGround.frame.minY + size.height / 2
+		let cameraMaxY = hospitalGround.frame.maxY - size.height / 2
+		
+		// Clamp the camera's position to the bounds
+		targetPosition.x = max(cameraMinX, min(targetPosition.x, cameraMaxX))
+		targetPosition.y = max(cameraMinY, min(targetPosition.y, cameraMaxY))
+		
+		// Set the camera's position
+		heroCamera.position = targetPosition
         
         let isRunning = runningButton.isRunningButtonPressed && hero.getHeroStamina() > 0
         let heroIsIdleOrHidden = hero.isHidden || hero.isHeroIdle()
@@ -691,7 +705,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         
         updateMedkitButtonState()
         
-        let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
+        let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
         innerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
 		outerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
         
