@@ -20,6 +20,7 @@ public class ChestSprite : SKSpriteNode {
 		
 		chestSprite.physicsBody?.categoryBitMask = ChestCategory
 		chestSprite.physicsBody?.contactTestBitMask = HeroCategory
+		chestSprite.physicsBody?.collisionBitMask = HeroCategory | UndeadCategory
 		
 		return chestSprite
 	}

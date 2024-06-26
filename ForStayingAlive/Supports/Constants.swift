@@ -12,4 +12,4 @@ let UndeadCategory : UInt32 = 0x1 << 2
 let ChestCategory : UInt32 = 0x1 << 3
 let LockerCategory : UInt32 = 0x1 << 4
 let NextSceneCategory: UInt32 = 0x1 << 5
-
+let WallCategory: UInt32 = 0x1 << 6

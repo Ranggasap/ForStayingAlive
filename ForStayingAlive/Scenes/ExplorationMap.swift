@@ -21,9 +21,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     private let chestOne = ChestSprite.newInstance()
     private let chestTwo = ChestSprite.newInstance()
+    private let chestThree = ChestSprite.newInstance()
     
     private let lockerOne = LockerSprite.newInstance()
     private let lockerTwo = LockerSprite.newInstance()
+    private let lockerThree = LockerSprite.newInstance()
     
     private let runningButton = RunningButton.newInstance()
     private let medkitButton = MedkitButton.newInstance()
@@ -47,13 +49,13 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     private var hospitalGround: SKSpriteNode!
     private var hospitalBoundary: SKSpriteNode!
-	
-	private var furnitureBoundaryOne: SKSpriteNode!
-	private var furnitureBoundaryTwo: SKSpriteNode!
-	private var furnitureBoundaryThree: SKSpriteNode!
-	private var furnitureBoundaryFour: SKSpriteNode!
-	private var furnitureBoundaryFive: SKSpriteNode!
-	private var furnitureBoundarySix: SKSpriteNode!
+    
+    private var furnitureBoundaryOne: SKSpriteNode!
+    private var furnitureBoundaryTwo: SKSpriteNode!
+    private var furnitureBoundaryThree: SKSpriteNode!
+    private var furnitureBoundaryFour: SKSpriteNode!
+    private var furnitureBoundaryFive: SKSpriteNode!
+    private var furnitureBoundarySix: SKSpriteNode!
     
     private var lastUpdateTime: TimeInterval = 0
     
@@ -61,9 +63,11 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     private var twoMinutesAnnouncementMade = false
     private var takeOffAnnouncementMade = false
     
-    private var maskNode: SKShapeNode!
+    private var innerMaskNode: SKShapeNode!
+	private var outerMaskNode: SKShapeNode!
     private var darkOverlay: SKSpriteNode!
-    private var cropNode: SKCropNode!
+    private var innerCropNode: SKCropNode!
+	private var outerCropNode: SKCropNode!
     
     private var countdownViewModel = CountdownTimerViewModel()
     private var countdownManager: CountdownManager?
@@ -96,9 +100,9 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         
         spawnHero()
         spawnUndead()
-//        spawnChest()
-//        spawnLocker()
-//        spawnNextFloor()
+        spawnChest()
+        spawnLocker()
+        spawnNextFloor()
     }
     
     override func willMove(from view: SKView) {
@@ -121,25 +125,45 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         darkOverlay.zPosition = 5
         darkOverlay.isUserInteractionEnabled = false
         
-        let maskRadius: CGFloat = 90.0
+        let innerMaskRadius: CGFloat = 50.0
+		let outerMaskRadius: CGFloat = 150.0
         let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
         
-        let maskPath = CGMutablePath()
-        maskPath.addRect(CGRect(origin: .zero, size: maskSize))
-        maskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: maskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+        let innerMaskPath = CGMutablePath()
+        innerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
+        innerMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: innerMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+		
+		let outerMaskPath = CGMutablePath()
+		outerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
+		outerMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: outerMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
         
-        maskNode = SKShapeNode(path: maskPath)
-        maskNode.fillColor = .black
-        maskNode.strokeColor = .clear
-        maskNode.lineWidth = 0
-        maskNode.isUserInteractionEnabled = false
+        innerMaskNode = SKShapeNode(path: innerMaskPath)
+        innerMaskNode.fillColor = .black
+        innerMaskNode.strokeColor = .clear
+        innerMaskNode.lineWidth = 0
+		innerMaskNode.alpha = 1.0
+        innerMaskNode.isUserInteractionEnabled = false
+		
+		outerMaskNode = SKShapeNode(path: outerMaskPath)
+		outerMaskNode.fillColor = .black
+		outerMaskNode.strokeColor = .clear
+		outerMaskNode.lineWidth = 0
+		outerMaskNode.alpha = 0.8
+		outerMaskNode.isUserInteractionEnabled = false
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = maskNode
-        cropNode.addChild(darkOverlay)
-        cropNode.zPosition = 4
-        cropNode.isUserInteractionEnabled = false
-        addChild(cropNode)
+        innerCropNode = SKCropNode()
+        innerCropNode.maskNode = innerMaskNode
+		innerCropNode.addChild(darkOverlay.copy() as! SKSpriteNode)
+        innerCropNode.zPosition = 3
+        innerCropNode.isUserInteractionEnabled = false
+        addChild(innerCropNode)
+		
+		outerCropNode = SKCropNode()
+		outerCropNode.maskNode = outerMaskNode
+		outerCropNode.addChild(darkOverlay)
+		outerCropNode.zPosition = 4
+		outerCropNode.isUserInteractionEnabled = false
+		addChild(outerCropNode)
     }
     
     func addCountdown() {
@@ -193,53 +217,80 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         hospitalBoundary.physicsBody = SKPhysicsBody(texture: boundaryTexture!, size: hospitalBoundary.size)
         hospitalBoundary.physicsBody?.affectedByGravity = false
         hospitalBoundary.physicsBody?.isDynamic = false
+		hospitalBoundary.physicsBody?.categoryBitMask = WallCategory
+		hospitalBoundary.physicsBody?.collisionBitMask = HeroCategory | UndeadCategory
         addChild(hospitalBoundary)
-		
-		furnitureBoundaryOne = SKSpriteNode(imageNamed: "furniture-boundary-1")
-		furnitureBoundaryOne.size = CGSize(width: furnitureBoundaryOne.size.width, height: furnitureBoundaryOne.size.height)
-		furnitureBoundaryOne.position = CGPoint(x: frame.midX, y: frame.midY)
-		furnitureBoundaryOne.zPosition = -6
-		
-		let furnitureBoundaryTexture = furnitureBoundaryOne.texture
-		furnitureBoundaryOne.physicsBody = SKPhysicsBody(texture: furnitureBoundaryTexture!, size: furnitureBoundaryOne.size)
-		furnitureBoundaryOne.physicsBody?.affectedByGravity = false
-		furnitureBoundaryOne.physicsBody?.isDynamic = false
-		addChild(furnitureBoundaryOne)
-		
-//		furnitureBoundaryTwo = SKSpriteNode(imageNamed: "furniture-boundary-2")
-//		furnitureBoundaryTwo.size = CGSize(width: furnitureBoundaryTwo.size.width, height: furnitureBoundaryTwo.size.height)
-//		furnitureBoundaryTwo.position = CGPoint(x: frame.midX, y: frame.midY)
-//		furnitureBoundaryTwo.zPosition = -8
-//		furnitureBoundaryTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryTwo.size.width / 2, height: furnitureBoundaryTwo.size.height / 2))
-//		addChild(furnitureBoundaryTwo)
-//		
-//		furnitureBoundaryThree = SKSpriteNode(imageNamed: "furniture-boundary-3")
-//		furnitureBoundaryThree.size = CGSize(width: furnitureBoundaryThree.size.width, height: furnitureBoundaryThree.size.height)
-//		furnitureBoundaryThree.position = CGPoint(x: frame.midX, y: frame.midY)
-//		furnitureBoundaryThree.zPosition = -7
-//		furnitureBoundaryThree.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryThree.size.width / 2, height: furnitureBoundaryThree.size.height / 2))
-//		addChild(furnitureBoundaryThree)
-//		
-//		furnitureBoundaryFour = SKSpriteNode(imageNamed: "furniture-boundary-4")
-//		furnitureBoundaryFour.size = CGSize(width: furnitureBoundaryFour.size.width, height: furnitureBoundaryFour.size.height)
-//		furnitureBoundaryFour.position = CGPoint(x: frame.midX, y: frame.midY)
-//		furnitureBoundaryFour.zPosition = -6
-//		furnitureBoundaryFour.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryFour.size.width / 2, height: furnitureBoundaryFour.size.height / 2))
-//		addChild(furnitureBoundaryFour)
-//		
-//		furnitureBoundaryFive = SKSpriteNode(imageNamed: "furniture-boundary-5")
-//		furnitureBoundaryFive.size = CGSize(width: furnitureBoundaryFive.size.width, height: furnitureBoundaryFive.size.height)
-//		furnitureBoundaryFive.position = CGPoint(x: frame.midX, y: frame.midY)
-//		furnitureBoundaryFive.zPosition = -5
-//		furnitureBoundaryFive.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryFive.size.width / 2, height: furnitureBoundaryFive.size.height / 2))
-//		addChild(furnitureBoundaryFive)
-//		
-//		furnitureBoundarySix = SKSpriteNode(imageNamed: "furniture-boundary-6")
-//		furnitureBoundarySix.size = CGSize(width: furnitureBoundarySix.size.width, height: furnitureBoundarySix.size.height)
-//		furnitureBoundarySix.position = CGPoint(x: frame.midX, y: frame.midY)
-//		furnitureBoundarySix.zPosition = -4
-//		furnitureBoundarySix.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundarySix.size.width / 2, height: furnitureBoundarySix.size.height / 2))
-//		addChild(furnitureBoundarySix)
+        
+        furnitureBoundaryOne = SKSpriteNode(imageNamed: "furniture-boundary-1")
+        furnitureBoundaryOne.size = CGSize(width: furnitureBoundaryOne.size.width, height: furnitureBoundaryOne.size.height)
+        furnitureBoundaryOne.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundaryOne.zPosition = -6
+        
+        let furnitureOneBoundaryTexture = furnitureBoundaryOne.texture
+        furnitureBoundaryOne.physicsBody = SKPhysicsBody(texture: furnitureOneBoundaryTexture!, size: furnitureBoundaryOne.size)
+        furnitureBoundaryOne.physicsBody?.affectedByGravity = false
+        furnitureBoundaryOne.physicsBody?.isDynamic = false
+        addChild(furnitureBoundaryOne)
+        
+        furnitureBoundaryTwo = SKSpriteNode(imageNamed: "furniture-boundary-2")
+        furnitureBoundaryTwo.size = CGSize(width: furnitureBoundaryTwo.size.width, height: furnitureBoundaryTwo.size.height)
+        furnitureBoundaryTwo.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundaryTwo.zPosition = -8
+        furnitureBoundaryTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryTwo.size.width / 2, height: furnitureBoundaryTwo.size.height / 2))
+        
+        let furnitureTwoBoundaryTexture = furnitureBoundaryTwo.texture
+        furnitureBoundaryTwo.physicsBody = SKPhysicsBody(texture: furnitureTwoBoundaryTexture!, size: furnitureBoundaryTwo.size)
+        furnitureBoundaryTwo.physicsBody?.affectedByGravity = false
+        furnitureBoundaryTwo.physicsBody?.isDynamic = false
+        addChild(furnitureBoundaryTwo)
+        
+        furnitureBoundaryThree = SKSpriteNode(imageNamed: "furniture-boundary-3")
+        furnitureBoundaryThree.size = CGSize(width: furnitureBoundaryThree.size.width, height: furnitureBoundaryThree.size.height)
+        furnitureBoundaryThree.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundaryThree.zPosition = -7
+        furnitureBoundaryThree.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryThree.size.width / 2, height: furnitureBoundaryThree.size.height / 2))
+        
+        let furnitureThreeBoundaryTexture = furnitureBoundaryThree.texture
+        furnitureBoundaryThree.physicsBody = SKPhysicsBody(texture: furnitureThreeBoundaryTexture!, size: furnitureBoundaryThree.size)
+        furnitureBoundaryThree.physicsBody?.affectedByGravity = false
+        furnitureBoundaryThree.physicsBody?.isDynamic = false
+        addChild(furnitureBoundaryThree)
+        
+        furnitureBoundaryFour = SKSpriteNode(imageNamed: "furniture-boundary-4")
+        furnitureBoundaryFour.size = CGSize(width: furnitureBoundaryFour.size.width, height: furnitureBoundaryFour.size.height)
+        furnitureBoundaryFour.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundaryFour.zPosition = -6
+        furnitureBoundaryFour.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryFour.size.width / 2, height: furnitureBoundaryFour.size.height / 2))
+        
+        let furnitureFourBoundaryTexture = furnitureBoundaryFour.texture
+        furnitureBoundaryFour.physicsBody = SKPhysicsBody(texture: furnitureFourBoundaryTexture!, size: furnitureBoundaryFour.size)
+        furnitureBoundaryFour.physicsBody?.affectedByGravity = false
+        furnitureBoundaryFour.physicsBody?.isDynamic = false
+        addChild(furnitureBoundaryFour)
+        
+        furnitureBoundaryFive = SKSpriteNode(imageNamed: "furniture-boundary-5")
+        furnitureBoundaryFive.size = CGSize(width: furnitureBoundaryFive.size.width, height: furnitureBoundaryFive.size.height)
+        furnitureBoundaryFive.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundaryFive.zPosition = -5
+        furnitureBoundaryFive.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundaryFive.size.width / 2, height: furnitureBoundaryFive.size.height / 2))
+        
+        let furnitureFiveBoundaryTexture = furnitureBoundaryFive.texture
+        furnitureBoundaryFive.physicsBody = SKPhysicsBody(texture: furnitureFiveBoundaryTexture!, size: furnitureBoundaryFive.size)
+        furnitureBoundaryFive.physicsBody?.affectedByGravity = false
+        furnitureBoundaryFive.physicsBody?.isDynamic = false
+        addChild(furnitureBoundaryFive)
+        
+        furnitureBoundarySix = SKSpriteNode(imageNamed: "furniture-boundary-6")
+        furnitureBoundarySix.size = CGSize(width: furnitureBoundarySix.size.width, height: furnitureBoundarySix.size.height)
+        furnitureBoundarySix.position = CGPoint(x: frame.midX, y: frame.midY)
+        furnitureBoundarySix.zPosition = -4
+        furnitureBoundarySix.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: furnitureBoundarySix.size.width / 2, height: furnitureBoundarySix.size.height / 2))
+        
+        let furnitureSixBoundaryTexture = furnitureBoundarySix.texture
+        furnitureBoundarySix.physicsBody = SKPhysicsBody(texture: furnitureSixBoundaryTexture!, size: furnitureBoundarySix.size)
+        furnitureBoundarySix.physicsBody?.affectedByGravity = false
+        furnitureBoundarySix.physicsBody?.isDynamic = false
+        addChild(furnitureBoundarySix)
     }
     
     func addJoystick() {
@@ -338,7 +389,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         undeadOne.setUndeadSpawnPosition()
         addChild(undeadOne)
         
-        undeadTwo.position = CGPoint(x: frame.maxX - 100, y: frame.midY + 100)
+        undeadTwo.position = CGPoint(x: frame.maxX - 100, y: frame.midY + 80)
         undeadTwo.name = "undead-two"
         undeadTwo.setUndeadSpawnPosition()
         addChild(undeadTwo)
@@ -374,23 +425,29 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnChest() {
-        chestOne.position = CGPoint(x: frame.midX + 10, y: frame.midY + 220)
+        chestOne.position = CGPoint(x: frame.minX + 140, y: frame.midY + 40)
         addChild(chestOne)
         
-        chestTwo.position = CGPoint(x: frame.minX - 100, y: frame.midY - 410)
+        chestTwo.position = CGPoint(x: frame.minX - 90, y: frame.minY - 320)
         addChild(chestTwo)
+        
+        chestThree.position = CGPoint(x: frame.midX - 80, y: frame.midY + 270)
+        addChild(chestThree)
     }
     
     func spawnLocker() {
-        lockerOne.position = CGPoint(x: frame.minX + 150, y: frame.midY + 220)
+        lockerOne.position = CGPoint(x: frame.maxX + 80, y: frame.maxY + 190)
         addChild(lockerOne)
         
-        lockerTwo.position = CGPoint(x: frame.midX - 100, y: frame.minY - 215)
+        lockerTwo.position = CGPoint(x: frame.midX - 50, y: frame.minY - 120)
         addChild(lockerTwo)
+        
+        lockerThree.position = CGPoint(x: frame.maxX - 220, y: frame.maxY + 70)
+        addChild(lockerThree)
     }
     
     func spawnNextFloor() {
-        nextSceneNode.position = CGPoint(x: frame.midX - 75, y: frame.midY - 550)
+        nextSceneNode.position = CGPoint(x: frame.minX - 40, y: frame.midY + 520)
         addChild(nextSceneNode)
     }
     
@@ -452,7 +509,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func reduceHeroStamina() {
-        hero.heroStaminaReduced(stamina: 2.0)
+        hero.heroStaminaReduced(stamina: 2.5)
     }
     
     private func startStaminaRecoveryTimer() {
@@ -635,12 +692,15 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         updateMedkitButtonState()
         
         let maskSize = CGSize(width: hospitalGround.size.width, height: hospitalGround.size.height)
-        maskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+        innerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
+		outerMaskNode.position = CGPoint(x: hero.position.x - maskSize.width / 2, y: hero.position.y - maskSize.height / 2)
         
         if hero.isHidden {
-            cropNode.maskNode = nil
+            innerCropNode.maskNode = nil
+			outerCropNode.maskNode = nil
         } else {
-            cropNode.maskNode = maskNode
+            innerCropNode.maskNode = innerMaskNode
+			outerCropNode.maskNode = outerMaskNode
         }
         
         countdownManager?.updateTimer(dt: dt)
