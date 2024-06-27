@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E9BB8682C2BC2AF00F328E3 /* TutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */; };
+		0E9BB86E2C2D2E2F00F328E3 /* heartbeat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0E9BB86D2C2D2E2F00F328E3 /* heartbeat.mp3 */; };
 		8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C4872C1BD9030083D972 /* NextSceneNode.swift */; };
 		8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */; };
 		8B05B5C42C296D020001384E /* HelicopterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C32C296D020001384E /* HelicopterSprite.swift */; };
@@ -53,7 +54,6 @@
 		E48FE0E82C2BE3D600AD9F06 /* locker-slam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */; };
 		E49C38D82C17F95500868DDA /* ChestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D72C17F95500868DDA /* ChestSprite.swift */; };
 		E49C38DA2C18024A00868DDA /* InteractButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C38D92C18024A00868DDA /* InteractButton.swift */; };
-		E4C522DC2C2D244000E2C5FF /* heartbeat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4C522DB2C2D244000E2C5FF /* heartbeat.mp3 */; };
 		E4CB75142C194B880059FED9 /* LockerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB75132C194B880059FED9 /* LockerSprite.swift */; };
 		E4E14A322C1834ED00A8E101 /* HidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E14A312C1834ED00A8E101 /* HidingButton.swift */; };
 		E4FDDE1C2C231958001EC9F6 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */; };
@@ -81,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen.swift; sourceTree = "<group>"; };
+		0E9BB86D2C2D2E2F00F328E3 /* heartbeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = heartbeat.mp3; path = ../../../../../../Downloads/heartbeat.mp3; sourceTree = "<group>"; };
 		8B00C4872C1BD9030083D972 /* NextSceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSceneNode.swift; sourceTree = "<group>"; };
 		8B05B5C32C296D020001384E /* HelicopterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelicopterSprite.swift; sourceTree = "<group>"; };
 		8B05B5C52C2970140001384E /* RetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryButton.swift; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "locker-slam.mp3"; sourceTree = "<group>"; };
 		E49C38D72C17F95500868DDA /* ChestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChestSprite.swift; sourceTree = "<group>"; };
 		E49C38D92C18024A00868DDA /* InteractButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractButton.swift; sourceTree = "<group>"; };
-		E4C522DB2C2D244000E2C5FF /* heartbeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heartbeat.mp3; sourceTree = "<group>"; };
 		E4CB75132C194B880059FED9 /* LockerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerSprite.swift; sourceTree = "<group>"; };
 		E4E14A312C1834ED00A8E101 /* HidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingButton.swift; sourceTree = "<group>"; };
 		E4FDDE1B2C231958001EC9F6 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -256,10 +256,10 @@
 				8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */,
 				8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */,
 				8B92D3722C20148000F6B2D2 /* undead-scream.mp3 */,
+				0E9BB86D2C2D2E2F00F328E3 /* heartbeat.mp3 */,
 				E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */,
 				E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */,
 				E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */,
-				E4C522DB2C2D244000E2C5FF /* heartbeat.mp3 */,
 			);
 			path = SFX;
 			sourceTree = "<group>";
@@ -502,7 +502,7 @@
 				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
 				8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */,
 				E451A5E72C2A64FC0061A7DC /* undead-bite.mp3 in Resources */,
-				E4C522DC2C2D244000E2C5FF /* heartbeat.mp3 in Resources */,
+				0E9BB86E2C2D2E2F00F328E3 /* heartbeat.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
