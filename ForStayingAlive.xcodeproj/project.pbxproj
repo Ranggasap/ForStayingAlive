@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E9BB8682C2BC2AF00F328E3 /* TutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */; };
-		0E9BB86E2C2D2E2F00F328E3 /* heartbeat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0E9BB86D2C2D2E2F00F328E3 /* heartbeat.mp3 */; };
 		8B00C4882C1BD9030083D972 /* NextSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00C4872C1BD9030083D972 /* NextSceneNode.swift */; };
 		8B00C4892C1BE0290083D972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DB2092C0DB77E0055AB7A /* Assets.xcassets */; };
 		8B05B5C42C296D020001384E /* HelicopterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05B5C32C296D020001384E /* HelicopterSprite.swift */; };
@@ -31,6 +30,7 @@
 		8B92D3792C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */; };
 		8B96FDB42C22E96100E2EE7D /* CountdownTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */; };
 		8BC6D8E82C1DCE2A00F73142 /* LeftBehindScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */; };
+		8BD6A28C2C2D4EE4000EAF49 /* heartbeat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BD6A28B2C2D4EE4000EAF49 /* heartbeat.mp3 */; };
 		E42E8E752C11729300FF73F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E742C11729300FF73F4 /* Constants.swift */; };
 		E42E8E772C118B1900FF73F4 /* HeroSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E762C118B1900FF73F4 /* HeroSprite.swift */; };
 		E42E8E792C11955900FF73F4 /* ExplorationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E8E782C11955900FF73F4 /* ExplorationMap.swift */; };
@@ -81,7 +81,6 @@
 
 /* Begin PBXFileReference section */
 		0E9BB8672C2BC2AF00F328E3 /* TutorialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen.swift; sourceTree = "<group>"; };
-		0E9BB86D2C2D2E2F00F328E3 /* heartbeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = heartbeat.mp3; path = ../../../../../../Downloads/heartbeat.mp3; sourceTree = "<group>"; };
 		8B00C4872C1BD9030083D972 /* NextSceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSceneNode.swift; sourceTree = "<group>"; };
 		8B05B5C32C296D020001384E /* HelicopterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelicopterSprite.swift; sourceTree = "<group>"; };
 		8B05B5C52C2970140001384E /* RetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryButton.swift; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mutated-zombie-sound-211722.mp3"; sourceTree = "<group>"; };
 		8B96FDB32C22E96100E2EE7D /* CountdownTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerViewModel.swift; sourceTree = "<group>"; };
 		8BC6D8E72C1DCE2A00F73142 /* LeftBehindScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBehindScene.swift; sourceTree = "<group>"; };
+		8BD6A28B2C2D4EE4000EAF49 /* heartbeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heartbeat.mp3; sourceTree = "<group>"; };
 		E42E8E742C11729300FF73F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E42E8E762C118B1900FF73F4 /* HeroSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSprite.swift; sourceTree = "<group>"; };
 		E42E8E782C11955900FF73F4 /* ExplorationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMap.swift; sourceTree = "<group>"; };
@@ -254,9 +254,9 @@
 				8B92D36E2C20148000F6B2D2 /* indoor-footsteps-6385.mp3 */,
 				8B92D3732C20148000F6B2D2 /* mutated-zombie-sound-211722.mp3 */,
 				8B92D3712C20148000F6B2D2 /* zmb2_dead-92305.mp3 */,
+				8BD6A28B2C2D4EE4000EAF49 /* heartbeat.mp3 */,
 				8B92D3702C20148000F6B2D2 /* zombie-attack-6419.mp3 */,
 				8B92D3722C20148000F6B2D2 /* undead-scream.mp3 */,
-				0E9BB86D2C2D2E2F00F328E3 /* heartbeat.mp3 */,
 				E451A5E42C2A638B0061A7DC /* undead-attack.mp3 */,
 				E451A5E62C2A64FC0061A7DC /* undead-bite.mp3 */,
 				E48FE0E72C2BE3D600AD9F06 /* locker-slam.mp3 */,
@@ -502,7 +502,7 @@
 				E4FDDE1E2C2319F4001EC9F6 /* the-hired.m4a in Resources */,
 				8B92D3742C20148000F6B2D2 /* indoor-footsteps-6385.mp3 in Resources */,
 				E451A5E72C2A64FC0061A7DC /* undead-bite.mp3 in Resources */,
-				0E9BB86E2C2D2E2F00F328E3 /* heartbeat.mp3 in Resources */,
+				8BD6A28C2C2D4EE4000EAF49 /* heartbeat.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,7 +740,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56MX8FP3GC;
+				DEVELOPMENT_TEAM = NNX37468Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
@@ -773,7 +773,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56MX8FP3GC;
+				DEVELOPMENT_TEAM = NNX37468Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ForStayingAlive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Last Flight Out";
