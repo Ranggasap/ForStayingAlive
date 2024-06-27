@@ -58,8 +58,6 @@ public class HeroSprite : SKSpriteNode {
 		self.physicsBody = physicsBody
 	}
     
-
-    
     public func getStatus()->(CGFloat, CGFloat){
         return (heroHealth, heroStamina)
     }

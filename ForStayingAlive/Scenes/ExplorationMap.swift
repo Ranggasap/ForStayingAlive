@@ -82,6 +82,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
     
     private var backgroundTrack: AVAudioPlayer?
     private var helicopterTrack: AVAudioPlayer?
+	private var heartbeat = SoundManager.sharedInstance.startPlaying(soundName: "heartbeat", fileExtension: "mp3")
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -761,10 +762,21 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
             innerCropNode.maskNode = nil
 //			middleCropNode.maskNode = nil
 			outerCropNode.maskNode = nil
+			
+			backgroundTrack?.volume = 0.1
+			helicopterTrack?.volume = 0.1
+			
+			heartbeat?.play()
+			heartbeat?.volume = 1.0
         } else {
             innerCropNode.maskNode = innerMaskNode
 //			middleCropNode.maskNode = middleMaskNode
 			outerCropNode.maskNode = outerMaskNode
+			
+			backgroundTrack?.volume = 0.8
+			helicopterTrack?.volume = 0.6
+			
+			heartbeat?.stop()
         }
         
         countdownManager?.updateTimer(dt: dt)
