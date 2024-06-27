@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "helicopterSprite.png",
+      "filename" : "helicopter.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

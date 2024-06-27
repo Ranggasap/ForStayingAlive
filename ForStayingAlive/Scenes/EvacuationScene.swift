@@ -19,7 +19,7 @@ class EvacuationScene: SKScene{
 		evacuationLabel.position = CGPoint(x: frame.midX, y: frame.midY + 100)
 		addChild(evacuationLabel)
         
-        helicopterSprite.position = CGPoint(x: frame.midX, y: frame.midY)
+        helicopterSprite.position = CGPoint(x: frame.midX, y: frame.midY - 50)
         addChild(helicopterSprite)
         
 		retryButton.position = CGPoint(x: frame.maxX - 100, y: frame.minY / 2 + 50)

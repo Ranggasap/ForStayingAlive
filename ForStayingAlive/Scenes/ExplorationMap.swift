@@ -131,7 +131,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
         
         let innerMaskRadius: CGFloat = 160.0
 //		let middleMaskRadius: CGFloat = 120.0
-		let outerMaskRadius: CGFloat = 70.0
+        let outerMaskRadius: CGFloat = 70.0
         let maskSize = CGSize(width: hospitalGround.size.width * 2, height: hospitalGround.size.height * 2)
         
         let innerMaskPath = CGMutablePath()
@@ -141,7 +141,7 @@ class ExplorationMap: SKScene, SKPhysicsContactDelegate {
 //		let middleMaskPath = CGMutablePath()
 //		middleMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
 //		middleMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: middleMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
-		
+
 		let outerMaskPath = CGMutablePath()
 		outerMaskPath.addRect(CGRect(origin: .zero, size: maskSize))
 		outerMaskPath.addArc(center: CGPoint(x: maskSize.width / 2, y: maskSize.height / 2), radius: outerMaskRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
